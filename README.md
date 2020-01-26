@@ -1,4 +1,4 @@
-# DesktopCopy1 
+# DesktopCopy[v.0.0.2]
 
 
 
