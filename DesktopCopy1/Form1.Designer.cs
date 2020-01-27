@@ -54,6 +54,7 @@
             this.AboutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CloseToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.DocLink = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ImageHelper)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog1)).BeginInit();
@@ -64,11 +65,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(127)))), ((int)(((byte)(49)))));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Orange;
             this.label1.Location = new System.Drawing.Point(12, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Первичный вход";
             // 
@@ -89,20 +92,23 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(127)))), ((int)(((byte)(49)))));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Orange;
             this.label2.Location = new System.Drawing.Point(12, 78);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(100, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Вторичный вход";
             // 
             // ButtonCopy
             // 
             this.ButtonCopy.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonCopy.ForeColor = System.Drawing.Color.Black;
             this.ButtonCopy.Location = new System.Drawing.Point(8, 127);
             this.ButtonCopy.Name = "ButtonCopy";
-            this.ButtonCopy.Size = new System.Drawing.Size(152, 25);
+            this.ButtonCopy.Size = new System.Drawing.Size(160, 25);
             this.ButtonCopy.TabIndex = 4;
             this.ButtonCopy.Text = "Копирование";
             this.ButtonCopy.UseVisualStyleBackColor = true;
@@ -111,19 +117,23 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(127)))), ((int)(((byte)(49)))));
-            this.label3.Location = new System.Drawing.Point(12, 177);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.Orange;
+            this.label3.Location = new System.Drawing.Point(50, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(213, 13);
+            this.label3.Size = new System.Drawing.Size(223, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Быстрая сортировка файлов по папкам.";
             // 
             // LinkSite
             // 
+            this.LinkSite.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.LinkSite.AutoSize = true;
+            this.LinkSite.BackColor = System.Drawing.Color.Transparent;
             this.LinkSite.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LinkSite.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(95)))), ((int)(((byte)(171)))));
+            this.LinkSite.LinkColor = System.Drawing.Color.RoyalBlue;
             this.LinkSite.Location = new System.Drawing.Point(279, 12);
             this.LinkSite.Margin = new System.Windows.Forms.Padding(3);
             this.LinkSite.Name = "LinkSite";
@@ -135,11 +145,13 @@
             // 
             // ImageHelper
             // 
+            this.ImageHelper.BackColor = System.Drawing.Color.Transparent;
+            this.ImageHelper.Cursor = System.Windows.Forms.Cursors.Help;
             this.ImageHelper.Image = ((System.Drawing.Image)(resources.GetObject("ImageHelper.Image")));
             this.ImageHelper.Location = new System.Drawing.Point(316, 174);
             this.ImageHelper.Name = "ImageHelper";
             this.ImageHelper.Size = new System.Drawing.Size(16, 16);
-            this.ImageHelper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImageHelper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ImageHelper.TabIndex = 8;
             this.ImageHelper.TabStop = false;
             this.ImageHelper.Click += new System.EventHandler(this.ImageHelper_Click);
@@ -209,9 +221,10 @@
             // ButtonCut
             // 
             this.ButtonCut.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonCut.Location = new System.Drawing.Point(162, 127);
+            this.ButtonCut.ForeColor = System.Drawing.Color.Black;
+            this.ButtonCut.Location = new System.Drawing.Point(170, 127);
             this.ButtonCut.Name = "ButtonCut";
-            this.ButtonCut.Size = new System.Drawing.Size(170, 25);
+            this.ButtonCut.Size = new System.Drawing.Size(160, 25);
             this.ButtonCut.TabIndex = 10;
             this.ButtonCut.Text = "Вырезание";
             this.ButtonCut.UseVisualStyleBackColor = true;
@@ -219,10 +232,13 @@
             // 
             // ImageDialog1
             // 
+            this.ImageDialog1.BackColor = System.Drawing.Color.Transparent;
+            this.ImageDialog1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ImageDialog1.Image = ((System.Drawing.Image)(resources.GetObject("ImageDialog1.Image")));
-            this.ImageDialog1.Location = new System.Drawing.Point(316, 54);
+            this.ImageDialog1.Location = new System.Drawing.Point(314, 54);
             this.ImageDialog1.Name = "ImageDialog1";
-            this.ImageDialog1.Size = new System.Drawing.Size(16, 16);
+            this.ImageDialog1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.ImageDialog1.Size = new System.Drawing.Size(16, 19);
             this.ImageDialog1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ImageDialog1.TabIndex = 11;
             this.ImageDialog1.TabStop = false;
@@ -232,10 +248,13 @@
             // 
             // ImageDialog2
             // 
+            this.ImageDialog2.BackColor = System.Drawing.Color.Transparent;
+            this.ImageDialog2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ImageDialog2.Image = ((System.Drawing.Image)(resources.GetObject("ImageDialog2.Image")));
-            this.ImageDialog2.Location = new System.Drawing.Point(316, 94);
+            this.ImageDialog2.Location = new System.Drawing.Point(314, 94);
             this.ImageDialog2.Name = "ImageDialog2";
-            this.ImageDialog2.Size = new System.Drawing.Size(16, 16);
+            this.ImageDialog2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.ImageDialog2.Size = new System.Drawing.Size(16, 19);
             this.ImageDialog2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ImageDialog2.TabIndex = 12;
             this.ImageDialog2.TabStop = false;
@@ -297,12 +316,31 @@
             this.CloseToolStrip.Text = "Закрыть";
             this.CloseToolStrip.Click += new System.EventHandler(this.CloseToolStrip_Click);
             // 
+            // DocLink
+            // 
+            this.DocLink.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.DocLink.AutoSize = true;
+            this.DocLink.BackColor = System.Drawing.Color.Transparent;
+            this.DocLink.CausesValidation = false;
+            this.DocLink.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DocLink.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.DocLink.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.DocLink.Location = new System.Drawing.Point(12, 173);
+            this.DocLink.Name = "DocLink";
+            this.DocLink.Size = new System.Drawing.Size(91, 17);
+            this.DocLink.TabIndex = 13;
+            this.DocLink.TabStop = true;
+            this.DocLink.Text = "Документация";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(12)))), ((int)(((byte)(28)))));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(342, 200);
+            this.Controls.Add(this.DocLink);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ImageHelper);
             this.Controls.Add(this.LinkSite);
@@ -357,6 +395,7 @@
         private System.Windows.Forms.ToolStripMenuItem CloseToolStrip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ShowHidetoolStrip;
+        private System.Windows.Forms.LinkLabel DocLink;
     }
 }
 
