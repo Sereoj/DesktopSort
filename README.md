@@ -23,6 +23,9 @@
 - Microsoft Project
 - Image Files		
 - Text Documents
+## Внешний вид
+![DesktopCopy - 28.01.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Main.png?raw=true)
+![DesktopCopy - 28.01.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Settings.png?raw=true)
 
 **Будущая поддержка форматов**
 
