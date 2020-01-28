@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -176,9 +177,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(53, 172);
+            this.button1.Location = new System.Drawing.Point(235, 259);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(247, 86);
+            this.button1.Size = new System.Drawing.Size(140, 47);
             this.button1.TabIndex = 13;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -203,6 +204,7 @@
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Форма настроек";
             this.ResumeLayout(false);
