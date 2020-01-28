@@ -23,78 +23,51 @@ namespace DesktopCopy1
             form.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
         }
 
-        protected void MainSettinger(bool[] setting, bool isCut)
-        {
-            //System.IO.SearchOption search = System.IO.SearchOption.AllDirectories;
-            //logic.Excel = form.Editor2 + @"/Excel";
-            //logic.Word = form.Editor2 + @"/Word";
-            //logic.Access = form.Editor2 + @"/Access";
-            //logic.TextDoc = form.Editor2 + @"/Text";
-            //logic.Image = form.Editor2 + @"/Image";
-
-            //logic.DEFAULT_PATH = form.Editor1;
-            //logic.DIR_OUTPUT = form.Editor2;
-
-            //string[] word = new string[] { ".docx", ".dotx", ".doc", ".dot" };
-            //string[] excel = new string[] { ".xlsx", ".xlsm", ".xltx", ".xltm", ".xlam", ".xls", ".xlt", ".xla" };
-            //string[] access = new string[] { ".accdb", ".mdb" };
-
-            ///*От 0.0.2*/
-            //string[] text = new string[] { ".txt", ".log" };
-            //string[] image = new string[] { ".bmp", ".tif", ".jpg", ".gif", ".png", ".ico" };
-            //if (setting[0])
-            //{
-            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Word, word, isCut);
-            //}
-            //if (setting[1])
-            //{
-            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Excel, excel, isCut);
-            //}
-            //if (setting[2])
-            //{
-            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Access, access, isCut);
-            //}
-            //if (setting[3])
-            //{
-            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.TextDoc, text, isCut);
-            //}
-            //if (setting[4])
-            //{
-            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Image, image, isCut);
-            //}
-
-
-        }
+       
         public void Add_ButtonCopyClick(object sender, EventArgs e)
         {
-            List<string> Dir = new List<string>();
-            Dir.Add(form.Editor2 + @"/Access");
-            Dir.Add(form.Editor2 + @"/Word");
-            Dir.Add(form.Editor2 + @"/Excel");
-            Dir.Add(form.Editor2 + @"/Image");
-            Dir.Add(form.Editor2 + @"/Text");
 
-            List<string> Ext = new List<string>();
-            Dir.Add(".accdb,*.mdb");
-            Dir.Add("*.docx,*.dotx,*.doc,*.dot");
-            Dir.Add("*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla");
-            Dir.Add(".bmp,*.tif,*.jpg,*.gif,*.png,*.ico");
-            Dir.Add(".txt,*.log");
-
-
-            logic.DEFAULT_PATH = form.Editor1;
-            logic.DIR_OUTPUT = form.Editor2;
-
-            logic.DirCreate(Dir);
-            
-            for(int x = 0; x < 3; x++)
+            if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
             {
-                logic.Search(Dir[x] , Ext[x], false);
+                //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
-            
-            //logic.test_Search(Dir[0], "*.txt,*.doc,*.jpg", false);
+            else
+            {
+                List<string> Dir = new List<string>();
+                Dir.Add(form.Editor2 + @"/Access");
+                Dir.Add(form.Editor2 + @"/Word");
+                Dir.Add(form.Editor2 + @"/Excel");
+                Dir.Add(form.Editor2 + @"/Project");
+                Dir.Add(form.Editor2 + @"/Image");
+                Dir.Add(form.Editor2 + @"/Text");
+
+
+                //List<string> Ext = new List<string>();
+                //Dir.Add(".accdb,*.mdb");
+                //Dir.Add("*.docx,*.dotx,*.doc,*.dot");
+                //Dir.Add("*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla");
+                //Dir.Add(".bmp,*.tif,*.jpg,*.gif,*.png,*.ico");
+                //Dir.Add(".txt,*.log");
+
+
+                logic.DEFAULT_PATH = form.Editor1;
+                logic.DIR_OUTPUT = form.Editor2;
+
+                logic.DirCreate(Dir);
+                logic.Search(Dir[0], ".accdb,*.mdb", false);
+                logic.Search(Dir[1], "*.docx,*.dotx,*.doc,*.dot", false);
+                logic.Search(Dir[2], "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla", false);
+                logic.Search(Dir[2], "*.mpp", false);
+                logic.Search(Dir[3], ".bmp,*.tif,*.jpg,*.gif,*.png,*.ico", false);
+                logic.Search(Dir[4], ".txt,*.log", false);
+            }
+
+
+
 
         }
+
 
         public void Add_ButtonCutClick(object sender, EventArgs e)
         {
@@ -107,18 +80,33 @@ namespace DesktopCopy1
                 }
                 else
                 {
-                    //logic.Excel = form.Editor2 + @"/Excel";
-                    //logic.Word = form.Editor2 + @"/Word";
-                    //logic.Access = form.Editor2 + @"/Access";
+                    List<string> Dir = new List<string>();
+                    Dir.Add(form.Editor2 + @"/Access");
+                    Dir.Add(form.Editor2 + @"/Word");
+                    Dir.Add(form.Editor2 + @"/Excel");
+                    Dir.Add(form.Editor2 + @"/Project");
+                    Dir.Add(form.Editor2 + @"/Image");
+                    Dir.Add(form.Editor2 + @"/Text");
 
-                    //logic.TextDoc = form.Editor2 + @"/Text";
-                    //logic.Image = form.Editor2 + @"/Image";
 
-                    //logic.DEFAULT_PATH = form.Editor1;
-                    //logic.DIR_OUTPUT = form.Editor2;
+                    //List<string> Ext = new List<string>();
+                    //Dir.Add(".accdb,*.mdb");
+                    //Dir.Add("*.docx,*.dotx,*.doc,*.dot");
+                    //Dir.Add("*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla");
+                    //Dir.Add(".bmp,*.tif,*.jpg,*.gif,*.png,*.ico");
+                    //Dir.Add(".txt,*.log");
 
-                    //logic.DirCreate();
-                    //logic.Search(true);
+
+                    logic.DEFAULT_PATH = form.Editor1;
+                    logic.DIR_OUTPUT = form.Editor2;
+
+                    logic.DirCreate(Dir);
+                    logic.Search(Dir[0], ".accdb,*.mdb", true);
+                    logic.Search(Dir[1], "*.docx,*.dotx,*.doc,*.dot", true);
+                    logic.Search(Dir[2], "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla", true);
+                    logic.Search(Dir[2], "*.mpp", false);
+                    logic.Search(Dir[3], ".bmp,*.tif,*.jpg,*.gif,*.png,*.ico", true);
+                    logic.Search(Dir[4], ".txt,*.log", true);
                 }
 
             }

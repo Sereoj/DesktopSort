@@ -33,18 +33,7 @@ namespace DesktopCopy1
         }
         #endregion
 
-        #region Массив данных
-        /*
-        Строковые элементы, объединенные в одно поле (Переменную)         
-        */
-        private readonly string[] word = new string[] { ".docx", ".dotx", ".doc", ".dot" };
-        private readonly string[] excel = new string[] { ".xlsx", ".xlsm", ".xltx", ".xltm", ".xlam", ".xls", ".xlt", ".xla" };
-        private readonly string[] access = new string[] { ".accdb", ".mdb" };
 
-        /*От 0.0.2*/
-        private readonly string[] text = new string[] { ".txt", ".log" };
-        private readonly string[] image = new string[] { ".bmp", ".tif", ".jpg", ".gif", ".png", ".ico" };
-        #endregion
         public void Logger(string text)
         {
             StreamWriter file = new StreamWriter(DEFAULT_PATH + @"\logger.txt");
