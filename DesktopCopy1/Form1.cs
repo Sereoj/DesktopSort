@@ -20,7 +20,7 @@ namespace DesktopCopy1
         */
         event EventHandler ButtonClick;
         event EventHandler ButtonCutClick;
-        event EventHandler ImageHelperClick; // Не используется
+        event EventHandler ImageHelperClick;
         event EventHandler ImageDialogClick;
         event EventHandler ImageDialogClick1;
         event EventHandler LinkSiteClick;
@@ -33,6 +33,7 @@ namespace DesktopCopy1
     {
         const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
         const string ВНЕ = "#000C1C"; // 2D3276
+        public Form2 Form2;
 
 
         #region Editors && events
@@ -65,7 +66,7 @@ namespace DesktopCopy1
             }
         }
         #endregion
-            #region Events
+        #region Events
         public event EventHandler ButtonClick;
         public event EventHandler ButtonCutClick;
         public event EventHandler ImageHelperClick;
@@ -113,7 +114,7 @@ namespace DesktopCopy1
                 Edit1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
-            
+
         }
 
 
@@ -125,7 +126,7 @@ namespace DesktopCopy1
 
             DublicateNameForm.Text = this.Text;
         }
-
+        #region Buttons
         private void ButtonCopy_Click(object sender, EventArgs e)
         {
             if (ButtonClick != null) ButtonClick(this, EventArgs.Empty);
@@ -135,33 +136,23 @@ namespace DesktopCopy1
         {
             if (ButtonCutClick != null) ButtonCutClick(this, EventArgs.Empty);
         }
+        #endregion
 
-        private void ImageHelper_Click(object sender, EventArgs e)
-        {
-
-            if (panel1.Visible)
-            {
-                panel1.Location = new Point(362, 34);
-                panel1.Visible = false;
-            }
-            else
-            {
-                panel1.Location = new Point(8, 34);
-                panel1.Visible = true;
-            }
-            if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
-        }
-
+        #region Panels
         private void PanelClose_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
         }
+        #endregion
 
+        #region Links
         private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.", "" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
         }
+        #endregion
+        #region Images
 
         private void ImageDialog1_Click(object sender, EventArgs e)
         {
@@ -181,6 +172,50 @@ namespace DesktopCopy1
             }
         }
 
+        private void ImageHelper_Click(object sender, EventArgs e)
+        {
+
+            if (panel1.Visible)
+            {
+                panel1.Location = new Point(362, 34);
+                panel1.Visible = false;
+            }
+            else
+            {
+                panel1.Location = new Point(8, 34);
+                panel1.Visible = true;
+            }
+            if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
+        }
+
+        private void ImageSettings_Click(object sender, EventArgs e)
+        {
+            Form2 = new Form2();
+            Form2.Show();
+        }
+        #endregion
+        #region Effect Images
+        private void ImageDialog1_MouseEnter(object sender, EventArgs e)
+        {
+            ImageDialog1.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+        }
+
+        private void ImageDialog1_MouseLeave(object sender, EventArgs e)
+        {
+            ImageDialog1.BackColor = ColorTranslator.FromHtml(ВНЕ);
+        }
+
+        private void ImageDialog2_MouseEnter(object sender, EventArgs e)
+        {
+            ImageDialog2.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+        }
+
+        private void ImageDialog2_MouseLeave(object sender, EventArgs e)
+        {
+            ImageDialog2.BackColor = ColorTranslator.FromHtml(ВНЕ);
+        }
+        #endregion
+        #region Custom ToolStrip
         private void WindowIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -203,7 +238,7 @@ namespace DesktopCopy1
             {
                 panel1.Location = new Point(8, 34);
                 panel1.Visible = true;
-                
+
             }
         }
 
@@ -225,32 +260,8 @@ namespace DesktopCopy1
             }
 
         }
-        #region Effect
-        private void ImageDialog1_MouseEnter(object sender, EventArgs e)
-        {
-            ImageDialog1.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
-        }
 
-        private void ImageDialog1_MouseLeave(object sender, EventArgs e)
-        {
-            ImageDialog1.BackColor = ColorTranslator.FromHtml(ВНЕ);
-        }
-
-        private void ImageDialog2_MouseEnter(object sender, EventArgs e)
-        {
-            ImageDialog2.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
-        }
-
-        private void ImageDialog2_MouseLeave(object sender, EventArgs e)
-        {
-            ImageDialog2.BackColor = ColorTranslator.FromHtml(ВНЕ);
-        }
         #endregion
-
-
-
-
-
 
     }
 }

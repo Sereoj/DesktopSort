@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopCopy1
 {
@@ -26,36 +23,76 @@ namespace DesktopCopy1
             form.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
         }
 
+        protected void MainSettinger(bool[] setting, bool isCut)
+        {
+            //System.IO.SearchOption search = System.IO.SearchOption.AllDirectories;
+            //logic.Excel = form.Editor2 + @"/Excel";
+            //logic.Word = form.Editor2 + @"/Word";
+            //logic.Access = form.Editor2 + @"/Access";
+            //logic.TextDoc = form.Editor2 + @"/Text";
+            //logic.Image = form.Editor2 + @"/Image";
+
+            //logic.DEFAULT_PATH = form.Editor1;
+            //logic.DIR_OUTPUT = form.Editor2;
+
+            //string[] word = new string[] { ".docx", ".dotx", ".doc", ".dot" };
+            //string[] excel = new string[] { ".xlsx", ".xlsm", ".xltx", ".xltm", ".xlam", ".xls", ".xlt", ".xla" };
+            //string[] access = new string[] { ".accdb", ".mdb" };
+
+            ///*От 0.0.2*/
+            //string[] text = new string[] { ".txt", ".log" };
+            //string[] image = new string[] { ".bmp", ".tif", ".jpg", ".gif", ".png", ".ico" };
+            //if (setting[0])
+            //{
+            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Word, word, isCut);
+            //}
+            //if (setting[1])
+            //{
+            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Excel, excel, isCut);
+            //}
+            //if (setting[2])
+            //{
+            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Access, access, isCut);
+            //}
+            //if (setting[3])
+            //{
+            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.TextDoc, text, isCut);
+            //}
+            //if (setting[4])
+            //{
+            //    logic.test_Search(System.IO.SearchOption.TopDirectoryOnly, logic.Image, image, isCut);
+            //}
+
+
+        }
         public void Add_ButtonCopyClick(object sender, EventArgs e)
         {
-            try
+            List<string> Dir = new List<string>();
+            Dir.Add(form.Editor2 + @"/Access");
+            Dir.Add(form.Editor2 + @"/Word");
+            Dir.Add(form.Editor2 + @"/Excel");
+            Dir.Add(form.Editor2 + @"/Image");
+            Dir.Add(form.Editor2 + @"/Text");
+
+            List<string> Ext = new List<string>();
+            Dir.Add(".accdb,*.mdb");
+            Dir.Add("*.docx,*.dotx,*.doc,*.dot");
+            Dir.Add("*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla");
+            Dir.Add(".bmp,*.tif,*.jpg,*.gif,*.png,*.ico");
+            Dir.Add(".txt,*.log");
+
+
+            logic.DEFAULT_PATH = form.Editor1;
+            logic.DIR_OUTPUT = form.Editor2;
+
+            logic.DirCreate(Dir);
+            
+            for(int x = 0; x < 3; x++)
             {
-                if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
-                {
-                    //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                }
-                else
-                {
-                        logic.Excel = form.Editor2 + @"/Excel";
-                        logic.Word = form.Editor2 + @"/Word";
-                        logic.Access = form.Editor2 + @"/Access";
-
-                        logic.TextDoc = form.Editor2 + @"/Text";
-                        logic.Image = form.Editor2 + @"/Image";
-                        
-                        logic.DEFAULT_PATH = form.Editor1;
-                        logic.DIR_OUTPUT = form.Editor2;
-
-                        logic.DirCreate();
-                        logic.Search(false);
-                }
-
+                logic.Search(Dir[x] , Ext[x], false);
             }
-            catch (Exception ex)
-            {
-                logic.Logger(ex.Message);
-            }
+            
+            //logic.test_Search(Dir[0], "*.txt,*.doc,*.jpg", false);
 
         }
 
@@ -70,18 +107,18 @@ namespace DesktopCopy1
                 }
                 else
                 {
-                    logic.Excel = form.Editor2 + @"/Excel";
-                    logic.Word = form.Editor2 + @"/Word";
-                    logic.Access = form.Editor2 + @"/Access";
+                    //logic.Excel = form.Editor2 + @"/Excel";
+                    //logic.Word = form.Editor2 + @"/Word";
+                    //logic.Access = form.Editor2 + @"/Access";
 
-                    logic.TextDoc = form.Editor2 + @"/Text";
-                    logic.Image = form.Editor2 + @"/Image";
+                    //logic.TextDoc = form.Editor2 + @"/Text";
+                    //logic.Image = form.Editor2 + @"/Image";
 
-                    logic.DEFAULT_PATH = form.Editor1;
-                    logic.DIR_OUTPUT = form.Editor2;
+                    //logic.DEFAULT_PATH = form.Editor1;
+                    //logic.DIR_OUTPUT = form.Editor2;
 
-                    logic.DirCreate();
-                    logic.Search(true);
+                    //logic.DirCreate();
+                    //logic.Search(true);
                 }
 
             }
@@ -90,7 +127,7 @@ namespace DesktopCopy1
                 logic.Logger(ex.Message);
             }
         }
-        public void Add_ImageDialogClick(object sender , EventArgs e)
+        public void Add_ImageDialogClick(object sender, EventArgs e)
         {
             form.Label = "Поле1 успешно заполнено";
         }

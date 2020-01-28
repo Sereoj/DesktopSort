@@ -55,11 +55,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CloseToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DocLink = new System.Windows.Forms.LinkLabel();
+            this.ImageSettings = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ImageHelper)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog2)).BeginInit();
             this.contextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -163,7 +165,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.HeadText);
-            this.panel1.Location = new System.Drawing.Point(362, 34);
+            this.panel1.Location = new System.Drawing.Point(15, 221);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(329, 137);
             this.panel1.TabIndex = 9;
@@ -332,6 +334,18 @@
             this.DocLink.TabStop = true;
             this.DocLink.Text = "Документация";
             // 
+            // ImageSettings
+            // 
+            this.ImageSettings.BackColor = System.Drawing.Color.Transparent;
+            this.ImageSettings.Image = ((System.Drawing.Image)(resources.GetObject("ImageSettings.Image")));
+            this.ImageSettings.Location = new System.Drawing.Point(278, 158);
+            this.ImageSettings.Name = "ImageSettings";
+            this.ImageSettings.Size = new System.Drawing.Size(32, 32);
+            this.ImageSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImageSettings.TabIndex = 14;
+            this.ImageSettings.TabStop = false;
+            this.ImageSettings.Click += new System.EventHandler(this.ImageSettings_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,7 +353,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(12)))), ((int)(((byte)(28)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(342, 200);
+            this.ClientSize = new System.Drawing.Size(346, 208);
+            this.Controls.Add(this.ImageSettings);
             this.Controls.Add(this.DocLink);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ImageHelper);
@@ -357,13 +372,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "DesktopCopy[v 0.0.2]";
+            this.Text = "DesktopCopy[v 0.0.3]";
             ((System.ComponentModel.ISupportInitialize)(this.ImageHelper)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog2)).EndInit();
             this.contextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImageSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,6 +412,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ShowHidetoolStrip;
         private System.Windows.Forms.LinkLabel DocLink;
+        private System.Windows.Forms.PictureBox ImageSettings;
     }
 }
 
