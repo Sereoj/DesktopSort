@@ -8,13 +8,14 @@ namespace DesktopCopy1
 
         private readonly IBusinessLogic logic;
         private readonly IMainForm form;
+        private readonly IForm2 form2;
 
 
-        public MainPresenter(IMainForm form, IBusinessLogic logic)
+        public MainPresenter(IMainForm form, IForm2 form2,  IBusinessLogic logic)
         {
             this.form = form;
+            this.form2 = form2;
             this.logic = logic;
-
 
             form.ButtonClick += new EventHandler(Add_ButtonCopyClick);
             form.ButtonCutClick += new EventHandler(Add_ButtonCutClick);

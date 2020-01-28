@@ -152,6 +152,7 @@ namespace DesktopCopy1
             if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
         }
         #endregion
+
         #region Images
 
         private void ImageDialog1_Click(object sender, EventArgs e)
@@ -194,6 +195,7 @@ namespace DesktopCopy1
             Form2.Show();
         }
         #endregion
+
         #region Effect Images
         private void ImageDialog1_MouseEnter(object sender, EventArgs e)
         {
@@ -215,6 +217,7 @@ namespace DesktopCopy1
             ImageDialog2.BackColor = ColorTranslator.FromHtml(ВНЕ);
         }
         #endregion
+
         #region Custom ToolStrip
         private void WindowIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {

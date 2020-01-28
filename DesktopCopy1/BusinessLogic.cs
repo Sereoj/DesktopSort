@@ -13,9 +13,6 @@ namespace DesktopCopy1
         string DIR_OUTPUT { get; set; }
     }
 
-
-
-
     public class BusinessLogic : IBusinessLogic
     {
         #region Поля/Свойства
@@ -52,10 +49,9 @@ namespace DesktopCopy1
 
         public void DirCreate(List<string> NameDirs)
         {
-            if (!Directory.Exists(DIR_OUTPUT))
-            {
-                Directory.CreateDirectory(DIR_OUTPUT);
-            }
+            ExDir(DEFAULT_PATH);
+            ExDir(DIR_OUTPUT);
+
             try
             {
                 foreach (string DIR in NameDirs)
@@ -67,8 +63,6 @@ namespace DesktopCopy1
             {
                 Logger(e.Message);
             }
-
-
         }
 
         public void Search(string type, string pattern, bool MoveMethod)
@@ -80,8 +74,6 @@ namespace DesktopCopy1
                     var Ext = Path.GetExtension(t_path);
                     if (pattern.Contains(Ext) && Ext.Length > 0)
                     {
-                        
-
                         FileInfo s = new FileInfo(t_path);
                         if (File.Exists(Path.Combine(type.ToString(), s.Name)))
                         {
@@ -96,7 +88,6 @@ namespace DesktopCopy1
                             else
                             {
                                 s.CopyTo(Path.Combine(type.ToString(), s.Name), true);
-
                             }
                         }
                     }
