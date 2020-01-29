@@ -12,9 +12,7 @@ namespace DesktopCopy1
 {
     public interface IForm2
     {
-
-
-
+        //Все методы, свойства и события будут отправлены в Presenter
     }
 
 
@@ -26,24 +24,22 @@ namespace DesktopCopy1
             InitializeComponent();
            
         }
-        
-
         public bool[] Points;
         public void ParseCheckPoint()
         {
 
 
             Points = new bool[10] { false, false, false, false, false, false, false, false, false, false };
-            if (CheckWord.Checked) { Points[0] = true; } else { Points[0] = false; }
-            if (CheckExcel.Checked) { Points[1] = true; } else { Points[1] = false; }
-            if (CheckAccess.Checked) { Points[2] = true; } else { Points[2] = false; }
-            if (CheckProject.Checked) { Points[3] = true; } else { Points[3] = false; }
-            if (CheckImages.Checked) { Points[4] = true; } else { Points[4] = false; }
-            if (CheckTexts.Checked) { Points[5] = true; } else { Points[5] = false; }
-            if (CheckArhive.Checked) { Points[6] = true; } else { Points[6] = false; }
-            if (CheckPDF.Checked) { Points[7] = true; } else { Points[7] = false; }
-            if (CheckMedia.Checked) { Points[8] = true; } else { Points[8] = false; }
-            if (CheckOtherDir.Checked) { Points[9] = true; } else { Points[9] = false; }
+            if (checkBox1.Checked) { Points[0] = true; } else { Points[0] = false; }
+            if (checkBox2.Checked) { Points[1] = true; } else { Points[1] = false; }
+            if (checkBox3.Checked) { Points[2] = true; } else { Points[2] = false; }
+            if (checkBox4.Checked) { Points[3] = true; } else { Points[3] = false; }
+            if (checkBox5.Checked) { Points[4] = true; } else { Points[4] = false; }
+            if (checkBox6.Checked) { Points[5] = true; } else { Points[5] = false; }
+            if (checkBox7.Checked) { Points[6] = true; } else { Points[6] = false; }
+            if (checkBox8.Checked) { Points[7] = true; } else { Points[7] = false; }
+            if (checkBox9.Checked) { Points[8] = true; } else { Points[8] = false; }
+            if (checkBox10.Checked) { Points[9] = true; } else { Points[9] = false; }
 
             
         }
