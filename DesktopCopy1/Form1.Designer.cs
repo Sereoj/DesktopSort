@@ -150,7 +150,7 @@
             this.ImageHelper.BackColor = System.Drawing.Color.Transparent;
             this.ImageHelper.Cursor = System.Windows.Forms.Cursors.Help;
             this.ImageHelper.Image = ((System.Drawing.Image)(resources.GetObject("ImageHelper.Image")));
-            this.ImageHelper.Location = new System.Drawing.Point(316, 174);
+            this.ImageHelper.Location = new System.Drawing.Point(15, 174);
             this.ImageHelper.Name = "ImageHelper";
             this.ImageHelper.Size = new System.Drawing.Size(16, 16);
             this.ImageHelper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -160,12 +160,13 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.DublicateNameForm);
             this.panel1.Controls.Add(this.PanelClose);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.HeadText);
-            this.panel1.Location = new System.Drawing.Point(15, 221);
+            this.panel1.Location = new System.Drawing.Point(8, 221);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(329, 137);
             this.panel1.TabIndex = 9;
@@ -327,7 +328,7 @@
             this.DocLink.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DocLink.ForeColor = System.Drawing.Color.RoyalBlue;
             this.DocLink.LinkColor = System.Drawing.Color.RoyalBlue;
-            this.DocLink.Location = new System.Drawing.Point(12, 173);
+            this.DocLink.Location = new System.Drawing.Point(37, 174);
             this.DocLink.Name = "DocLink";
             this.DocLink.Size = new System.Drawing.Size(91, 17);
             this.DocLink.TabIndex = 13;
@@ -338,10 +339,10 @@
             // 
             this.ImageSettings.BackColor = System.Drawing.Color.Transparent;
             this.ImageSettings.Image = ((System.Drawing.Image)(resources.GetObject("ImageSettings.Image")));
-            this.ImageSettings.Location = new System.Drawing.Point(278, 158);
+            this.ImageSettings.Location = new System.Drawing.Point(302, 164);
             this.ImageSettings.Name = "ImageSettings";
             this.ImageSettings.Size = new System.Drawing.Size(32, 32);
-            this.ImageSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImageSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ImageSettings.TabIndex = 14;
             this.ImageSettings.TabStop = false;
             this.ImageSettings.Click += new System.EventHandler(this.ImageSettings_Click);
