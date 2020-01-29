@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace DesktopCopy1
 {
+    public interface IMainPresenter
+    {
+        void Run();
+    }
+
     public class MainPresenter
     {
 
@@ -24,11 +29,11 @@ namespace DesktopCopy1
             form.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
         }
 
-       
+
         public void Add_ButtonCopyClick(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
+            if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2))
             {
                 //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -72,9 +77,10 @@ namespace DesktopCopy1
 
         public void Add_ButtonCutClick(object sender, EventArgs e)
         {
+            //int x = -1;
             try
             {
-                if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
+                if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2))
                 {
                     //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -102,12 +108,30 @@ namespace DesktopCopy1
                     logic.DIR_OUTPUT = form.Editor2;
 
                     logic.DirCreate(Dir);
+
+                    //string[] ext = new string[6] {".accdb,*.mdb",
+                    //    "*.docx,*.dotx,*.doc,*.dot",
+                    //    "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla",
+                    //    "*.mpp",
+                    //    ".bmp,*.tif,*.jpg,*.gif,*.png,*.ico",
+                    //    ".txt,*.log"
+
+                    //};
+                    
+                    //foreach (string files in Dir)
+                    //{
+                    //    x++;
+                    //    Console.WriteLine(files + "-" + ext[x]);
+                    //    logic.Search(files, ext[x], true);
+                        
+                    //}
+                    //x = -1;
                     logic.Search(Dir[0], ".accdb,*.mdb", true);
                     logic.Search(Dir[1], "*.docx,*.dotx,*.doc,*.dot", true);
                     logic.Search(Dir[2], "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla", true);
-                    logic.Search(Dir[2], "*.mpp", false);
-                    logic.Search(Dir[3], ".bmp,*.tif,*.jpg,*.gif,*.png,*.ico", true);
-                    logic.Search(Dir[4], ".txt,*.log", true);
+                    logic.Search(Dir[3], "*.mpp", false);
+                    logic.Search(Dir[4], ".bmp,*.tif,*.jpg,*.gif,*.png,*.ico", true);
+                    logic.Search(Dir[5], ".txt,*.log", true);
                 }
 
             }

@@ -338,9 +338,9 @@
             // 
             this.ImageSettings.BackColor = System.Drawing.Color.Transparent;
             this.ImageSettings.Image = ((System.Drawing.Image)(resources.GetObject("ImageSettings.Image")));
-            this.ImageSettings.Location = new System.Drawing.Point(278, 158);
+            this.ImageSettings.Location = new System.Drawing.Point(294, 174);
             this.ImageSettings.Name = "ImageSettings";
-            this.ImageSettings.Size = new System.Drawing.Size(32, 32);
+            this.ImageSettings.Size = new System.Drawing.Size(16, 16);
             this.ImageSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ImageSettings.TabIndex = 14;
             this.ImageSettings.TabStop = false;

@@ -33,7 +33,7 @@ namespace DesktopCopy1
     {
         const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
         const string ВНЕ = "#000C1C"; // 2D3276
-        public Form2 Form2;
+        public Form2 Form;
 
 
         #region Editors && events
@@ -123,18 +123,19 @@ namespace DesktopCopy1
         {
             InitializeComponent();
             Starter();
-
+             
             DublicateNameForm.Text = this.Text;
+            
         }
         #region Buttons
         private void ButtonCopy_Click(object sender, EventArgs e)
         {
-            if (ButtonClick != null) ButtonClick(this, EventArgs.Empty);
+            ButtonClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void ButtonCut_Click(object sender, EventArgs e)
         {
-            if (ButtonCutClick != null) ButtonCutClick(this, EventArgs.Empty);
+            ButtonCutClick?.Invoke(this, EventArgs.Empty);
         }
         #endregion
 
@@ -149,7 +150,7 @@ namespace DesktopCopy1
         private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
+            LinkSiteClick?.Invoke(this, EventArgs.Empty);
         }
         #endregion
 
@@ -169,7 +170,7 @@ namespace DesktopCopy1
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit2.Text = FolderDialog1.SelectedPath;
-                if (ImageDialogClick1 != null) ImageDialogClick1(this, EventArgs.Empty);
+                ImageDialogClick1?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -186,13 +187,13 @@ namespace DesktopCopy1
                 panel1.Location = new Point(8, 34);
                 panel1.Visible = true;
             }
-            if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
+            ImageHelperClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void ImageSettings_Click(object sender, EventArgs e)
         {
-            Form2 = new Form2();
-            Form2.Show();
+            Form = new Form2();
+            Form.Show();
         }
         #endregion
 

@@ -18,9 +18,7 @@ namespace DesktopCopy1
             Application.SetCompatibleTextRenderingDefault(false);
 
             MainForm form = new MainForm();
-            Form2 FormSettings = new Form2();
-            BusinessLogic manager = new BusinessLogic();
-            MainPresenter presenter = new MainPresenter(form, FormSettings, manager);
+            MainPresenter presenter = new MainPresenter(form, new Form2(), new BusinessLogic());
             Application.Run(form);
         }
     }
