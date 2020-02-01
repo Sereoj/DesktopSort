@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopCopy1.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DesktopCopy1
 {
-    public interface IForm2
+    public interface IForm2: IView
     {
         //Все методы, свойства и события будут отправлены в Presenter
     }
@@ -19,10 +20,18 @@ namespace DesktopCopy1
 
     public partial class Form2 : Form, IForm2
     {
-        public Form2()
+        private readonly ApplicationContext _context;
+
+        public Form2(ApplicationContext context)
         {
+            _context = context;
             InitializeComponent();
            
+        }
+
+        public new void Show()
+        {
+            ShowDialog();
         }
         public bool[] Points;
         public void ParseCheckPoint()

@@ -1,34 +1,46 @@
-﻿using System;
+﻿using DesktopCopy1.Common;
+using System;
 using System.Collections.Generic;
 
 namespace DesktopCopy1
 {
-    public class MainPresenter
+    public class MainPresenter : BasePresener<IMainForm>
     {
-
         private readonly IBusinessLogic logic;
-        private readonly IMainForm form;
-        private readonly IForm2 form2;
 
 
-        public MainPresenter(IMainForm form, IForm2 form2,  IBusinessLogic logic)
+        public MainPresenter(IApplicationController controller, IBusinessLogic service, IMainForm _View ) : base(controller, _View)
         {
-            this.form = form;
-            this.form2 = form2;
-            this.logic = logic;
 
-            form.ButtonClick += new EventHandler(Add_ButtonCopyClick);
-            form.ButtonCutClick += new EventHandler(Add_ButtonCutClick);
-            form.ImageDialogClick += new EventHandler(Add_ImageDialogClick);
-            form.ImageDialogClick1 += new EventHandler(Add_ImageDialogClick1);
-            form.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
+            logic = service;
+            View.ButtonClick += new EventHandler(Add_ButtonCopyClick);
+            View.ButtonCutClick += new EventHandler(Add_ButtonCutClick);
+            View.ImageDialogClick += new EventHandler(Add_ImageDialogClick);
+            View.ImageDialogClick1 += new EventHandler(Add_ImageDialogClick1);
+            View.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
+            View.ImageSettingsClick += new EventHandler(Add_ImageSettingsClick);
+
         }
 
-       
+
+
+        //public MainPresenter(IMainForm form, IForm2 form2,  IBusinessLogic logic)
+        //{
+        //    this.form = form;
+        //    this.form2 = form2;
+        //    this.logic = logic;
+        //form.ButtonClick += new EventHandler(Add_ButtonCopyClick);
+        //form.ButtonCutClick += new EventHandler(Add_ButtonCutClick);
+        //form.ImageDialogClick += new EventHandler(Add_ImageDialogClick);
+        //form.ImageDialogClick1 += new EventHandler(Add_ImageDialogClick1);
+        //form.LinkSiteClick += new EventHandler(Add_LinkSiteClick);
+
+        //}
+
         public void Add_ButtonCopyClick(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
+            if (string.IsNullOrEmpty(View.Editor1) || string.IsNullOrEmpty(View.Editor2) || View.Editor1.Length < 1 || View.Editor2.Length < 1)
             {
                 //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -36,12 +48,12 @@ namespace DesktopCopy1
             else
             {
                 List<string> Dir = new List<string>();
-                Dir.Add(form.Editor2 + @"/Access");
-                Dir.Add(form.Editor2 + @"/Word");
-                Dir.Add(form.Editor2 + @"/Excel");
-                Dir.Add(form.Editor2 + @"/Project");
-                Dir.Add(form.Editor2 + @"/Image");
-                Dir.Add(form.Editor2 + @"/Text");
+                Dir.Add(View.Editor2 + @"/Access");
+                Dir.Add(View.Editor2 + @"/Word");
+                Dir.Add(View.Editor2 + @"/Excel");
+                Dir.Add(View.Editor2 + @"/Project");
+                Dir.Add(View.Editor2 + @"/Image");
+                Dir.Add(View.Editor2 + @"/Text");
 
 
                 //List<string> Ext = new List<string>();
@@ -50,10 +62,10 @@ namespace DesktopCopy1
                 //Dir.Add("*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla");
                 //Dir.Add(".bmp,*.tif,*.jpg,*.gif,*.png,*.ico");
                 //Dir.Add(".txt,*.log");
+                
 
-
-                logic.DEFAULT_PATH = form.Editor1;
-                logic.DIR_OUTPUT = form.Editor2;
+                logic.DEFAULT_PATH = View.Editor1;
+                logic.DIR_OUTPUT = View.Editor2;
 
                 logic.DirCreate(Dir);
                 logic.Search(Dir[0], ".accdb,*.mdb", false);
@@ -74,7 +86,7 @@ namespace DesktopCopy1
         {
             try
             {
-                if (string.IsNullOrEmpty(form.Editor1) || string.IsNullOrEmpty(form.Editor2) || form.Editor1.Length < 1 || form.Editor2.Length < 1)
+                if (string.IsNullOrEmpty(View.Editor1) || string.IsNullOrEmpty(View.Editor2) || View.Editor1.Length < 1 || View.Editor2.Length < 1)
                 {
                     //logic.DEFAULT_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     //logic.DIR_OUTPUT = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -82,12 +94,12 @@ namespace DesktopCopy1
                 else
                 {
                     List<string> Dir = new List<string>();
-                    Dir.Add(form.Editor2 + @"/Access");
-                    Dir.Add(form.Editor2 + @"/Word");
-                    Dir.Add(form.Editor2 + @"/Excel");
-                    Dir.Add(form.Editor2 + @"/Project");
-                    Dir.Add(form.Editor2 + @"/Image");
-                    Dir.Add(form.Editor2 + @"/Text");
+                    Dir.Add(View.Editor2 + @"/Access");
+                    Dir.Add(View.Editor2 + @"/Word");
+                    Dir.Add(View.Editor2 + @"/Excel");
+                    Dir.Add(View.Editor2 + @"/Project");
+                    Dir.Add(View.Editor2 + @"/Image");
+                    Dir.Add(View.Editor2 + @"/Text");
 
 
                     //List<string> Ext = new List<string>();
@@ -98,8 +110,8 @@ namespace DesktopCopy1
                     //Dir.Add(".txt,*.log");
 
 
-                    logic.DEFAULT_PATH = form.Editor1;
-                    logic.DIR_OUTPUT = form.Editor2;
+                    logic.DEFAULT_PATH = View.Editor1;
+                    logic.DIR_OUTPUT = View.Editor2;
 
                     logic.DirCreate(Dir);
                     logic.Search(Dir[0], ".accdb,*.mdb", true);
@@ -116,17 +128,27 @@ namespace DesktopCopy1
                 logic.Logger(ex.Message);
             }
         }
+
         public void Add_ImageDialogClick(object sender, EventArgs e)
         {
-            form.Label = "Поле1 успешно заполнено";
+            View.Label = "Поле1 успешно заполнено";
         }
+
         public void Add_ImageDialogClick1(object sender, EventArgs e)
         {
-            form.Label = "Поле2 успешно заполнено";
+            View.Label = "Поле2 успешно заполнено";
         }
         public void Add_LinkSiteClick(object sender, EventArgs e)
         {
-            form.Label = "Здесь какое-то сообщение";
+            View.Label = "Здесь какое-то сообщение";
         }
+        public void Add_ImageSettingsClick(object sender, EventArgs e)
+        {
+            var user = new Settings { name = "", family = "" };
+            //Controller.Run<ChangeUsernamePresenter, User>(_user);
+            Controller.Run<SettingsPresenter, Settings>(user);
+        }
+
+
     }
 }

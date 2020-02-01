@@ -31,6 +31,8 @@ namespace DesktopCopy1
         #endregion
 
 
+
+
         public void Logger(string text)
         {
             StreamWriter file = new StreamWriter(DEFAULT_PATH + @"\logger.txt");

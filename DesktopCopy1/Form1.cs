@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿
+using DesktopCopy1.Common;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DesktopCopy1
 {
 
 
-    public interface IMainForm
+    public interface IMainForm : IView
     {
         /*
         Это интерфейс, Возможность Отправлять/Получать События и т.д              
@@ -24,6 +20,9 @@ namespace DesktopCopy1
         event EventHandler ImageDialogClick;
         event EventHandler ImageDialogClick1;
         event EventHandler LinkSiteClick;
+
+        event EventHandler ImageSettingsClick;
+
         string Editor1 { get; }
         string Editor2 { get; }
         string Label { get; set; }
@@ -31,9 +30,12 @@ namespace DesktopCopy1
 
     public partial class MainForm : Form, IMainForm
     {
+
+
         const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
         const string ВНЕ = "#000C1C"; // 2D3276
-        public Form2 Form2;
+
+        private readonly ApplicationContext _context;
 
 
         #region Editors && events
@@ -74,8 +76,24 @@ namespace DesktopCopy1
         public event EventHandler ImageDialogClick1;
 
         public event EventHandler LinkSiteClick;
+        public event EventHandler ImageSettingsClick;
         #endregion
         #endregion
+
+
+        public MainForm(ApplicationContext context)
+        {
+            _context = context;
+            InitializeComponent();
+            Starter();
+
+            DublicateNameForm.Text = this.Text;
+        }
+        public new void Show()
+        {
+            _context.MainForm = this;
+            Application.Run(_context);
+        }
 
         public void ReadmeText()
         {
@@ -119,13 +137,6 @@ namespace DesktopCopy1
 
 
 
-        public MainForm()
-        {
-            InitializeComponent();
-            Starter();
-
-            DublicateNameForm.Text = this.Text;
-        }
         #region Buttons
         private void ButtonCopy_Click(object sender, EventArgs e)
         {
@@ -191,8 +202,7 @@ namespace DesktopCopy1
 
         private void ImageSettings_Click(object sender, EventArgs e)
         {
-            Form2 = new Form2();
-            Form2.Show();
+            ImageSettingsClick?.Invoke(this, EventArgs.Empty);
         }
         #endregion
 
