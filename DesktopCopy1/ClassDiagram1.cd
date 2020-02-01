@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DesktopCopy1.MainPresenter">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAM=</HashCode>
+      <FileName>MainPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DesktopCopy1.Common.IPresenter" Collapsed="true">
+    <Position X="0.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Common\IPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DesktopCopy1.Common.IPresenter&lt;TArg&gt;" Collapsed="true">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Common\IPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,26 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DesktopCopy1.Common;
+using System;
 using System.Windows.Forms;
 
 namespace DesktopCopy1
 {
-    static class Program
+    internal static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
+        public static readonly ApplicationContext Context = new ApplicationContext();
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MainForm form = new MainForm();
-            BusinessLogic manager = new BusinessLogic();
-            MainPresenter presenter = new MainPresenter(form, manager);
-            Application.Run(form);
+            var controller = new ApplicationController(new LightInjectAdapder())
+           .RegisterView<IMainForm, MainForm>()
+           .RegisterView<IForm2, Form2>()
+           .RegisterService<IMessageService, MessageService>()
+           .RegisterService<IBusinessLogic, BusinessLogic>()
+           .RegisterInstance(new ApplicationContext());
+
+            controller.Run<MainPresenter>();
+            //Application.Run(new MainForm(Context));
         }
     }
 }
+
+
+
