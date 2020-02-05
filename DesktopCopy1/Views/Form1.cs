@@ -86,7 +86,8 @@ namespace DesktopCopy1
             _context = context;
             InitializeComponent();
             Starter();
-
+           
+            this.Text = $"DesktopCopy [ver { new Models.Version().GetVersion()}]";
             DublicateNameForm.Text = this.Text;
         }
         public new void Show()
@@ -168,6 +169,8 @@ namespace DesktopCopy1
 
         private void ImageDialog1_Click(object sender, EventArgs e)
         {
+            
+
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit1.Text = FolderDialog1.SelectedPath;

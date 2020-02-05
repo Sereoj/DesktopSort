@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace DesktopCopy1
+namespace DesktopCopy1.Models
 {
     public interface IBusinessLogic
     {

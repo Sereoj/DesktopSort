@@ -1,7 +1,7 @@
 ﻿
 using System.Windows.Forms;
 
-namespace DesktopCopy1
+namespace DesktopCopy1.Models
 {
     public interface IMessageService
     {

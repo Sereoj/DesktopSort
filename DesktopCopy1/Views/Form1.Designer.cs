@@ -47,7 +47,6 @@
             this.ButtonCut = new System.Windows.Forms.Button();
             this.ImageDialog1 = new System.Windows.Forms.PictureBox();
             this.ImageDialog2 = new System.Windows.Forms.PictureBox();
-            this.FolderDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.WindowIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ShowHidetoolStrip = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +55,7 @@
             this.CloseToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.DocLink = new System.Windows.Forms.LinkLabel();
             this.ImageSettings = new System.Windows.Forms.PictureBox();
+            this.FolderDialog1 = new WK.Libraries.BetterFolderBrowserNS.BetterFolderBrowser(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ImageHelper)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog1)).BeginInit();
@@ -347,6 +347,12 @@
             this.ImageSettings.TabStop = false;
             this.ImageSettings.Click += new System.EventHandler(this.ImageSettings_Click);
             // 
+            // FolderDialog1
+            // 
+            this.FolderDialog1.Multiselect = false;
+            this.FolderDialog1.RootFolder = "C:\\";
+            this.FolderDialog1.Title = "Please select a folder...";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,7 +411,6 @@
         private System.Windows.Forms.Button ButtonCut;
         private System.Windows.Forms.PictureBox ImageDialog1;
         private System.Windows.Forms.PictureBox ImageDialog2;
-        private System.Windows.Forms.FolderBrowserDialog FolderDialog1;
         private System.Windows.Forms.NotifyIcon WindowIcon;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStrip;
@@ -414,6 +419,7 @@
         private System.Windows.Forms.ToolStripMenuItem ShowHidetoolStrip;
         private System.Windows.Forms.LinkLabel DocLink;
         private System.Windows.Forms.PictureBox ImageSettings;
+        private WK.Libraries.BetterFolderBrowserNS.BetterFolderBrowser FolderDialog1;
     }
 }
 

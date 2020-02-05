@@ -1,4 +1,5 @@
 ﻿using DesktopCopy1.Common;
+using DesktopCopy1.Models;
 using System;
 using System.Collections.Generic;
 
@@ -144,8 +145,9 @@ namespace DesktopCopy1
         }
         public void Add_ImageSettingsClick(object sender, EventArgs e)
         {
-            var user = new Settings { name = "", family = "" };
-            //Controller.Run<ChangeUsernamePresenter, User>(_user);
+             
+            var user = new Settings();
+            Console.WriteLine(user.Count.ToString());
             Controller.Run<SettingsPresenter, Settings>(user);
         }
 
