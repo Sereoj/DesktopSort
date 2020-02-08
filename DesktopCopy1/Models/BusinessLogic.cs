@@ -16,50 +16,44 @@ namespace DesktopCopy1.Models
     public class BusinessLogic : IBusinessLogic
     {
         #region Поля/Свойства
+
         public string _DEFAULT_PATH;
+
         public string DEFAULT_PATH
         {
             get => _DEFAULT_PATH;
             set => _DEFAULT_PATH = value;
         }
+
         public string _DIR_OUTPUT;
+
         public string DIR_OUTPUT
         {
             get => _DIR_OUTPUT;
             set => _DIR_OUTPUT = value;
         }
+
         #endregion
-
-
-
 
         public void Logger(string text)
         {
-            StreamWriter file = new StreamWriter(DEFAULT_PATH + @"\logger.txt");
+            var file = new StreamWriter(DEFAULT_PATH + @"\logger.txt");
             file.WriteLine(text);
             file.Close();
         }
 
         public void ExDir(string path)
         {
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
-
 
         public void DirCreate(List<string> NameDirs)
         {
             ExDir(DEFAULT_PATH);
             ExDir(DIR_OUTPUT);
-
             try
             {
-                foreach (string DIR in NameDirs)
-                {
-                    ExDir(DIR);
-                }
+                foreach (var DIR in NameDirs) ExDir(DIR);
             }
             catch (Exception e)
             {
@@ -69,28 +63,22 @@ namespace DesktopCopy1.Models
 
         public void Search(string type, string pattern, bool MoveMethod)
         {
-            foreach (string t_path in Directory.GetFiles(DEFAULT_PATH, "*.*", SearchOption.TopDirectoryOnly))
-            {
+            foreach (var t_path in Directory.GetFiles(DEFAULT_PATH, "*.*".ToLower(), SearchOption.TopDirectoryOnly))
                 try
                 {
                     var Ext = Path.GetExtension(t_path);
-                    if (pattern.Contains(Ext) && Ext.Length > 0)
+                    if (pattern.Contains(Ext.ToLower()) && Ext.Length > 0)
                     {
-                        FileInfo s = new FileInfo(t_path);
-                        if (File.Exists(Path.Combine(type.ToString(), s.Name)))
+                        var s = new FileInfo(t_path);
+                        if (File.Exists(Path.Combine(type, s.Name)))
                         {
-                            continue;
                         }
                         else
                         {
                             if (MoveMethod)
-                            {
-                                s.MoveTo(Path.Combine(type.ToString(), s.Name));
-                            }
+                                s.MoveTo(Path.Combine(type, s.Name));
                             else
-                            {
-                                s.CopyTo(Path.Combine(type.ToString(), s.Name), true);
-                            }
+                                s.CopyTo(Path.Combine(type, s.Name), true);
                         }
                     }
                 }
@@ -98,10 +86,6 @@ namespace DesktopCopy1.Models
                 {
                     Logger(e.Message);
                 }
-            }
-
         }
-
-
     }
 }

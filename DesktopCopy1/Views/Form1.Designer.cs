@@ -346,6 +346,8 @@
             this.ImageSettings.TabIndex = 14;
             this.ImageSettings.TabStop = false;
             this.ImageSettings.Click += new System.EventHandler(this.ImageSettings_Click);
+            this.ImageSettings.MouseEnter += new System.EventHandler(this.ImageSettings_MouseEnter);
+            this.ImageSettings.MouseLeave += new System.EventHandler(this.ImageSettings_MouseLeave);
             // 
             // FolderDialog1
             // 

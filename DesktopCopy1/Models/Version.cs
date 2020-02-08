@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DesktopCopy1.Models
 {
@@ -11,10 +6,7 @@ namespace DesktopCopy1.Models
     {
         public string GetVersion()
         {
-            return Application.ProductVersion.ToString();
+            return Application.ProductVersion;
         }
-
-       
-
     }
 }

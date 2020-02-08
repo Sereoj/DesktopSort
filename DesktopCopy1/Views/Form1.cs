@@ -1,16 +1,19 @@
-﻿
-using DesktopCopy1.Common;
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using DesktopCopy1.Common;
+using Version = DesktopCopy1.Models.Version;
 
 namespace DesktopCopy1
 {
-
-
     public interface IMainForm : IView
     {
+        string Editor1 { get; }
+        string Editor2 { get; }
+
+        string Label { get; set; }
+
         /*
         Это интерфейс, Возможность Отправлять/Получать События и т.д              
         */
@@ -22,63 +25,14 @@ namespace DesktopCopy1
         event EventHandler LinkSiteClick;
 
         event EventHandler ImageSettingsClick;
-
-        string Editor1 { get; }
-        string Editor2 { get; }
-        string Label { get; set; }
     }
 
     public partial class MainForm : Form, IMainForm
     {
-
-
-        const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
-        const string ВНЕ = "#000C1C"; // 2D3276
+        private const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
+        private const string ВНЕ = "#000C1C"; // 2D3276
 
         private readonly ApplicationContext _context;
-
-
-        #region Editors && events
-        #region Editors
-        public string Editor1
-        {
-            get
-            {
-                return Edit1.Text;
-            }
-        }
-
-        public string Editor2
-        {
-            get
-            {
-                return Edit2.Text;
-            }
-        }
-
-        public string Label
-        {
-            get
-            {
-                return label3.Text;
-            }
-            set
-            {
-                label3.Text = value;
-            }
-        }
-        #endregion
-        #region Events
-        public event EventHandler ButtonClick;
-        public event EventHandler ButtonCutClick;
-        public event EventHandler ImageHelperClick;
-        public event EventHandler ImageDialogClick;
-        public event EventHandler ImageDialogClick1;
-
-        public event EventHandler LinkSiteClick;
-        public event EventHandler ImageSettingsClick;
-        #endregion
-        #endregion
 
 
         public MainForm(ApplicationContext context)
@@ -86,10 +40,11 @@ namespace DesktopCopy1
             _context = context;
             InitializeComponent();
             Starter();
-           
-            this.Text = $"DesktopCopy [ver { new Models.Version().GetVersion()}]";
-            DublicateNameForm.Text = this.Text;
+
+            Text = $"DesktopCopy [ver {new Version().GetVersion()}]";
+            DublicateNameForm.Text = Text;
         }
+
         public new void Show()
         {
             _context.MainForm = this;
@@ -98,23 +53,23 @@ namespace DesktopCopy1
 
         public void ReadmeText()
         {
-            string file = Application.StartupPath + @"\Readme";
+            var file = Application.StartupPath + @"\Readme";
             if (!File.Exists(file))
             {
-
                 File.AppendAllText(file, "Для того, чтобы здесь был текст - придумайте его.");
                 File.SetAttributes(file, FileAttributes.ReadOnly);
             }
         }
+
         public void Starter()
         {
-            string[] commands = Environment.GetCommandLineArgs();
+            var commands = Environment.GetCommandLineArgs();
 
 
             if (commands.Length > 1)
             {
-                string args1 = commands[1].Substring(1);
-                string args2 = commands[2].Substring(1);
+                var args1 = commands[1].Substring(1);
+                var args2 = commands[2].Substring(1);
                 if (Directory.Exists(args1) && Directory.Exists(args2))
                 {
                     Edit1.Text = args1;
@@ -133,12 +88,63 @@ namespace DesktopCopy1
                 Edit1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
-
         }
 
+        #region Panels
+
+        private void PanelClose_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
+        #endregion
+
+        #region Links
+
+        private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.",
+                "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+
+        #region Editors && events
+
+        #region Editors
+
+        public string Editor1 => Edit1.Text;
+
+        public string Editor2 => Edit2.Text;
+
+        public string Label
+        {
+            get => label3.Text;
+            set => label3.Text = value;
+        }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler ButtonClick;
+        public event EventHandler ButtonCutClick;
+        public event EventHandler ImageHelperClick;
+        public event EventHandler ImageDialogClick;
+        public event EventHandler ImageDialogClick1;
+
+        public event EventHandler LinkSiteClick;
+        public event EventHandler ImageSettingsClick;
+
+        #endregion
+
+        #endregion
 
 
         #region Buttons
+
         private void ButtonCopy_Click(object sender, EventArgs e)
         {
             if (ButtonClick != null) ButtonClick(this, EventArgs.Empty);
@@ -148,29 +154,13 @@ namespace DesktopCopy1
         {
             if (ButtonCutClick != null) ButtonCutClick(this, EventArgs.Empty);
         }
-        #endregion
 
-        #region Panels
-        private void PanelClose_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-        }
-        #endregion
-
-        #region Links
-        private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
-        }
         #endregion
 
         #region Images
 
         private void ImageDialog1_Click(object sender, EventArgs e)
         {
-            
-
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit1.Text = FolderDialog1.SelectedPath;
@@ -189,7 +179,6 @@ namespace DesktopCopy1
 
         private void ImageHelper_Click(object sender, EventArgs e)
         {
-
             if (panel1.Visible)
             {
                 panel1.Location = new Point(362, 34);
@@ -200,6 +189,7 @@ namespace DesktopCopy1
                 panel1.Location = new Point(8, 34);
                 panel1.Visible = true;
             }
+
             if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
         }
 
@@ -207,9 +197,11 @@ namespace DesktopCopy1
         {
             ImageSettingsClick?.Invoke(this, EventArgs.Empty);
         }
+
         #endregion
 
         #region Effect Images
+
         private void ImageDialog1_MouseEnter(object sender, EventArgs e)
         {
             ImageDialog1.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
@@ -229,15 +221,26 @@ namespace DesktopCopy1
         {
             ImageDialog2.BackColor = ColorTranslator.FromHtml(ВНЕ);
         }
+
+        private void ImageSettings_MouseEnter(object sender, EventArgs e)
+        {
+            ImageSettings.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+        }
+
+        private void ImageSettings_MouseLeave(object sender, EventArgs e)
+        {
+            ImageSettings.BackColor = ColorTranslator.FromHtml(ВНЕ);
+        }
+
         #endregion
 
         #region Custom ToolStrip
+
         private void WindowIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
-                this.WindowState = FormWindowState.Normal;
-            this.Activate();
-
+            if (WindowState == FormWindowState.Minimized)
+                WindowState = FormWindowState.Normal;
+            Activate();
         }
 
         private void AboutToolStrip_Click(object sender, EventArgs e)
@@ -254,7 +257,6 @@ namespace DesktopCopy1
             {
                 panel1.Location = new Point(8, 34);
                 panel1.Visible = true;
-
             }
         }
 
@@ -265,19 +267,19 @@ namespace DesktopCopy1
 
         private void ShowHidetoolStrip_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (WindowState == FormWindowState.Minimized)
             {
-                this.WindowState = FormWindowState.Normal;
-                this.Activate();
+                WindowState = FormWindowState.Normal;
+                Activate();
             }
             else
             {
-                this.WindowState = FormWindowState.Minimized;
+                WindowState = FormWindowState.Minimized;
             }
-
         }
 
         #endregion
+
 
     }
 }

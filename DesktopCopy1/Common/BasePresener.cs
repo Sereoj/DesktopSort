@@ -3,14 +3,14 @@
     public abstract class BasePresener<TView> : IPresenter
         where TView : IView
     {
-        protected TView View { get; private set; }
-        protected IApplicationController Controller { get; private set; }
-
         protected BasePresener(IApplicationController controller, TView view)
         {
             Controller = controller;
             View = view;
         }
+
+        protected TView View { get; }
+        protected IApplicationController Controller { get; }
 
         public void Run()
         {
@@ -21,14 +21,14 @@
     public abstract class BasePresener<TView, TArg> : IPresenter<TArg>
         where TView : IView
     {
-        protected TView View { get; private set; }
-        protected IApplicationController Controller { get; private set; }
-
         protected BasePresener(IApplicationController controller, TView view)
         {
             Controller = controller;
             View = view;
         }
+
+        protected TView View { get; }
+        protected IApplicationController Controller { get; }
 
         public abstract void Run(TArg argument);
     }
