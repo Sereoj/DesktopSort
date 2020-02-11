@@ -12,6 +12,7 @@ namespace DesktopCopy1.Models
         public void Message(string text)
         {
             MessageBox.Show(text);
+
         }
     }
 }
