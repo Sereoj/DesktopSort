@@ -10,11 +10,8 @@ namespace DesktopCopy1.Tests
         [TestMethod]
         public void TestMethod1()
         {
-
-
-
             var Settings = new Settings();
-            for (int x = 1; x < 10; x++)
+            for (var x = 1; x < 10; x++)
             {
                 var setting = new Setting();
                 setting.ID = "name" + x;
@@ -24,7 +21,9 @@ namespace DesktopCopy1.Tests
             Data.Save(Settings, "File.xml");
 
             var Load = Data.Load<Settings>("File.xml");
+            
             Assert.AreEqual(Load.Count, Settings.Count);
+            
             //Assert.AreEqual(Load[0].Count, Load[0].Count);
         }
     }

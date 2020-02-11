@@ -6,8 +6,9 @@ namespace DesktopCopy1.Models
 {
     public interface IBusinessLogic
     {
-        void DirCreate(List<string> NameDirs);
-        void Search(string type, string pattern, bool MoveMethod);
+        void DirCreate(List<string> nameDirs);
+        void ExDir(string path);
+        void Search(string type, string pattern, bool moveMethod);
         void Logger(string text);
         string DEFAULT_PATH { get; set; }
         string DIR_OUTPUT { get; set; }
@@ -17,21 +18,8 @@ namespace DesktopCopy1.Models
     {
         #region Поля/Свойства
 
-        public string _DEFAULT_PATH;
-
-        public string DEFAULT_PATH
-        {
-            get => _DEFAULT_PATH;
-            set => _DEFAULT_PATH = value;
-        }
-
-        public string _DIR_OUTPUT;
-
-        public string DIR_OUTPUT
-        {
-            get => _DIR_OUTPUT;
-            set => _DIR_OUTPUT = value;
-        }
+        public string DEFAULT_PATH { get; set; }
+        public string DIR_OUTPUT { get; set; }
 
         #endregion
 
@@ -47,13 +35,13 @@ namespace DesktopCopy1.Models
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
 
-        public void DirCreate(List<string> NameDirs)
+        public void DirCreate(List<string> nameDirs)
         {
             ExDir(DEFAULT_PATH);
             ExDir(DIR_OUTPUT);
             try
             {
-                foreach (var DIR in NameDirs) ExDir(DIR);
+                foreach (var dir in nameDirs) ExDir(dir);
             }
             catch (Exception e)
             {
@@ -61,24 +49,22 @@ namespace DesktopCopy1.Models
             }
         }
 
-        public void Search(string type, string pattern, bool MoveMethod)
+        public void Search(string type, string pattern, bool moveMethod)
         {
-            foreach (var t_path in Directory.GetFiles(DEFAULT_PATH, "*.*".ToLower(), SearchOption.TopDirectoryOnly))
+            foreach (var tPath in Directory.GetFiles(DEFAULT_PATH, "*.*".ToLower(), SearchOption.TopDirectoryOnly))
                 try
                 {
-                    var Ext = Path.GetExtension(t_path);
-                    if (pattern.Contains(Ext.ToLower()) && Ext.Length > 0)
+                    var ext = Path.GetExtension(tPath);
+                    if (ext != null && pattern.Contains(ext.ToLower()) && ext.Length > 0)
                     {
-                        var s = new FileInfo(t_path);
+                        var s = new FileInfo(tPath);
                         if (File.Exists(Path.Combine(type, s.Name)))
                         {
                         }
                         else
                         {
-                            if (MoveMethod)
-                                s.MoveTo(Path.Combine(type, s.Name));
-                            else
-                                s.CopyTo(Path.Combine(type, s.Name), true);
+                            if (moveMethod) s.MoveTo(Path.Combine(type, s.Name));
+                            else s.CopyTo(Path.Combine(type, s.Name), true);
                         }
                     }
                 }

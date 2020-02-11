@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using DesktopCopy1.Common;
 using Version = DesktopCopy1.Models.Version;
 
-namespace DesktopCopy1
+namespace DesktopCopy1.Views
 {
     public interface IMainForm : IView
     {

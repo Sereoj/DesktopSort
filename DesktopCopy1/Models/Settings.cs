@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
 namespace DesktopCopy1.Models
 {
     public class Data
     {
-        /*
-         Реализация сохранение каждого объекта
-             
-        */
-        public string FileName { get; set; }   // Не используется
+        public string FileName { get; set; } 
 
         public static void Save<T>(T subject, string FileName)
         {
@@ -30,13 +27,35 @@ namespace DesktopCopy1.Models
                 return (T) xml.Deserialize(file);
             }
         }
+
+        public static void Clean(Settings settings)
+        {
+            settings?.Clear();
+        }
+
+        public void GetDefault(Settings settings)
+        {
+
+                Clean(settings);
+                
+                settings.Add(new Setting() {ID = "CheckWord", IsChecked = false, Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot"});
+                settings.Add(new Setting() {ID = "CheckExcel", IsChecked = false, Catalog = "Excel", Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla"});
+                settings.Add(new Setting() {ID = "CheckAccess", IsChecked = false, Catalog = "Access", Extension = "*.accdb,*.mdb"});
+                settings.Add(new Setting() {ID = "CheckImage", IsChecked = false, Catalog = "Image",Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico"});
+                settings.Add(new Setting() {ID = "CheckTextDoc", IsChecked = false, Catalog = "Text", Extension = ".txt,*.log"});
+                settings.Add(new Setting() {ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = ""});
+                settings.Add(new Setting() {ID = "CheckArchive", IsChecked = false, Catalog = "Archive", Extension = ""});
+                settings.Add(new Setting() {ID = "CheckPDF", IsChecked = false, Catalog = "PDF", Extension = ""});
+                settings.Add(new Setting() {ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = ""});
+                settings.Add(new Setting() {ID = "CheckOtherDir", IsChecked = false, Catalog = "Other", Extension = ""});
+                Save(settings,"data.xml");
+        }
+
     }
 
-    [Serializable]
-    public class Alternative
+    public class Alternative : List<Setting>
     {
-        public int Code { get; set; }
-        public string Title { get; set; }
+
     }
 
     [Serializable]
@@ -46,10 +65,14 @@ namespace DesktopCopy1.Models
         Индувидуальная настройка каждого объекта, который имеет id и "включен" ли он. 
              
         */
-
         public string ID { get; set; }
         public bool IsChecked { get; set; }
+
+     
+        public string Catalog { get; set; }
+        public string Extension { get; set; }
     }
+
 
     [Serializable]
     [XmlRoot("Settings")]

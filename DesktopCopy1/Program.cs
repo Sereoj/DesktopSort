@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
+using DesktopCopy1.Presenters;
+using DesktopCopy1.Views;
 
 namespace DesktopCopy1
 {

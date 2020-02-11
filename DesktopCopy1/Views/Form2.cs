@@ -4,21 +4,60 @@ using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
 
-namespace DesktopCopy1
+namespace DesktopCopy1.Views
 {
     public interface IForm2 : IView
     {
-        //Все методы, свойства и события будут отправлены в Presenter
+        Settings Settings { get; set; }
+        event EventHandler CheckBWord;
+        event EventHandler CheckBExcel;
+        event EventHandler CheckBAccess;
+        event EventHandler CheckBProject;
+        event EventHandler CheckBTextDoc;
+        event EventHandler CheckBImages;
+        event EventHandler CheckBOtherDir;
+        event EventHandler CheckBPDF;
+        event EventHandler CheckBMedia;
+        event EventHandler CheckBArchive;
+
+        event EventHandler ButtonSave;
+        event EventHandler ButtonUpdate;
+        event EventHandler ButtonDefault;
+
+        void LoadFromFile(string filePath);
+        void SaveToFile(string filePath);
+
+        string TextDirectory1 { get; set; }
+        string TextFormats1 { get; set; }
     }
 
     public partial class Form2 : Form, IForm2
     {
-        private readonly ApplicationContext _context;
-        private Settings settings = new Settings();
+        public ApplicationContext Context { get; }
+        public Settings Settings { get; set; }
+
+        #region Events
+
+        public event EventHandler ButtonSave;
+        public event EventHandler ButtonUpdate;
+        public event EventHandler ButtonDefault;
+
+        //CheckBox
+        public event EventHandler CheckBWord;
+        public event EventHandler CheckBExcel;
+        public event EventHandler CheckBAccess;
+        public event EventHandler CheckBProject;
+        public event EventHandler CheckBTextDoc;
+        public event EventHandler CheckBImages;
+        public event EventHandler CheckBOtherDir;
+        public event EventHandler CheckBPDF;
+        public event EventHandler CheckBMedia;
+        public event EventHandler CheckBArchive;
+        #endregion
 
         public Form2(ApplicationContext context)
         {
-            _context = context;
+            Context = context;
             InitializeComponent();
         }
 
@@ -27,30 +66,43 @@ namespace DesktopCopy1
             ShowDialog();
         }
 
-        private void LoadFromFile(string filePath)
+        public string TextDirectory1
         {
-            settings = Data.Load<Settings>(filePath);
+            get => TextDirectory.Text;
+            set => TextDirectory.Text = value;
+        }
+        public string TextFormats1
+        {
+            get => TextFormats.Text;
+            set => TextFormats.Text = value;
+        }
+
+        #region Functions
+
+        public void LoadFromFile(string filePath)
+        {
+            Settings = Data.Load<Settings>(filePath);
             LoadCheckPoint();
         }
 
         public void UpdateList()
         {
-            settings.Clear();
+            Settings.Clear();
         }
 
-        private void SaveToFile(string filePath)
+        public void SaveToFile(string filePath)
         {
             SaveCheckPoint();
-            Data.Save(settings, filePath);
+            Data.Save(Settings, filePath);
         }
 
         public void LoadCheckPoint()
         {
             foreach (Control control in Controls)
                 if (control as CheckBox != null)
-                    for (var i = 0; i < settings.Count; i++)
-                        if (control.Name == settings[i].ID)
-                            (control as CheckBox).Checked = settings[i].IsChecked;
+                    for (var i = 0; i < Settings.Count; i++)
+                        if (control.Name == Settings[i].ID)
+                            (control as CheckBox).Checked = Settings[i].IsChecked;
         }
 
         public void SaveCheckPoint()
@@ -61,32 +113,92 @@ namespace DesktopCopy1
                 {
                     if ((control as CheckBox).Checked)
                     {
-                        var setting = new Setting {ID = control.Name, IsChecked = true};
-                        settings.Add(setting);
+                        var setting = new Setting {ID = control.Name, IsChecked = true , Catalog =  "" , Extension = ""};
+                        Settings.Add(setting);
                     }
                     else
                     {
-                        var setting = new Setting {ID = control.Name, IsChecked = false};
-                        settings.Add(setting);
+                        var setting = new Setting();
+                        setting.ID = control.Name;
+                        setting.IsChecked = false;
+                        Settings.Add(setting);
                     }
                 }
         }
 
+        #endregion
+
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveToFile("data.xml");
+            ButtonSave?.Invoke(this, EventArgs.Empty);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (File.Exists("data.xml")) LoadFromFile("data.xml");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        }
+
+        #region CheckBoxS
+
+        private void CheckWord_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBWord?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckMedia_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBMedia?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckPDF_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBPDF?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckArchive_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBArchive?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckTextDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBTextDoc?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckImage_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBImages?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckProject_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBProject?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckAccess_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBAccess?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckExcel_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBExcel?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckOtherDir_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBOtherDir?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        #endregion
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ButtonDefault?.Invoke(this, EventArgs.Empty);
         }
     }
 }
