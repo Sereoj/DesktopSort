@@ -9,9 +9,11 @@ namespace DesktopCopy1.Presenters
 {
     public class MainPresenter : BasePresener<IMainForm>
     {
+        /// <summary>
+        /// Переменная глобальная
+        /// </summary>
         public readonly IForm2 _Form2;
         private readonly IBusinessLogic _logic;
-
 
         public MainPresenter(IApplicationController controller, IBusinessLogic service, IMainForm view, IForm2 form2) : base(
             controller, view)

@@ -6,11 +6,36 @@ namespace DesktopCopy1.Models
 {
     public interface IBusinessLogic
     {
+        /// <summary>
+        /// Создание папок  
+        /// </summary>
+        /// <param name="nameDirs">Принимает список</param>
         void DirCreate(List<string> nameDirs);
+        /// <summary>
+        /// Проверка на сущ.-ние папки, нет - то создать.
+        /// </summary>
+        /// <param name="path"></param>
         void ExDir(string path);
+        /// <summary>
+        /// Главная функция, поиска и переноса файлов
+        /// </summary>
+        /// <param name="type">Пкть к папки используется как тип</param>
+        /// <param name="pattern">Расширения файлов</param>
+        /// <param name="moveMethod">Перенос файлов - true, копирование - false</param>
         void Search(string type, string pattern, bool moveMethod);
+        /// <summary>
+        /// Логирование ошибок
+        /// </summary>
+        /// <param name="text"></param>
         void Logger(string text);
+
+        /// <summary>
+        /// От кого
+        /// </summary>
         string DEFAULT_PATH { get; set; }
+        /// <summary>
+        /// К кому
+        /// </summary>
         string DIR_OUTPUT { get; set; }
     }
 

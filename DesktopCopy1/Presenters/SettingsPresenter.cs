@@ -13,16 +13,25 @@ namespace DesktopCopy1.Presenters
     //public class ChangeUsernamePresenter : BasePresener<IChangeUsernameview, User>
     internal class SettingsPresenter : BasePresener<IForm2, Settings>
     {
+        /// <summary>
+        /// Создание переменной.
+        /// </summary>
         public Settings Settings;
-
+        /// <summary>
+        /// Конструктор, принимающий параметры интерфейса
+        /// </summary>
+        /// <param name="controller">Интерфейс контроллера</param>
+        /// <param name="view">Интерфейс формы2</param>
         public SettingsPresenter(IApplicationController controller, IForm2 view) : base(controller, view)
         {
            
-           
+            //Загрузка с файла
             view.LoadFromFile("data.xml");
 
+            // Запись в переменную
             if (view.Settings != null) Settings = view.Settings;
 
+            //Присвоение функции к событию.
             view.ButtonSave += viewOnButtonSave;
             view.ButtonUpdate += view_ButtonUpdate;
             view.ButtonDefault += view_ButtonDefault;
@@ -40,17 +49,19 @@ namespace DesktopCopy1.Presenters
 
 
         }
-
+        /// <summary>
+        /// Кнопка восстановить, 2-ая форма
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void view_ButtonDefault(object sender, EventArgs e)
         {
             new Data().GetDefault(Settings);
         }
-
         private void view_CheckBWord(object sender, EventArgs e)
         {
-            var s =  Settings.Find(item => item.ID=="CheckWord"); 
+            var s = Settings.Find(item => item.ID == "CheckWord");
             SetText(s.Catalog, s.Extension);
-            
         }
 
         private void view_CheckBTextDoc(object sender, EventArgs e)
@@ -117,13 +128,20 @@ namespace DesktopCopy1.Presenters
         {
             View.SaveToFile("data.xml");
         }
-
+        /// <summary>
+        ///  Передать значения.
+        /// </summary>
+        /// <param name="text">TextDirectory</param>
+        /// <param name="text2">TextFormat</param>
         public void SetText(string text, string text2)
         {
             View.TextDirectory1 = text;
             View.TextFormats1 = text2;
         }
-
+        /// <summary>
+        /// Показать форму2.
+        /// </summary>
+        /// <param name="argument"></param>
         public override void Run(Settings argument)
         {
             View.Show();

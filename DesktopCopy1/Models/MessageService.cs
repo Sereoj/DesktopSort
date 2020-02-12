@@ -4,6 +4,10 @@ namespace DesktopCopy1.Models
 {
     public interface IMessageService
     {
+        /// <summary>
+        /// Вывести диалоговое сообщение.
+        /// </summary>
+        /// <param name="text"></param>
         void Message(string text);
     }
 

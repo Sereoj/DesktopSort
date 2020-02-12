@@ -7,6 +7,10 @@
 
     internal class Logger : ILogger
     {
+
+        /// <summary>
+        /// Вывод сообщения
+        /// </summary>
         public void Print()
         {
         }

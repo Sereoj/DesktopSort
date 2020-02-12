@@ -10,6 +10,7 @@ namespace DesktopCopy1.Tests
         [TestMethod]
         public void TestMethod1()
         {
+
             var Settings = new Settings();
             for (var x = 1; x < 10; x++)
             {
