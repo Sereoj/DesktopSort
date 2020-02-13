@@ -12,18 +12,19 @@ namespace DesktopCopy1.Tests
         {
 
             var Settings = new Settings();
+            
             for (var x = 1; x < 10; x++)
             {
                 var setting = new Setting();
-                setting.ID = "name" + x;
-                setting.IsChecked = true;
-                Settings.Add(setting);
+                Settings.Setting[x].ID = "name" + x;
+                Settings.Setting[x].IsChecked = true;
+                Settings.Setting.Add(setting);
             }
-            Data.Save(Settings, "File.xml");
+            Settings.Save(Settings, "File.xml");
 
-            var Load = Data.Load<Settings>("File.xml");
+            var Load = Settings.Load<Settings>("File.xml");
             
-            Assert.AreEqual(Load.Count, Settings.Count);
+            Assert.AreEqual(Settings.Setting.Count, Load.Setting.Count);
             
             //Assert.AreEqual(Load[0].Count, Load[0].Count);
         }

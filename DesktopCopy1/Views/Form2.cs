@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
@@ -7,14 +6,15 @@ using DesktopCopy1.Models;
 namespace DesktopCopy1.Views
 {
     /// <summary>
-    /// Интерфейс, случит для "Открытия" определенных "объектов".
+    ///     Интерфейс, случит для "Открытия" определенных "объектов".
     /// </summary>
     public interface IForm2 : IView
     {
         /// <summary>
-        /// Все что здесь, будет отображатся, когда подлючаем ЕГО.
+        ///     Все что здесь, будет отображатся, когда подлючаем ЕГО.
         /// </summary>
         Settings Settings { get; set; }
+
         event EventHandler CheckBWord;
         event EventHandler CheckBExcel;
         event EventHandler CheckBAccess;
@@ -32,6 +32,7 @@ namespace DesktopCopy1.Views
 
         void LoadFromFile(string filePath);
         void SaveToFile(string filePath);
+        void LoadCheckPoint();
 
         string TextDirectory1 { get; set; }
         string TextFormats1 { get; set; }
@@ -40,19 +41,22 @@ namespace DesktopCopy1.Views
     public partial class Form2 : Form, IForm2
     {
         /// <summary>
-        /// Свойства, только получает
+        ///     Свойства, только получает
         /// </summary>
         public ApplicationContext Context { get; }
+
         /// <summary>
-        /// Свойство в виде экземпляра: Получает,Устанавливает
+        ///     Свойство в виде экземпляра: Получает,Устанавливает
         /// </summary>
         public Settings Settings { get; set; }
 
         #region Events
+
         /// <summary>
-        /// События для контролов
+        ///     События для контролов
         /// </summary>
         public event EventHandler ButtonSave;
+
         public event EventHandler ButtonUpdate;
         public event EventHandler ButtonDefault;
 
@@ -67,9 +71,11 @@ namespace DesktopCopy1.Views
         public event EventHandler CheckBPDF;
         public event EventHandler CheckBMedia;
         public event EventHandler CheckBArchive;
+
         #endregion
+
         /// <summary>
-        /// Конструктор класса
+        ///     Конструктор класса
         /// </summary>
         /// <param name="context"></param>
         public Form2(ApplicationContext context)
@@ -77,24 +83,26 @@ namespace DesktopCopy1.Views
             Context = context;
             InitializeComponent();
         }
-        
+
         /// <summary>
-        /// Отвественен за появление формы
+        ///     Отвественен за появление формы
         /// </summary>
         public new void Show()
         {
             ShowDialog();
         }
+
         /// <summary>
-        /// Свойство управления контрола TextBoxDir
+        ///     Свойство управления контрола TextBoxDir
         /// </summary>
         public string TextDirectory1
         {
             get => TextDirectory.Text;
             set => TextDirectory.Text = value;
         }
+
         /// <summary>
-        /// Свойство управления контрола TextBoxFormats
+        ///     Свойство управления контрола TextBoxFormats
         /// </summary>
         public string TextFormats1
         {
@@ -103,61 +111,66 @@ namespace DesktopCopy1.Views
         }
 
         #region Functions
+
         /// <summary>
-        /// Загрузка из файла
+        ///     Загрузка из файла
         /// </summary>
         /// <param name="filePath">Путь к файлу</param>
         public void LoadFromFile(string filePath)
         {
-            Settings = Data.Load<Settings>(filePath);
+            Settings = Settings.Load<Settings>(filePath);
             LoadCheckPoint();
         }
+
         /// <summary>
-        /// Очистка Листа
+        ///     Очистка Листа
         /// </summary>
-        public void UpdateList()
+        public void GetDefault()
         {
-            Settings.Clear();
+            //Settings.CreateInstance();
+            new MessageService().Message(Settings.Setting.Count.ToString());
         }
+
         /// <summary>
-        /// Сохранение  в файл
+        ///     Сохранение  в файл
         /// </summary>
         /// <param name="filePath"></param>
         public void SaveToFile(string filePath)
         {
             SaveCheckPoint();
-            Data.Save(Settings, filePath);
+            Settings.Save(Settings, filePath);
         }
+
         /// <summary>
-        /// Загрузка контролов
+        ///     Загрузка контролов
         /// </summary>
         public void LoadCheckPoint()
         {
             foreach (Control control in Controls)
                 if (control as CheckBox != null)
-                    for (var i = 0; i < Settings.Count; i++)
-                        if (control.Name == Settings[i].ID)
-                            (control as CheckBox).Checked = Settings[i].IsChecked;
+                    for (var i = 0; i < Settings.Setting.Count; i++)
+                        if (control.Name == Settings.Setting[i].ID)
+                            (control as CheckBox).Checked = Settings.Setting[i].IsChecked;
         }
+
         /// <summary>
-        /// Сохранение котролов
+        ///     Сохранение котролов
         /// </summary>
         public void SaveCheckPoint()
         {
-           // UpdateList();
+            // UpdateList();
             foreach (Control control in Controls)
                 if (control as CheckBox != null)
                 {
                     if ((control as CheckBox).Checked)
                     {
-                        
+                        var setting = Settings.Setting.Find(X => X.ID == control.Name);
+                        if (setting != null) setting.IsChecked = true;
                     }
                     else
                     {
-                        var setting = new Setting();
-                        setting.ID = control.Name;
-                        setting.IsChecked = false;
-                        Settings.Add(setting);
+                        var setting = Settings.Setting.Find(X => X.ID == control.Name);
+                        if (setting != null) setting.IsChecked = false;
                     }
                 }
         }
@@ -168,6 +181,7 @@ namespace DesktopCopy1.Views
         {
             ButtonSave?.Invoke(this, EventArgs.Empty);
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             ButtonUpdate?.Invoke(this, EventArgs.Empty);
@@ -228,7 +242,6 @@ namespace DesktopCopy1.Views
         {
             CheckBOtherDir?.Invoke(this, EventArgs.Empty);
         }
-
 
         #endregion
 

@@ -38,15 +38,15 @@ namespace DesktopCopy1.Presenters
             else
             {
 
+                new MessageService().Message("Извините!Данная функция временно отключена.Пожалуйста подождите обновление");
+                //_logic.DEFAULT_PATH = View.Editor1;
+                //_logic.DIR_OUTPUT = View.Editor2;
 
-                _logic.DEFAULT_PATH = View.Editor1;
-                _logic.DIR_OUTPUT = View.Editor2;
-
-                for (int x = 0; x <  _Form2.Settings.Count; x++)
-                {
-                    _logic.ExDir(View.Editor2 + _Form2.Settings[x].Catalog);
-                    _logic.Search(View.Editor2 + _Form2.Settings[x].Catalog, _Form2.Settings[x].Extension, false);
-                }
+                //for (int x = 0; x <  _Form2.Settings.Setting.Count; x++)
+                //{
+                //    _logic.ExDir(View.Editor2 + _Form2.Settings.Setting[x].Catalog);
+                //    _logic.Search(View.Editor2 + _Form2.Settings.Setting[x].Catalog, _Form2.Settings.Setting[x].Extension, false);
+                //}
                    
             }
 
