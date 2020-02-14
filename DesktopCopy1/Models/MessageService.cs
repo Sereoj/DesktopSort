@@ -5,7 +5,7 @@ namespace DesktopCopy1.Models
     public interface IMessageService
     {
         /// <summary>
-        /// Вывести диалоговое сообщение.
+        ///     Вывести диалоговое сообщение.
         /// </summary>
         /// <param name="text"></param>
         void Message(string text);
@@ -14,26 +14,26 @@ namespace DesktopCopy1.Models
     public class MessageService : IMessageService
     {
         /// <summary>
-        /// Обычное сообщение
+        ///     Обычное сообщение
         /// </summary>
         /// <param name="text"></param>
         public void Message(string text)
         {
-
             MessageBox.Show(text);
         }
+
         /// <summary>
-        /// Сообщение с заголовком
+        ///     Сообщение с заголовком
         /// </summary>
         /// <param name="text">Тестовое сообщение</param>
         /// <param name="text1">Название окна</param>
         public void Message(string text, string text1)
         {
-
-            MessageBox.Show(text,text1);
+            MessageBox.Show(text, text1);
         }
+
         /// <summary>
-        /// Сообщение об обновлении 
+        ///     Сообщение об обновлении
         /// </summary>
         /// <param name="text">Тестовое сообщение</param>
         /// <param name="isUpdate">Параметр обновления</param>
@@ -42,6 +42,5 @@ namespace DesktopCopy1.Models
             if (!isUpdate) return;
             MessageBox.Show("Пожалуйста обновите программу.");
         }
-
     }
 }

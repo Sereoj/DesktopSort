@@ -279,7 +279,5 @@ namespace DesktopCopy1.Views
         }
 
         #endregion
-
-
     }
 }

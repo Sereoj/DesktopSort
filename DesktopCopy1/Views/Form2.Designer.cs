@@ -48,6 +48,7 @@ namespace DesktopCopy1.Views
             this.TextFormats = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CheckWord
@@ -220,7 +221,7 @@ namespace DesktopCopy1.Views
             this.TextDirectory.Enabled = false;
             this.TextDirectory.Location = new System.Drawing.Point(5, 230);
             this.TextDirectory.Name = "TextDirectory";
-            this.TextDirectory.Size = new System.Drawing.Size(370, 20);
+            this.TextDirectory.Size = new System.Drawing.Size(271, 20);
             this.TextDirectory.TabIndex = 14;
             this.TextDirectory.Text = "ТОЛЬКО ЧТЕНИЕ!! НЕ ЗАПИСЬ!!";
             // 
@@ -229,7 +230,7 @@ namespace DesktopCopy1.Views
             this.TextFormats.Enabled = false;
             this.TextFormats.Location = new System.Drawing.Point(5, 256);
             this.TextFormats.Name = "TextFormats";
-            this.TextFormats.Size = new System.Drawing.Size(370, 20);
+            this.TextFormats.Size = new System.Drawing.Size(271, 20);
             this.TextFormats.TabIndex = 14;
             // 
             // button2
@@ -244,13 +245,22 @@ namespace DesktopCopy1.Views
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(5, 283);
+            this.button3.Location = new System.Drawing.Point(5, 282);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(146, 32);
             this.button3.TabIndex = 13;
             this.button3.Text = "По умолчанию";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(282, 230);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(93, 46);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "Изменить";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -260,6 +270,7 @@ namespace DesktopCopy1.Views
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(392, 367);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.TextFormats);
             this.Controls.Add(this.TextDirectory);
             this.Controls.Add(this.button3);
@@ -308,5 +319,6 @@ namespace DesktopCopy1.Views
         private TextBox TextFormats;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }

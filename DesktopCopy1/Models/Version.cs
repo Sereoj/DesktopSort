@@ -3,17 +3,26 @@
 namespace DesktopCopy1.Models
 {
     /// <summary>
-    /// Получение информации о продукте.
+    ///     Получение информации о продукте.
     /// </summary>
     public class Version
     {
         /// <summary>
-        /// Версия продукта.
+        /// </summary>
+        public enum StageVersion
+        {
+            PreAlpha,
+            Alpha,
+            Beta
+        }
+
+        /// <summary>
+        ///     Версия продукта.
         /// </summary>
         /// <returns></returns>
         public string GetVersion()
         {
-            return Application.ProductVersion;
+            return Application.ProductVersion + StageVersion.Beta;
         }
     }
 }

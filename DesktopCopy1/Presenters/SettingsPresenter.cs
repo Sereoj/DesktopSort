@@ -14,23 +14,23 @@ namespace DesktopCopy1.Presenters
     internal class SettingsPresenter : BasePresener<IForm2, Settings>
     {
         /// <summary>
-        /// Создание переменной.
+        ///     Создание переменной.
         /// </summary>
         public Settings Settings;
+
         /// <summary>
-        /// Конструктор, принимающий параметры интерфейса
+        ///     Конструктор, принимающий параметры интерфейса
         /// </summary>
         /// <param name="controller">Интерфейс контроллера</param>
         /// <param name="view">Интерфейс формы2</param>
         public SettingsPresenter(IApplicationController controller, IForm2 view) : base(controller, view)
         {
-           
             //Загрузка с файла
-            
+
             view.LoadFromFile("data.xml");
 
             // Запись в переменную
-            if (view.Settings != null) Settings = view.Settings;
+            if (view.GetSettings() != null) Settings = view.GetSettings();
 
             //Присвоение функции к событию.
             view.ButtonSave += viewOnButtonSave;
@@ -47,11 +47,10 @@ namespace DesktopCopy1.Presenters
             view.CheckBProject += view_CheckBProject;
             view.CheckBTextDoc += view_CheckBTextDoc;
             view.CheckBWord += view_CheckBWord;
-
-
         }
+
         /// <summary>
-        /// Кнопка восстановить, 2-ая форма
+        ///     Кнопка восстановить, 2-ая форма
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -60,78 +59,79 @@ namespace DesktopCopy1.Presenters
             Settings.Default();
             View.LoadCheckPoint();
         }
+
         private void view_CheckBWord(object sender, EventArgs e)
         {
-            var s =  Settings.Setting.Find(item => item.ID == "CheckWord");
+            var s = Settings.Setting.Find(item => item.ID == "CheckWord");
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBTextDoc(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckTextDoc"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckTextDoc"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBProject(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckProject"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckProject"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBPDF(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckPDF"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckPDF"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBOtherDir(object sender, EventArgs e)
         {
-            var s =  Settings.Setting.Find(x => x.ID.Contains("CheckOtherDir"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckOtherDir"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBMedia(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckMedia"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckMedia"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBImages(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckImage"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckImage"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBExcel(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckExcel"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckExcel"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBArchive(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckArchive"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckArchive"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_CheckBAccess(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID.Contains("CheckAccess"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("CheckAccess"));
             SetText(s.Catalog, s.Extension);
         }
 
         private void view_ButtonUpdate(object sender, EventArgs e)
         {
-            var s =   Settings.Setting.Find(x => x.ID == "CheckAccess");
-            new MessageService().Message(s.IsChecked.ToString());
+            new MessageService().Message(View.GetSettings().Setting.Count.ToString());
         }
 
         private void viewOnButtonSave(object sender, EventArgs e)
         {
             View.SaveToFile("data.xml");
         }
+
         /// <summary>
-        ///  Передать значения.
+        ///     Передать значения.
         /// </summary>
         /// <param name="text">TextDirectory</param>
         /// <param name="text2">TextFormat</param>
@@ -140,8 +140,9 @@ namespace DesktopCopy1.Presenters
             View.TextDirectory1 = text;
             View.TextFormats1 = text2;
         }
+
         /// <summary>
-        /// Показать форму2.
+        ///     Показать форму2.
         /// </summary>
         /// <param name="argument"></param>
         public override void Run(Settings argument)
