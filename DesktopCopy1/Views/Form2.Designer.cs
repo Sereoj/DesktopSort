@@ -43,12 +43,12 @@ namespace DesktopCopy1.Views
             this.CheckMedia = new System.Windows.Forms.CheckBox();
             this.CheckOtherDir = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.TextDirectory = new System.Windows.Forms.TextBox();
             this.TextFormats = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.BtnUpdate = new System.Windows.Forms.Button();
+            this.BtnDefault = new System.Windows.Forms.Button();
+            this.BtnChanger = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CheckWord
@@ -206,61 +206,59 @@ namespace DesktopCopy1.Views
             this.label2.TabIndex = 12;
             this.label2.Text = "Форматы";
             // 
-            // button1
+            // BtnSave
             // 
-            this.button1.Location = new System.Drawing.Point(266, 321);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 32);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnSave.Location = new System.Drawing.Point(266, 321);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(109, 32);
+            this.BtnSave.TabIndex = 13;
+            this.BtnSave.Text = "Save";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.button1_Click);
             // 
             // TextDirectory
             // 
-            this.TextDirectory.Enabled = false;
             this.TextDirectory.Location = new System.Drawing.Point(5, 230);
             this.TextDirectory.Name = "TextDirectory";
             this.TextDirectory.Size = new System.Drawing.Size(271, 20);
             this.TextDirectory.TabIndex = 14;
-            this.TextDirectory.Text = "ТОЛЬКО ЧТЕНИЕ!! НЕ ЗАПИСЬ!!";
             // 
             // TextFormats
             // 
-            this.TextFormats.Enabled = false;
             this.TextFormats.Location = new System.Drawing.Point(5, 256);
             this.TextFormats.Name = "TextFormats";
             this.TextFormats.Size = new System.Drawing.Size(271, 20);
             this.TextFormats.TabIndex = 14;
             // 
-            // button2
+            // BtnUpdate
             // 
-            this.button2.Location = new System.Drawing.Point(5, 321);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 32);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Проверить обновление";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BtnUpdate.Location = new System.Drawing.Point(5, 321);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Size = new System.Drawing.Size(146, 32);
+            this.BtnUpdate.TabIndex = 13;
+            this.BtnUpdate.Text = "Проверить обновление";
+            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // BtnDefault
             // 
-            this.button3.Location = new System.Drawing.Point(5, 282);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(146, 32);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "По умолчанию";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BtnDefault.Location = new System.Drawing.Point(5, 282);
+            this.BtnDefault.Name = "BtnDefault";
+            this.BtnDefault.Size = new System.Drawing.Size(146, 32);
+            this.BtnDefault.TabIndex = 13;
+            this.BtnDefault.Text = "По умолчанию";
+            this.BtnDefault.UseVisualStyleBackColor = true;
+            this.BtnDefault.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // BtnChanger
             // 
-            this.button4.Location = new System.Drawing.Point(282, 230);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(93, 46);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Изменить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnChanger.Location = new System.Drawing.Point(282, 230);
+            this.BtnChanger.Name = "BtnChanger";
+            this.BtnChanger.Size = new System.Drawing.Size(93, 46);
+            this.BtnChanger.TabIndex = 15;
+            this.BtnChanger.Text = "Изменить";
+            this.BtnChanger.UseVisualStyleBackColor = true;
+            this.BtnChanger.Click += new System.EventHandler(this.BtnChanger_Click);
             // 
             // Form2
             // 
@@ -270,12 +268,12 @@ namespace DesktopCopy1.Views
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(392, 367);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.BtnChanger);
             this.Controls.Add(this.TextFormats);
             this.Controls.Add(this.TextDirectory);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnDefault);
+            this.Controls.Add(this.BtnUpdate);
+            this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CheckOtherDir);
             this.Controls.Add(this.CheckMedia);
@@ -314,11 +312,11 @@ namespace DesktopCopy1.Views
         private CheckBox CheckMedia;
         private CheckBox CheckOtherDir;
         private Label label2;
-        private Button button1;
+        private Button BtnSave;
         private TextBox TextDirectory;
         private TextBox TextFormats;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button BtnUpdate;
+        private Button BtnDefault;
+        private Button BtnChanger;
     }
 }

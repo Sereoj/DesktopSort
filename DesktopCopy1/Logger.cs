@@ -1,17 +1,28 @@
-﻿namespace DesktopCopy1
+﻿using System.IO;
+
+namespace DesktopCopy1
 {
     public interface ILogger
     {
-        void Print();
+       void Print(string text);
     }
 
     internal class Logger : ILogger
     {
-        /// <summary>
-        ///     Вывод сообщения
-        /// </summary>
-        public void Print()
+        public string DEFAULT_PATH = "logger.txt";
+
+        public Logger(string Message)
         {
+            Print(Message);
         }
+        public void Print(string text)
+        {
+            var file = new StreamWriter(DEFAULT_PATH);
+            file.WriteLine(text);
+            file.Close();
+        }
+
+
+
     }
 }

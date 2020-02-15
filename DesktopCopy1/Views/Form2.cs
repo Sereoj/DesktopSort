@@ -31,6 +31,7 @@ namespace DesktopCopy1.Views
         event EventHandler ButtonSave;
         event EventHandler ButtonUpdate;
         event EventHandler ButtonDefault;
+        event EventHandler ButtonChanger;
 
         void LoadFromFile(string filePath);
         void SaveToFile(string filePath);
@@ -87,6 +88,8 @@ namespace DesktopCopy1.Views
             set => TextFormats.Text = value;
         }
 
+        #region Buttons
+
         private void button1_Click(object sender, EventArgs e)
         {
             ButtonSave?.Invoke(this, EventArgs.Empty);
@@ -106,6 +109,13 @@ namespace DesktopCopy1.Views
             ButtonDefault?.Invoke(this, EventArgs.Empty);
         }
 
+        private void BtnChanger_Click(object sender, EventArgs e)
+        {
+            ButtonChanger?.Invoke(this,EventArgs.Empty);
+        }
+
+        #endregion
+
         #region Events
 
         /// <summary>
@@ -115,6 +125,7 @@ namespace DesktopCopy1.Views
 
         public event EventHandler ButtonUpdate;
         public event EventHandler ButtonDefault;
+        public event EventHandler ButtonChanger;
 
         //CheckBox
         public event EventHandler CheckBWord;
@@ -246,5 +257,8 @@ namespace DesktopCopy1.Views
         }
 
         #endregion
+
+
+
     }
 }

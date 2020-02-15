@@ -49,7 +49,7 @@ namespace DesktopCopy1.Presenters
             catch (Exception exception)
             {
                 new MessageService().Message(exception.Message, "Error");
-                _logic.Logger(exception.Message);
+                new Logger(exception.Message);
             }
         }
 
@@ -62,8 +62,9 @@ namespace DesktopCopy1.Presenters
 
         public void Add_ButtonCutClick(object sender, EventArgs e)
         {
-            ControllerButtons(false);
+            ControllerButtons(true);
         }
+
 
         public void Add_ImageDialogClick(object sender, EventArgs e)
         {

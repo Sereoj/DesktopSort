@@ -36,21 +36,10 @@ namespace DesktopCopy1.Models
         /// <param name="moveMethod">Перенос файлов - true, копирование - false</param>
         void Search(string type, string pattern, bool moveMethod);
 
-        /// <summary>
-        ///     Логирование ошибок
-        /// </summary>
-        /// <param name="text"></param>
-        void Logger(string text);
     }
 
     public class BusinessLogic : IBusinessLogic
     {
-        public void Logger(string text)
-        {
-            var file = new StreamWriter(DEFAULT_PATH + @"\logger.txt");
-            file.WriteLine(text);
-            file.Close();
-        }
 
         public void ExDir(string path)
         {
@@ -67,7 +56,7 @@ namespace DesktopCopy1.Models
             }
             catch (Exception e)
             {
-                Logger(e.Message);
+                new Logger(e.Message);
             }
         }
 
@@ -92,7 +81,7 @@ namespace DesktopCopy1.Models
                 }
                 catch (ArgumentException e)
                 {
-                    Logger(e.Message);
+                    new Logger(e.Message);
                 }
         }
 

@@ -17,6 +17,8 @@ namespace DesktopCopy1.Presenters
         ///     Создание переменной.
         /// </summary>
         public Settings Settings;
+        public string tmpCatalog { get; private set; }
+        public string tmpFormat { get; private set; }
 
         /// <summary>
         ///     Конструктор, принимающий параметры интерфейса
@@ -36,6 +38,7 @@ namespace DesktopCopy1.Presenters
             view.ButtonSave += viewOnButtonSave;
             view.ButtonUpdate += view_ButtonUpdate;
             view.ButtonDefault += view_ButtonDefault;
+            view.ButtonChanger += View_ButtonChanger;
 
             view.CheckBAccess += view_CheckBAccess;
             view.CheckBArchive += view_CheckBArchive;
@@ -47,6 +50,18 @@ namespace DesktopCopy1.Presenters
             view.CheckBProject += view_CheckBProject;
             view.CheckBTextDoc += view_CheckBTextDoc;
             view.CheckBWord += view_CheckBWord;
+        }
+
+        private void View_ButtonChanger(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x != null && x.Catalog == tmpCatalog);
+            if (s != null)
+            {
+                s.Catalog = View.TextDirectory1;
+                s.Extension = View.TextFormats1;
+            }
+
+            View.SaveToFile("data.xml");
         }
 
         /// <summary>
@@ -139,6 +154,9 @@ namespace DesktopCopy1.Presenters
         {
             View.TextDirectory1 = text;
             View.TextFormats1 = text2;
+
+            tmpCatalog = text;
+            tmpFormat = text2;
         }
 
         /// <summary>

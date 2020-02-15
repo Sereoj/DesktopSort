@@ -13,7 +13,8 @@ namespace DesktopCopy1.Models
         {
             PreAlpha,
             Alpha,
-            Beta
+            Beta,
+            Edition
         }
 
         /// <summary>
@@ -22,7 +23,7 @@ namespace DesktopCopy1.Models
         /// <returns></returns>
         public string GetVersion()
         {
-            return Application.ProductVersion + StageVersion.Beta;
+            return Application.ProductVersion + StageVersion.Alpha;
         }
     }
 }
