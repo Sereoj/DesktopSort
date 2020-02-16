@@ -17,13 +17,15 @@ namespace DesktopCopy1.Models
             Edition
         }
 
+        public StageVersion State = StageVersion.Beta;
+
         /// <summary>
         ///     Версия продукта.
         /// </summary>
         /// <returns></returns>
-        public string GetVersion()
+        public string GetVersion(bool isGetState)
         {
-            return Application.ProductVersion + StageVersion.Alpha;
+            return (isGetState == false? Application.ProductVersion : Application.ProductVersion + State);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
@@ -50,6 +51,7 @@ namespace DesktopCopy1.Views
         {
             Context = context;
             InitializeComponent();
+            this.Text = new MainForm(context).Text + " - Settings";
         }
 
         /// <summary>
@@ -67,6 +69,7 @@ namespace DesktopCopy1.Views
         /// </summary>
         public new void Show()
         {
+            MainForm main = new MainForm(Context);
             ShowDialog();
         }
 
@@ -256,9 +259,13 @@ namespace DesktopCopy1.Views
             CheckBOtherDir?.Invoke(this, EventArgs.Empty);
         }
 
+
+
         #endregion
 
-
-
+        private void TextDirectory_TextChanged(object sender, EventArgs e)
+        {
+            BtnChanger.Enabled = true;
+        }
     }
 }

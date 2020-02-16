@@ -5,19 +5,23 @@ namespace DesktopCopy1
     public interface ILogger
     {
        void Print(string text);
+       bool IsLogger { get; set; }
     }
 
     internal class Logger : ILogger
     {
-        public string DEFAULT_PATH = "logger.txt";
+        protected string DefaultPath = "logger.txt";
+        public bool IsLogger { get; set; }
 
-        public Logger(string Message)
+        public Logger(string message)
         {
-            Print(Message);
+            Print(message);
+            
         }
         public void Print(string text)
         {
-            var file = new StreamWriter(DEFAULT_PATH);
+            if (!IsLogger) return;
+            var file = new StreamWriter(DefaultPath);
             file.WriteLine(text);
             file.Close();
         }

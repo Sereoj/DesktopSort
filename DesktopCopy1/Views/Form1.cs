@@ -29,8 +29,8 @@ namespace DesktopCopy1.Views
 
     public partial class MainForm : Form, IMainForm
     {
-        private const string НАВЕДЕНИЕ = "#2D3276"; // 000C1C
-        private const string ВНЕ = "#000C1C"; // 2D3276
+        private const string НАВЕДЕНИЕ = "#494954"; // 000C1C
+        private const string ВНЕ = "#444446"; // 2D3276
 
         private readonly ApplicationContext _context;
 
@@ -41,8 +41,8 @@ namespace DesktopCopy1.Views
             InitializeComponent();
             Starter();
 
-            Text = $"DesktopCopy [ver {new Version().GetVersion()}]";
-            DublicateNameForm.Text = Text;
+            Text = $"DesktopCopy [ver {new Version().GetVersion(true)}]";
+            //DublicateNameForm.Text = Text;
         }
 
         public new void Show()
@@ -94,7 +94,7 @@ namespace DesktopCopy1.Views
 
         private void PanelClose_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            //panel1.Visible = false;
         }
 
         #endregion
@@ -103,7 +103,7 @@ namespace DesktopCopy1.Views
 
         private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show($"Ой..\nКажется сайт - {LinkSite.Text} временно недоступен!\nПопробуйте повторить позже.",
+            MessageBox.Show($"Ой..\nКажется сайт -  временно недоступен!\nПопробуйте повторить позже.",
                 "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
         }
@@ -179,16 +179,16 @@ namespace DesktopCopy1.Views
 
         private void ImageHelper_Click(object sender, EventArgs e)
         {
-            if (panel1.Visible)
-            {
-                panel1.Location = new Point(362, 34);
-                panel1.Visible = false;
-            }
-            else
-            {
-                panel1.Location = new Point(8, 34);
-                panel1.Visible = true;
-            }
+            //if (panel1.Visible)
+            //{
+            //    panel1.Location = new Point(362, 34);
+            //    panel1.Visible = false;
+            //}
+            //else
+            //{
+            //    panel1.Location = new Point(8, 34);
+            //    panel1.Visible = true;
+            //}
 
             if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
         }
@@ -245,19 +245,19 @@ namespace DesktopCopy1.Views
 
         private void AboutToolStrip_Click(object sender, EventArgs e)
         {
-            HeadText.Text = "О проекте";
-            label5.Text = "Для того, чтобы здесь был текст - придумайте его.";
+            //HeadText.Text = "О проекте";
+            //label5.Text = "Для того, чтобы здесь был текст - придумайте его.";
 
-            if (panel1.Visible)
-            {
-                panel1.Location = new Point(362, 34);
-                panel1.Visible = false;
-            }
-            else
-            {
-                panel1.Location = new Point(8, 34);
-                panel1.Visible = true;
-            }
+            //if (panel1.Visible)
+            //{
+            //    panel1.Location = new Point(362, 34);
+            //    panel1.Visible = false;
+            //}
+            //else
+            //{
+            //    panel1.Location = new Point(8, 34);
+            //    panel1.Visible = true;
+            //}
         }
 
         private void CloseToolStrip_Click(object sender, EventArgs e)
@@ -279,5 +279,7 @@ namespace DesktopCopy1.Views
         }
 
         #endregion
+
+
     }
 }
