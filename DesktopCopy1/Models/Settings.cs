@@ -63,21 +63,21 @@ namespace DesktopCopy1.Models
             };
 
             Settings.Setting.Add(new Setting
-                {ID = "CheckWord", IsChecked = false, Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot"});
+                {ID = "CheckWord", IsChecked = true, Catalog = "Word", Extension = "*.docx,*.dotx,*.doc,*.dot"});
             Settings.Setting.Add(new Setting
             {
-                ID = "CheckExcel", IsChecked = false, Catalog = "Excel",
+                ID = "CheckExcel", IsChecked = true, Catalog = "Excel",
                 Extension = "*.xlsx,*.xlsm,*.xltx,*.xltm,*.xlam,*.xls,*.xlt,*.xla"
             });
             Settings.Setting.Add(new Setting
-                {ID = "CheckAccess", IsChecked = false, Catalog = "Access", Extension = "*.accdb,*.mdb"});
+                {ID = "CheckAccess", IsChecked = true, Catalog = "Access", Extension = "*.accdb,*.mdb"});
             Settings.Setting.Add(new Setting
             {
-                ID = "CheckImage", IsChecked = false, Catalog = "Image",
+                ID = "CheckImage", IsChecked = true, Catalog = "Image",
                 Extension = "*.bmp,*.tif,*.jpg,*.gif,*.png,*.ico"
             });
             Settings.Setting.Add(new Setting
-                {ID = "CheckTextDoc", IsChecked = false, Catalog = "Text", Extension = "*.txt,*.log"});
+                {ID = "CheckTextDoc", IsChecked = true, Catalog = "Text", Extension = "*.txt,*.log"});
             Settings.Setting.Add(new Setting
                 {ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = ""});
             Settings.Setting.Add(new Setting

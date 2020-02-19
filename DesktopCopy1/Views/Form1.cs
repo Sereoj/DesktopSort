@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
+using DesktopCopy1.Models;
 using Version = DesktopCopy1.Models.Version;
 
 namespace DesktopCopy1.Views
@@ -41,9 +42,24 @@ namespace DesktopCopy1.Views
             InitializeComponent();
             Starter();
 
-            Text = $"DesktopCopy [ver {new Version().GetVersion(true)}]";
+            Text = $"Desktop Sort";
+            gunaPanel1.BackColor = Color.FromArgb(100, 0, 0, 0);
+            Header.BackColor = Color.FromArgb(24, 0, 0, 0);
+            
             //DublicateNameForm.Text = Text;
         }
+
+
+
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams param = base.CreateParams;
+        //        param.ClassStyle |= 0x00020000;
+        //        return param;
+        //    }
+        //}
 
         public new void Show()
         {
@@ -147,12 +163,15 @@ namespace DesktopCopy1.Views
 
         private void ButtonCopy_Click(object sender, EventArgs e)
         {
-            if (ButtonClick != null) ButtonClick(this, EventArgs.Empty);
+            ButtonClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void ButtonCut_Click(object sender, EventArgs e)
         {
-            if (ButtonCutClick != null) ButtonCutClick(this, EventArgs.Empty);
+
+            ButtonCutClick?.Invoke(this, EventArgs.Empty);
+            MessageBox.Show("ЕУеы");
+            new MessageService().Message("TESTs");
         }
 
         #endregion
@@ -164,7 +183,7 @@ namespace DesktopCopy1.Views
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit1.Text = FolderDialog1.SelectedPath;
-                if (ImageDialogClick != null) ImageDialogClick(this, EventArgs.Empty);
+                ImageDialogClick?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -173,7 +192,7 @@ namespace DesktopCopy1.Views
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit2.Text = FolderDialog1.SelectedPath;
-                if (ImageDialogClick1 != null) ImageDialogClick1(this, EventArgs.Empty);
+                ImageDialogClick1?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -190,7 +209,7 @@ namespace DesktopCopy1.Views
             //    panel1.Visible = true;
             //}
 
-            if (ImageHelperClick != null) ImageHelperClick(this, EventArgs.Empty);
+            ImageHelperClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void ImageSettings_Click(object sender, EventArgs e)
@@ -262,6 +281,7 @@ namespace DesktopCopy1.Views
 
         private void CloseToolStrip_Click(object sender, EventArgs e)
         {
+            Application.DoEvents();
             Application.Exit();
         }
 
@@ -278,8 +298,13 @@ namespace DesktopCopy1.Views
             }
         }
 
+
+
         #endregion
 
+        private void gunaButton3_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

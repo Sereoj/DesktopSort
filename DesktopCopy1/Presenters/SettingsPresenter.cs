@@ -72,6 +72,7 @@ namespace DesktopCopy1.Presenters
         private void view_ButtonDefault(object sender, EventArgs e)
         {
             Settings.Default();
+            View.LoadFromFile("data.xml");
             View.LoadCheckPoint();
         }
 

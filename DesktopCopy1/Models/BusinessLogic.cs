@@ -31,7 +31,7 @@ namespace DesktopCopy1.Models
         /// <summary>
         ///     Главная функция, поиска и переноса файлов
         /// </summary>
-        /// <param name="type">Пкть к папки используется как тип</param>
+        /// <param name="type">Путь к папки используется как тип</param>
         /// <param name="pattern">Расширения файлов</param>
         /// <param name="moveMethod">Перенос файлов - true, копирование - false</param>
         void Search(string type, string pattern, bool moveMethod);
@@ -44,6 +44,7 @@ namespace DesktopCopy1.Models
         public void ExDir(string path)
         {
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            
         }
 
         public void DirCreate(List<string> nameDirs)
@@ -62,7 +63,7 @@ namespace DesktopCopy1.Models
 
         public void Search(string type, string pattern, bool moveMethod)
         {
-            foreach (var tPath in Directory.GetFiles(DEFAULT_PATH, "*.*".ToLower(), SearchOption.TopDirectoryOnly))
+            foreach (var tPath in Directory.GetFiles(DEFAULT_PATH + "\\", "*.*".ToLower(), SearchOption.TopDirectoryOnly))
                 try
                 {
                     var ext = Path.GetExtension(tPath);

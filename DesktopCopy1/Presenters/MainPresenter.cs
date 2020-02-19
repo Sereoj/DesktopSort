@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
 using DesktopCopy1.Views;
@@ -10,7 +11,7 @@ namespace DesktopCopy1.Presenters
         /// <summary>
         ///     Переменная глобальная
         /// </summary>
-        public readonly IForm2 _Form2;
+        private readonly IForm2 _form2;
 
         private readonly IBusinessLogic _logic;
 
@@ -18,7 +19,7 @@ namespace DesktopCopy1.Presenters
             IForm2 form2) : base(
             controller, view)
         {
-            _Form2 = form2;
+            _form2 = form2;
             _logic = service;
             //_form2 = form2;
             View.ButtonClick += Add_ButtonCopyClick;
@@ -28,22 +29,22 @@ namespace DesktopCopy1.Presenters
             View.LinkSiteClick += Add_LinkSiteClick;
             View.ImageSettingsClick += Add_ImageSettingsClick;
 
-            _Form2.LoadFromFile("data.xml");
+            _form2.LoadFromFile("data.xml");
         }
 
         private void ControllerButtons(bool isMove)
         {
             try
             {
-                _logic.DEFAULT_PATH = View.Editor1;
-                _logic.DIR_OUTPUT = View.Editor2;
-                _Form2.LoadFromFile("data.xml");
-                for (var x = 0; x < _Form2.GetSettings().Setting.Count; x++)
-                    if (_Form2.GetSettings().Setting[x].IsChecked)
+                _logic.DEFAULT_PATH = View.Editor1 + @"\";
+                _logic.DIR_OUTPUT = View.Editor2 + @"\";
+                _form2.LoadFromFile("data.xml");
+                for (var x = 0; x < _form2.GetSettings().Setting.Count; x++)
+                    if (_form2.GetSettings().Setting[x].IsChecked)
                     {
-                        _logic.ExDir(View.Editor2 + _Form2.GetSettings().Setting[x].Catalog);
-                        _logic.Search(View.Editor2 + _Form2.GetSettings().Setting[x].Catalog,
-                            _Form2.GetSettings().Setting[x].Extension, isMove);
+                        _logic.ExDir(View.Editor2 + _form2.GetSettings().Setting[x].Catalog);
+                        _logic.Search(View.Editor2 + _form2.GetSettings().Setting[x].Catalog,
+                            _form2.GetSettings().Setting[x].Extension, isMove);
                     }
             }
             catch (Exception exception)

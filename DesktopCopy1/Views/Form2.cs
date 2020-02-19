@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
+using Guna.UI;
 
 namespace DesktopCopy1.Views
 {
@@ -51,7 +52,8 @@ namespace DesktopCopy1.Views
         {
             Context = context;
             InitializeComponent();
-            this.Text = new MainForm(context).Text + " - Settings";
+            Header.BackColor = Color.FromArgb(24, 0, 0, 0);
+
         }
 
         /// <summary>
@@ -69,7 +71,6 @@ namespace DesktopCopy1.Views
         /// </summary>
         public new void Show()
         {
-            MainForm main = new MainForm(Context);
             ShowDialog();
         }
 
@@ -95,7 +96,9 @@ namespace DesktopCopy1.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ButtonChanger?.Invoke(this,EventArgs.Empty);
             ButtonSave?.Invoke(this, EventArgs.Empty);
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,10 +115,7 @@ namespace DesktopCopy1.Views
             ButtonDefault?.Invoke(this, EventArgs.Empty);
         }
 
-        private void BtnChanger_Click(object sender, EventArgs e)
-        {
-            ButtonChanger?.Invoke(this,EventArgs.Empty);
-        }
+
 
         #endregion
 
@@ -176,11 +176,11 @@ namespace DesktopCopy1.Views
         /// </summary>
         public void LoadCheckPoint()
         {
-            foreach (Control control in Controls)
-                if (control as CheckBox != null)
+            foreach (Control control in MainBlog.Controls)
+                if (control as Guna.UI.WinForms.GunaCheckBox != null)
                     for (var i = 0; i < Settings.Setting.Count; i++)
                         if (control.Name == Settings.Setting[i].ID)
-                            (control as CheckBox).Checked = Settings.Setting[i].IsChecked;
+                            (control as Guna.UI.WinForms.GunaCheckBox).Checked = Settings.Setting[i].IsChecked;
         }
 
         /// <summary>
@@ -189,10 +189,11 @@ namespace DesktopCopy1.Views
         public void SaveCheckPoint()
         {
             // UpdateList();
-            foreach (Control control in Controls)
-                if (control as CheckBox != null)
+            foreach (Control control in MainBlog.Controls)
+                if (control as Guna.UI.WinForms.GunaCheckBox != null)
                 {
-                    if ((control as CheckBox).Checked)
+                    // ReSharper disable once PossibleNullReferenceException
+                    if ((control as Guna.UI.WinForms.GunaCheckBox).Checked)
                     {
                         var setting = Settings.Setting.Find(X => X.ID == control.Name);
                         if (setting != null) setting.IsChecked = true;
@@ -203,6 +204,22 @@ namespace DesktopCopy1.Views
                         if (setting != null) setting.IsChecked = false;
                     }
                 }
+        }
+
+        public void ShowPanel(string panel)
+        {
+            switch (panel)
+            {
+                case "main":
+                    break;
+                case "addition":
+                    break;
+                case "about":
+                    break;;
+                    default:
+                        break;
+                        
+            }
         }
 
         #endregion
@@ -265,7 +282,8 @@ namespace DesktopCopy1.Views
 
         private void TextDirectory_TextChanged(object sender, EventArgs e)
         {
-            BtnChanger.Enabled = true;
+            //BtnChanger.Enabled = true;
         }
+
     }
 }
