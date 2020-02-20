@@ -41,13 +41,13 @@ namespace DesktopCopy1.Views
             this.CheckPDF = new Guna.UI.WinForms.GunaCheckBox();
             this.CheckArchive = new Guna.UI.WinForms.GunaCheckBox();
             this.CheckTextDoc = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox11 = new Guna.UI.WinForms.GunaCheckBox();
-            this.CheckOtherDir = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox12 = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox15 = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox16 = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox14 = new Guna.UI.WinForms.GunaCheckBox();
-            this.gunaCheckBox13 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template2 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template1 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template3 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template6 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template7 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template5 = new Guna.UI.WinForms.GunaCheckBox();
+            this.Template4 = new Guna.UI.WinForms.GunaCheckBox();
             this.CheckMedia = new Guna.UI.WinForms.GunaCheckBox();
             this.CheckImage = new Guna.UI.WinForms.GunaCheckBox();
             this.CheckWord = new Guna.UI.WinForms.GunaCheckBox();
@@ -68,10 +68,16 @@ namespace DesktopCopy1.Views
             this.FormElipseControl = new Guna.UI.WinForms.GunaElipse(this.components);
             this.DControlForm = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.DControlHead = new Guna.UI.WinForms.GunaDragControl(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
+            this.AboutBlog = new Guna.UI.WinForms.GunaLabel();
             this.MainBlog.SuspendLayout();
             this.SecondBlog.SuspendLayout();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainBlog
@@ -84,18 +90,18 @@ namespace DesktopCopy1.Views
             this.MainBlog.Controls.Add(this.CheckPDF);
             this.MainBlog.Controls.Add(this.CheckArchive);
             this.MainBlog.Controls.Add(this.CheckTextDoc);
-            this.MainBlog.Controls.Add(this.gunaCheckBox11);
-            this.MainBlog.Controls.Add(this.CheckOtherDir);
-            this.MainBlog.Controls.Add(this.gunaCheckBox12);
-            this.MainBlog.Controls.Add(this.gunaCheckBox15);
-            this.MainBlog.Controls.Add(this.gunaCheckBox16);
-            this.MainBlog.Controls.Add(this.gunaCheckBox14);
-            this.MainBlog.Controls.Add(this.gunaCheckBox13);
+            this.MainBlog.Controls.Add(this.Template2);
+            this.MainBlog.Controls.Add(this.Template1);
+            this.MainBlog.Controls.Add(this.Template3);
+            this.MainBlog.Controls.Add(this.Template6);
+            this.MainBlog.Controls.Add(this.Template7);
+            this.MainBlog.Controls.Add(this.Template5);
+            this.MainBlog.Controls.Add(this.Template4);
             this.MainBlog.Controls.Add(this.CheckMedia);
             this.MainBlog.Controls.Add(this.CheckImage);
             this.MainBlog.Controls.Add(this.CheckWord);
             this.MainBlog.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainBlog.Location = new System.Drawing.Point(136, 105);
+            this.MainBlog.Location = new System.Drawing.Point(129, 100);
             this.MainBlog.Name = "MainBlog";
             this.MainBlog.Size = new System.Drawing.Size(572, 152);
             this.MainBlog.TabIndex = 16;
@@ -195,103 +201,103 @@ namespace DesktopCopy1.Views
             this.CheckTextDoc.Text = "Text Documents";
             this.CheckTextDoc.CheckedChanged += new System.EventHandler(this.CheckTextDoc_CheckedChanged);
             // 
-            // gunaCheckBox11
+            // Template2
             // 
-            this.gunaCheckBox11.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox11.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox11.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox11.Enabled = false;
-            this.gunaCheckBox11.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox11.Location = new System.Drawing.Point(295, 89);
-            this.gunaCheckBox11.Name = "gunaCheckBox11";
-            this.gunaCheckBox11.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox11.TabIndex = 0;
-            this.gunaCheckBox11.Text = "Шаблон2";
+            this.Template2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template2.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template2.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template2.FillColor = System.Drawing.Color.White;
+            this.Template2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template2.Location = new System.Drawing.Point(295, 89);
+            this.Template2.Name = "Template2";
+            this.Template2.Size = new System.Drawing.Size(78, 20);
+            this.Template2.TabIndex = 0;
+            this.Template2.Text = "Шаблон2";
+            this.Template2.CheckedChanged += new System.EventHandler(this.Template2_CheckedChanged);
             // 
-            // CheckOtherDir
+            // Template1
             // 
-            this.CheckOtherDir.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.CheckOtherDir.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.CheckOtherDir.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.CheckOtherDir.Enabled = false;
-            this.CheckOtherDir.FillColor = System.Drawing.Color.White;
-            this.CheckOtherDir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.CheckOtherDir.Location = new System.Drawing.Point(295, 63);
-            this.CheckOtherDir.Name = "CheckOtherDir";
-            this.CheckOtherDir.Size = new System.Drawing.Size(78, 20);
-            this.CheckOtherDir.TabIndex = 0;
-            this.CheckOtherDir.Text = "Шаблон1";
+            this.Template1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template1.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template1.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template1.FillColor = System.Drawing.Color.White;
+            this.Template1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template1.Location = new System.Drawing.Point(295, 63);
+            this.Template1.Name = "Template1";
+            this.Template1.Size = new System.Drawing.Size(78, 20);
+            this.Template1.TabIndex = 0;
+            this.Template1.Text = "Шаблон1";
+            this.Template1.CheckedChanged += new System.EventHandler(this.Template1_CheckedChanged);
             // 
-            // gunaCheckBox12
+            // Template3
             // 
-            this.gunaCheckBox12.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox12.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox12.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox12.Enabled = false;
-            this.gunaCheckBox12.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox12.Location = new System.Drawing.Point(295, 115);
-            this.gunaCheckBox12.Name = "gunaCheckBox12";
-            this.gunaCheckBox12.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox12.TabIndex = 0;
-            this.gunaCheckBox12.Text = "Шаблон3";
+            this.Template3.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template3.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template3.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template3.FillColor = System.Drawing.Color.White;
+            this.Template3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template3.Location = new System.Drawing.Point(295, 115);
+            this.Template3.Name = "Template3";
+            this.Template3.Size = new System.Drawing.Size(78, 20);
+            this.Template3.TabIndex = 0;
+            this.Template3.Text = "Шаблон3";
+            this.Template3.CheckedChanged += new System.EventHandler(this.Template3_CheckedChanged);
             // 
-            // gunaCheckBox15
+            // Template6
             // 
-            this.gunaCheckBox15.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox15.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox15.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox15.Enabled = false;
-            this.gunaCheckBox15.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox15.Location = new System.Drawing.Point(434, 89);
-            this.gunaCheckBox15.Name = "gunaCheckBox15";
-            this.gunaCheckBox15.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox15.TabIndex = 0;
-            this.gunaCheckBox15.Text = "Шаблон7";
+            this.Template6.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template6.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template6.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template6.FillColor = System.Drawing.Color.White;
+            this.Template6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template6.Location = new System.Drawing.Point(434, 89);
+            this.Template6.Name = "Template6";
+            this.Template6.Size = new System.Drawing.Size(78, 20);
+            this.Template6.TabIndex = 0;
+            this.Template6.Text = "Шаблон6";
+            this.Template6.CheckedChanged += new System.EventHandler(this.Template6_CheckedChanged);
             // 
-            // gunaCheckBox16
+            // Template7
             // 
-            this.gunaCheckBox16.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox16.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox16.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox16.Enabled = false;
-            this.gunaCheckBox16.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox16.Location = new System.Drawing.Point(434, 115);
-            this.gunaCheckBox16.Name = "gunaCheckBox16";
-            this.gunaCheckBox16.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox16.TabIndex = 0;
-            this.gunaCheckBox16.Text = "Шаблон8";
+            this.Template7.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template7.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template7.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template7.FillColor = System.Drawing.Color.White;
+            this.Template7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template7.Location = new System.Drawing.Point(434, 115);
+            this.Template7.Name = "Template7";
+            this.Template7.Size = new System.Drawing.Size(78, 20);
+            this.Template7.TabIndex = 0;
+            this.Template7.Text = "Шаблон7";
+            this.Template7.CheckedChanged += new System.EventHandler(this.Template7_CheckedChanged);
             // 
-            // gunaCheckBox14
+            // Template5
             // 
-            this.gunaCheckBox14.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox14.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox14.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox14.Enabled = false;
-            this.gunaCheckBox14.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox14.Location = new System.Drawing.Point(434, 63);
-            this.gunaCheckBox14.Name = "gunaCheckBox14";
-            this.gunaCheckBox14.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox14.TabIndex = 0;
-            this.gunaCheckBox14.Text = "Шаблон5";
+            this.Template5.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template5.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template5.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template5.FillColor = System.Drawing.Color.White;
+            this.Template5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template5.Location = new System.Drawing.Point(434, 63);
+            this.Template5.Name = "Template5";
+            this.Template5.Size = new System.Drawing.Size(78, 20);
+            this.Template5.TabIndex = 0;
+            this.Template5.Text = "Шаблон5";
+            this.Template5.CheckedChanged += new System.EventHandler(this.Template5_CheckedChanged);
             // 
-            // gunaCheckBox13
+            // Template4
             // 
-            this.gunaCheckBox13.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.gunaCheckBox13.CheckedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox13.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
-            this.gunaCheckBox13.Enabled = false;
-            this.gunaCheckBox13.FillColor = System.Drawing.Color.White;
-            this.gunaCheckBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.gunaCheckBox13.Location = new System.Drawing.Point(434, 36);
-            this.gunaCheckBox13.Name = "gunaCheckBox13";
-            this.gunaCheckBox13.Size = new System.Drawing.Size(78, 20);
-            this.gunaCheckBox13.TabIndex = 0;
-            this.gunaCheckBox13.Text = "Шаблон4";
+            this.Template4.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
+            this.Template4.CheckedOffColor = System.Drawing.Color.Gray;
+            this.Template4.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
+            this.Template4.FillColor = System.Drawing.Color.White;
+            this.Template4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.Template4.Location = new System.Drawing.Point(434, 36);
+            this.Template4.Name = "Template4";
+            this.Template4.Size = new System.Drawing.Size(78, 20);
+            this.Template4.TabIndex = 0;
+            this.Template4.Text = "Шаблон4";
+            this.Template4.CheckedChanged += new System.EventHandler(this.Template4_CheckedChanged);
             // 
             // CheckMedia
             // 
@@ -484,6 +490,8 @@ namespace DesktopCopy1.Views
             this.gunaButton1.TabIndex = 20;
             this.gunaButton1.Text = "Основа";
             this.gunaButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaButton1.Visible = false;
+            this.gunaButton1.Click += new System.EventHandler(this.gunaButton1_Click);
             // 
             // gunaButton2
             // 
@@ -508,6 +516,8 @@ namespace DesktopCopy1.Views
             this.gunaButton2.TabIndex = 20;
             this.gunaButton2.Text = "Доп";
             this.gunaButton2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaButton2.Visible = false;
+            this.gunaButton2.Click += new System.EventHandler(this.gunaButton2_Click);
             // 
             // gunaButton3
             // 
@@ -532,6 +542,8 @@ namespace DesktopCopy1.Views
             this.gunaButton3.TabIndex = 20;
             this.gunaButton3.Text = "О Прогр";
             this.gunaButton3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gunaButton3.Visible = false;
+            this.gunaButton3.Click += new System.EventHandler(this.gunaButton3_Click);
             // 
             // Header
             // 
@@ -602,6 +614,59 @@ namespace DesktopCopy1.Views
             // 
             this.DControlHead.TargetControl = this.Header;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.gunaLabel7);
+            this.panel1.Controls.Add(this.gunaLabel6);
+            this.panel1.Controls.Add(this.gunaLabel4);
+            this.panel1.Controls.Add(this.AboutBlog);
+            this.panel1.Location = new System.Drawing.Point(126, 482);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(572, 191);
+            this.panel1.TabIndex = 30;
+            this.panel1.Visible = false;
+            // 
+            // gunaLabel7
+            // 
+            this.gunaLabel7.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.gunaLabel7.Location = new System.Drawing.Point(12, 138);
+            this.gunaLabel7.Name = "gunaLabel7";
+            this.gunaLabel7.Size = new System.Drawing.Size(543, 79);
+            this.gunaLabel7.TabIndex = 20;
+            this.gunaLabel7.Text = "@SergioStrangeS\r\n@Mer-hi";
+            // 
+            // gunaLabel6
+            // 
+            this.gunaLabel6.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gunaLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.gunaLabel6.Location = new System.Drawing.Point(10, 115);
+            this.gunaLabel6.Name = "gunaLabel6";
+            this.gunaLabel6.Size = new System.Drawing.Size(147, 23);
+            this.gunaLabel6.TabIndex = 19;
+            this.gunaLabel6.Text = "Благодарности.\r\n\r\n\r\n\r\n";
+            // 
+            // gunaLabel4
+            // 
+            this.gunaLabel4.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.gunaLabel4.Location = new System.Drawing.Point(12, 30);
+            this.gunaLabel4.Name = "gunaLabel4";
+            this.gunaLabel4.Size = new System.Drawing.Size(543, 79);
+            this.gunaLabel4.TabIndex = 18;
+            this.gunaLabel4.Text = resources.GetString("gunaLabel4.Text");
+            // 
+            // AboutBlog
+            // 
+            this.AboutBlog.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AboutBlog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
+            this.AboutBlog.Location = new System.Drawing.Point(10, 4);
+            this.AboutBlog.Name = "AboutBlog";
+            this.AboutBlog.Size = new System.Drawing.Size(425, 25);
+            this.AboutBlog.TabIndex = 17;
+            this.AboutBlog.Text = "О программе.\r\n\r\n";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
@@ -610,6 +675,7 @@ namespace DesktopCopy1.Views
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(764, 506);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.gunaButton3);
             this.Controls.Add(this.gunaButton2);
@@ -635,6 +701,7 @@ namespace DesktopCopy1.Views
             this.Header.ResumeLayout(false);
             this.Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -655,13 +722,13 @@ namespace DesktopCopy1.Views
         private Guna.UI.WinForms.GunaCheckBox CheckPDF;
         private Guna.UI.WinForms.GunaCheckBox CheckArchive;
         private Guna.UI.WinForms.GunaCheckBox CheckTextDoc;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox11;
-        private Guna.UI.WinForms.GunaCheckBox CheckOtherDir;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox12;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox15;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox16;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox14;
-        private Guna.UI.WinForms.GunaCheckBox gunaCheckBox13;
+        private Guna.UI.WinForms.GunaCheckBox Template2;
+        private Guna.UI.WinForms.GunaCheckBox Template1;
+        private Guna.UI.WinForms.GunaCheckBox Template3;
+        private Guna.UI.WinForms.GunaCheckBox Template6;
+        private Guna.UI.WinForms.GunaCheckBox Template7;
+        private Guna.UI.WinForms.GunaCheckBox Template5;
+        private Guna.UI.WinForms.GunaCheckBox Template4;
         private Guna.UI.WinForms.GunaCheckBox CheckMedia;
         private Guna.UI.WinForms.GunaCheckBox CheckImage;
         private Guna.UI.WinForms.GunaCheckBox CheckWord;
@@ -675,5 +742,10 @@ namespace DesktopCopy1.Views
         private Guna.UI.WinForms.GunaElipse FormElipseControl;
         private Guna.UI.WinForms.GunaDragControl DControlForm;
         private Guna.UI.WinForms.GunaDragControl DControlHead;
+        private Panel panel1;
+        private Guna.UI.WinForms.GunaLabel gunaLabel7;
+        private Guna.UI.WinForms.GunaLabel gunaLabel6;
+        private Guna.UI.WinForms.GunaLabel gunaLabel4;
+        private Guna.UI.WinForms.GunaLabel AboutBlog;
     }
 }

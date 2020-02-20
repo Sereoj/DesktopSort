@@ -50,8 +50,6 @@ namespace DesktopCopy1.Views
             this.ImageSettings = new Guna.UI.WinForms.GunaPictureBox();
             this.LinkSite = new Guna.UI.WinForms.GunaPictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.FormElipseControl = new Guna.UI.WinForms.GunaElipse(this.components);
             this.DControlForm = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
@@ -60,26 +58,28 @@ namespace DesktopCopy1.Views
             this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
             this.DControlHead = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.NotificationPanel = new Guna.UI.WinForms.GunaElipsePanel();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageDialog2)).BeginInit();
             this.contextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LinkSite)).BeginInit();
-            this.gunaPanel1.SuspendLayout();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
+            this.NotificationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ImageDialog1
             // 
             this.ImageDialog1.BackColor = System.Drawing.Color.Transparent;
             this.ImageDialog1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ImageDialog1.Image = ((System.Drawing.Image)(resources.GetObject("ImageDialog1.Image")));
+            this.ImageDialog1.Image = global::DesktopCopy1.Properties.Resources.folder_open;
             this.ImageDialog1.Location = new System.Drawing.Point(698, 143);
             this.ImageDialog1.Name = "ImageDialog1";
             this.ImageDialog1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.ImageDialog1.Size = new System.Drawing.Size(24, 27);
-            this.ImageDialog1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImageDialog1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImageDialog1.TabIndex = 11;
             this.ImageDialog1.TabStop = false;
             this.ImageDialog1.Click += new System.EventHandler(this.ImageDialog1_Click);
@@ -90,12 +90,12 @@ namespace DesktopCopy1.Views
             // 
             this.ImageDialog2.BackColor = System.Drawing.Color.Transparent;
             this.ImageDialog2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ImageDialog2.Image = ((System.Drawing.Image)(resources.GetObject("ImageDialog2.Image")));
+            this.ImageDialog2.Image = global::DesktopCopy1.Properties.Resources.folder_open;
             this.ImageDialog2.Location = new System.Drawing.Point(698, 194);
             this.ImageDialog2.Name = "ImageDialog2";
             this.ImageDialog2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.ImageDialog2.Size = new System.Drawing.Size(24, 27);
-            this.ImageDialog2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImageDialog2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImageDialog2.TabIndex = 12;
             this.ImageDialog2.TabStop = false;
             this.ImageDialog2.Click += new System.EventHandler(this.ImageDialog2_Click);
@@ -164,7 +164,8 @@ namespace DesktopCopy1.Views
             this.Edit1.Name = "Edit1";
             this.Edit1.PasswordChar = '\0';
             this.Edit1.Size = new System.Drawing.Size(651, 36);
-            this.Edit1.TabIndex = 15;
+            this.Edit1.TabIndex = 0;
+            this.Edit1.TabStop = false;
             this.Edit1.Text = "C:\\Users\\Sergey\\Documents";
             this.Edit1.TextOffsetX = 10;
             // 
@@ -181,7 +182,8 @@ namespace DesktopCopy1.Views
             this.Edit2.Name = "Edit2";
             this.Edit2.PasswordChar = '\0';
             this.Edit2.Size = new System.Drawing.Size(651, 36);
-            this.Edit2.TabIndex = 16;
+            this.Edit2.TabIndex = 1;
+            this.Edit2.TabStop = false;
             this.Edit2.Text = "C:\\Users\\Egorov\\Documents";
             this.Edit2.TextOffsetX = 10;
             // 
@@ -196,7 +198,7 @@ namespace DesktopCopy1.Views
             this.ButtonCut.FocusedColor = System.Drawing.Color.Empty;
             this.ButtonCut.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonCut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(231)))));
-            this.ButtonCut.Image = ((System.Drawing.Image)(resources.GetObject("ButtonCut.Image")));
+            this.ButtonCut.Image = global::DesktopCopy1.Properties.Resources.cut_out;
             this.ButtonCut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ButtonCut.ImageSize = new System.Drawing.Size(20, 20);
             this.ButtonCut.Location = new System.Drawing.Point(41, 272);
@@ -204,11 +206,11 @@ namespace DesktopCopy1.Views
             this.ButtonCut.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(61)))));
             this.ButtonCut.OnHoverBorderColor = System.Drawing.Color.Black;
             this.ButtonCut.OnHoverForeColor = System.Drawing.Color.White;
-            this.ButtonCut.OnHoverImage = null;
+            this.ButtonCut.OnHoverImage = global::DesktopCopy1.Properties.Resources.cut;
             this.ButtonCut.OnPressedColor = System.Drawing.Color.Black;
             this.ButtonCut.Radius = 10;
             this.ButtonCut.Size = new System.Drawing.Size(241, 43);
-            this.ButtonCut.TabIndex = 18;
+            this.ButtonCut.TabIndex = 0;
             this.ButtonCut.Text = "Переместить";
             this.ButtonCut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ButtonCut.Click += new System.EventHandler(this.ButtonCut_Click);
@@ -216,57 +218,42 @@ namespace DesktopCopy1.Views
             // ImageSettings
             // 
             this.ImageSettings.BackColor = System.Drawing.Color.Transparent;
-            this.ImageSettings.BaseColor = System.Drawing.Color.White;
+            this.ImageSettings.BaseColor = System.Drawing.Color.Transparent;
             this.ImageSettings.Image = ((System.Drawing.Image)(resources.GetObject("ImageSettings.Image")));
-            this.ImageSettings.Location = new System.Drawing.Point(720, 423);
+            this.ImageSettings.Location = new System.Drawing.Point(722, 465);
             this.ImageSettings.Name = "ImageSettings";
             this.ImageSettings.Size = new System.Drawing.Size(30, 29);
+            this.ImageSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImageSettings.TabIndex = 22;
             this.ImageSettings.TabStop = false;
             this.ImageSettings.Click += new System.EventHandler(this.ImageSettings_Click);
+            this.ImageSettings.MouseEnter += new System.EventHandler(this.ImageSettings_MouseEnter);
+            this.ImageSettings.MouseLeave += new System.EventHandler(this.ImageSettings_MouseLeave);
             // 
             // LinkSite
             // 
             this.LinkSite.BackColor = System.Drawing.Color.Transparent;
             this.LinkSite.BaseColor = System.Drawing.Color.White;
             this.LinkSite.Image = ((System.Drawing.Image)(resources.GetObject("LinkSite.Image")));
-            this.LinkSite.Location = new System.Drawing.Point(596, 3);
+            this.LinkSite.Location = new System.Drawing.Point(687, 465);
             this.LinkSite.Name = "LinkSite";
             this.LinkSite.Size = new System.Drawing.Size(29, 29);
+            this.LinkSite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LinkSite.TabIndex = 23;
             this.LinkSite.TabStop = false;
             this.LinkSite.Click += new System.EventHandler(this.ImageHelper_Click);
+            this.LinkSite.MouseEnter += new System.EventHandler(this.LinkSite_MouseEnter);
+            this.LinkSite.MouseLeave += new System.EventHandler(this.LinkSite_MouseLeave);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(717, 26);
+            this.label3.Location = new System.Drawing.Point(670, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 24;
             this.label3.Text = "label1";
-            // 
-            // gunaPanel1
-            // 
-            this.gunaPanel1.Controls.Add(this.label1);
-            this.gunaPanel1.Controls.Add(this.LinkSite);
-            this.gunaPanel1.Controls.Add(this.label3);
-            this.gunaPanel1.Location = new System.Drawing.Point(0, 458);
-            this.gunaPanel1.Name = "gunaPanel1";
-            this.gunaPanel1.Size = new System.Drawing.Size(765, 48);
-            this.gunaPanel1.TabIndex = 25;
-            this.gunaPanel1.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
             // 
             // FormElipseControl
             // 
@@ -344,6 +331,31 @@ namespace DesktopCopy1.Views
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.WindowIcon_MouseDoubleClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(61, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 21);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Уведомление";
+            // 
+            // NotificationPanel
+            // 
+            this.NotificationPanel.BackColor = System.Drawing.Color.Transparent;
+            this.NotificationPanel.BaseColor = System.Drawing.Color.Transparent;
+            this.NotificationPanel.Controls.Add(this.label1);
+            this.NotificationPanel.Controls.Add(this.label3);
+            this.NotificationPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NotificationPanel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.NotificationPanel.Location = new System.Drawing.Point(12, 447);
+            this.NotificationPanel.Name = "NotificationPanel";
+            this.NotificationPanel.Radius = 10;
+            this.NotificationPanel.Size = new System.Drawing.Size(657, 47);
+            this.NotificationPanel.TabIndex = 0;
+            this.NotificationPanel.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,15 +364,17 @@ namespace DesktopCopy1.Views
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(764, 506);
+            this.Controls.Add(this.NotificationPanel);
+            this.Controls.Add(this.LinkSite);
             this.Controls.Add(this.ImageSettings);
             this.Controls.Add(this.Header);
-            this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.Edit2);
             this.Controls.Add(this.Edit1);
             this.Controls.Add(this.ImageDialog2);
             this.Controls.Add(this.ImageDialog1);
             this.Controls.Add(this.ButtonCut);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -371,13 +385,12 @@ namespace DesktopCopy1.Views
             this.contextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LinkSite)).EndInit();
-            this.gunaPanel1.ResumeLayout(false);
-            this.gunaPanel1.PerformLayout();
             this.Header.ResumeLayout(false);
             this.Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
+            this.NotificationPanel.ResumeLayout(false);
+            this.NotificationPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -396,8 +409,6 @@ namespace DesktopCopy1.Views
         private Guna.UI.WinForms.GunaPictureBox ImageSettings;
         private Guna.UI.WinForms.GunaPictureBox LinkSite;
         private Label label3;
-        private Guna.UI.WinForms.GunaPanel gunaPanel1;
-        private Label label1;
         private Guna.UI.WinForms.GunaElipse FormElipseControl;
         private Guna.UI.WinForms.GunaDragControl DControlForm;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
@@ -406,6 +417,8 @@ namespace DesktopCopy1.Views
         private Guna.UI.WinForms.GunaDragControl DControlHead;
         private Guna.UI.WinForms.GunaPictureBox gunaPictureBox1;
         private NotifyIcon notifyIcon1;
+        private Guna.UI.WinForms.GunaElipsePanel NotificationPanel;
+        private Label label1;
     }
 }
 

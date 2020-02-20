@@ -25,10 +25,17 @@ namespace DesktopCopy1.Views
         event EventHandler CheckBProject;
         event EventHandler CheckBTextDoc;
         event EventHandler CheckBImages;
-        event EventHandler CheckBOtherDir;
         event EventHandler CheckBPDF;
         event EventHandler CheckBMedia;
         event EventHandler CheckBArchive;
+
+        event EventHandler TemplateB1;
+        event EventHandler TemplateB2;
+        event EventHandler TemplateB3;
+        event EventHandler TemplateB4;
+        event EventHandler TemplateB5;
+        event EventHandler TemplateB6;
+        event EventHandler TemplateB7;
 
         event EventHandler ButtonSave;
         event EventHandler ButtonUpdate;
@@ -38,6 +45,7 @@ namespace DesktopCopy1.Views
         void LoadFromFile(string filePath);
         void SaveToFile(string filePath);
         void LoadCheckPoint();
+       // void ShowPanel(string panel);
 
         Settings GetSettings();
     }
@@ -54,6 +62,15 @@ namespace DesktopCopy1.Views
             InitializeComponent();
             Header.BackColor = Color.FromArgb(24, 0, 0, 0);
 
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams param = base.CreateParams;
+                param.ClassStyle |= 0x00020000;
+                return param;
+            }
         }
 
         /// <summary>
@@ -141,7 +158,13 @@ namespace DesktopCopy1.Views
         public event EventHandler CheckBPDF;
         public event EventHandler CheckBMedia;
         public event EventHandler CheckBArchive;
-
+        public event EventHandler TemplateB1;
+        public event EventHandler TemplateB2;
+        public event EventHandler TemplateB3;
+        public event EventHandler TemplateB4;
+        public event EventHandler TemplateB5;
+        public event EventHandler TemplateB6;
+        public event EventHandler TemplateB7;
         #endregion
 
         #region Functions
@@ -206,21 +229,7 @@ namespace DesktopCopy1.Views
                 }
         }
 
-        public void ShowPanel(string panel)
-        {
-            switch (panel)
-            {
-                case "main":
-                    break;
-                case "addition":
-                    break;
-                case "about":
-                    break;;
-                    default:
-                        break;
-                        
-            }
-        }
+
 
         #endregion
 
@@ -271,10 +280,41 @@ namespace DesktopCopy1.Views
             CheckBExcel?.Invoke(this, EventArgs.Empty);
         }
 
-        private void CheckOtherDir_CheckedChanged(object sender, EventArgs e)
+        private void Template4_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBOtherDir?.Invoke(this, EventArgs.Empty);
+            TemplateB4?.Invoke(this, EventArgs.Empty);
         }
+
+        private void Template2_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB2?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Template3_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB3?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Template1_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB1?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Template5_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB5?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Template6_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB6?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void Template7_CheckedChanged(object sender, EventArgs e)
+        {
+            TemplateB7?.Invoke(this, EventArgs.Empty);
+        }
+
 
 
 
@@ -284,6 +324,22 @@ namespace DesktopCopy1.Views
         {
             //BtnChanger.Enabled = true;
         }
+
+        private void gunaButton1_Click(object sender, EventArgs e)
+        {
+          //  ShowPanel("main");
+        }
+
+        private void gunaButton2_Click(object sender, EventArgs e)
+        {
+           // ShowPanel("addition");
+        }
+
+        private void gunaButton3_Click(object sender, EventArgs e)
+        {
+           // ShowPanel("about");
+        }
+
 
     }
 }

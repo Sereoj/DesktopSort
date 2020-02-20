@@ -43,23 +43,21 @@ namespace DesktopCopy1.Views
             Starter();
 
             Text = $"Desktop Sort";
-            gunaPanel1.BackColor = Color.FromArgb(100, 0, 0, 0);
+            NotificationPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
             Header.BackColor = Color.FromArgb(24, 0, 0, 0);
             
             //DublicateNameForm.Text = Text;
         }
 
-
-
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams param = base.CreateParams;
-        //        param.ClassStyle |= 0x00020000;
-        //        return param;
-        //    }
-        //}
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams param = base.CreateParams;
+                param.ClassStyle |= 0x00020000;
+                return param;
+            }
+        }
 
         public new void Show()
         {
@@ -111,6 +109,11 @@ namespace DesktopCopy1.Views
         private void PanelClose_Click(object sender, EventArgs e)
         {
             //panel1.Visible = false;
+        }
+
+        public void Message(string text, string icon)
+        {
+            
         }
 
         #endregion
@@ -168,10 +171,7 @@ namespace DesktopCopy1.Views
 
         private void ButtonCut_Click(object sender, EventArgs e)
         {
-
             ButtonCutClick?.Invoke(this, EventArgs.Empty);
-            MessageBox.Show("ЕУеы");
-            new MessageService().Message("TESTs");
         }
 
         #endregion
@@ -198,17 +198,6 @@ namespace DesktopCopy1.Views
 
         private void ImageHelper_Click(object sender, EventArgs e)
         {
-            //if (panel1.Visible)
-            //{
-            //    panel1.Location = new Point(362, 34);
-            //    panel1.Visible = false;
-            //}
-            //else
-            //{
-            //    panel1.Location = new Point(8, 34);
-            //    panel1.Visible = true;
-            //}
-
             ImageHelperClick?.Invoke(this, EventArgs.Empty);
         }
 
@@ -223,34 +212,43 @@ namespace DesktopCopy1.Views
 
         private void ImageDialog1_MouseEnter(object sender, EventArgs e)
         {
-            ImageDialog1.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+            ImageDialog1.Image = Properties.Resources.folder_close;
         }
 
         private void ImageDialog1_MouseLeave(object sender, EventArgs e)
         {
-            ImageDialog1.BackColor = ColorTranslator.FromHtml(ВНЕ);
+            ImageDialog1.Image = Properties.Resources.folder_open;
         }
 
         private void ImageDialog2_MouseEnter(object sender, EventArgs e)
         {
-            ImageDialog2.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+            ImageDialog2.Image = Properties.Resources.folder_close;
         }
 
         private void ImageDialog2_MouseLeave(object sender, EventArgs e)
         {
-            ImageDialog2.BackColor = ColorTranslator.FromHtml(ВНЕ);
-        }
-
-        private void ImageSettings_MouseEnter(object sender, EventArgs e)
-        {
-            ImageSettings.BackColor = ColorTranslator.FromHtml(НАВЕДЕНИЕ);
+            ImageDialog2.Image = Properties.Resources.folder_open;
         }
 
         private void ImageSettings_MouseLeave(object sender, EventArgs e)
         {
-            ImageSettings.BackColor = ColorTranslator.FromHtml(ВНЕ);
+            ImageSettings.Image = Properties.Resources.settings;
         }
 
+        private void ImageSettings_MouseEnter(object sender, EventArgs e)
+        {
+            ImageSettings.Image = Properties.Resources.settings1;
+        }
+
+        private void LinkSite_MouseEnter(object sender, EventArgs e)
+        {
+            LinkSite.Image = Properties.Resources.info_clear;
+        }
+
+        private void LinkSite_MouseLeave(object sender, EventArgs e)
+        {
+            LinkSite.Image = Properties.Resources.info1_clear;
+        }
         #endregion
 
         #region Custom ToolStrip
@@ -264,19 +262,6 @@ namespace DesktopCopy1.Views
 
         private void AboutToolStrip_Click(object sender, EventArgs e)
         {
-            //HeadText.Text = "О проекте";
-            //label5.Text = "Для того, чтобы здесь был текст - придумайте его.";
-
-            //if (panel1.Visible)
-            //{
-            //    panel1.Location = new Point(362, 34);
-            //    panel1.Visible = false;
-            //}
-            //else
-            //{
-            //    panel1.Location = new Point(8, 34);
-            //    panel1.Visible = true;
-            //}
         }
 
         private void CloseToolStrip_Click(object sender, EventArgs e)
@@ -300,11 +285,13 @@ namespace DesktopCopy1.Views
 
 
 
+
+
+
+
+
         #endregion
 
-        private void gunaButton3_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -85,7 +85,19 @@ namespace DesktopCopy1.Models
             Settings.Setting.Add(new Setting {ID = "CheckPDF", IsChecked = false, Catalog = "PDF", Extension = ""});
             Settings.Setting.Add(new Setting {ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = ""});
             Settings.Setting.Add(new Setting
-                {ID = "CheckOtherDir", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template1", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template2", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template3", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template4", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template5", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template6", IsChecked = false, Catalog = "Other", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template7", IsChecked = false, Catalog = "Other", Extension = ""});
             Save(Settings, "data.xml");
         }
 

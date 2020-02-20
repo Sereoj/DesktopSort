@@ -37,10 +37,13 @@ namespace DesktopCopy1.Models
         /// </summary>
         /// <param name="text">Тестовое сообщение</param>
         /// <param name="isUpdate">Параметр обновления</param>
-        public void Message(string text, bool isUpdate)
+        public string Message(string text, bool isUpdate)
         {
-            if (!isUpdate) return;
-            MessageBox.Show("Пожалуйста обновите программу.");
+            return text;
         }
+
+
+
+
     }
 }

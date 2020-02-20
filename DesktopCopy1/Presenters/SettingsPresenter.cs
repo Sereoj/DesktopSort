@@ -45,12 +45,21 @@ namespace DesktopCopy1.Presenters
             view.CheckBExcel += view_CheckBExcel;
             view.CheckBImages += view_CheckBImages;
             view.CheckBMedia += view_CheckBMedia;
-            view.CheckBOtherDir += view_CheckBOtherDir;
             view.CheckBPDF += view_CheckBPDF;
             view.CheckBProject += view_CheckBProject;
             view.CheckBTextDoc += view_CheckBTextDoc;
             view.CheckBWord += view_CheckBWord;
+
+            view.TemplateB1 += view_TemplateB1;
+            view.TemplateB2 += View_TemplateB2;
+            view.TemplateB3 += View_TemplateB3;
+            view.TemplateB4 += View_TemplateB4;
+            view.TemplateB5 += View_TemplateB5;
+            view.TemplateB6 += View_TemplateB6;
+            view.TemplateB7 += View_TemplateB7;
         }
+
+
 
         private void View_ButtonChanger(object sender, EventArgs e)
         {
@@ -100,9 +109,9 @@ namespace DesktopCopy1.Presenters
             SetText(s.Catalog, s.Extension);
         }
 
-        private void view_CheckBOtherDir(object sender, EventArgs e)
+        private void view_TemplateB1(object sender, EventArgs e)
         {
-            var s = Settings.Setting.Find(x => x.ID.Contains("CheckOtherDir"));
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template1"));
             SetText(s.Catalog, s.Extension);
         }
 
@@ -133,6 +142,42 @@ namespace DesktopCopy1.Presenters
         private void view_CheckBAccess(object sender, EventArgs e)
         {
             var s = Settings.Setting.Find(x => x.ID.Contains("CheckAccess"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB7(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template7"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB6(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template6"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB5(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template5"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB4(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template4"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB3(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template3"));
+            SetText(s.Catalog, s.Extension);
+        }
+
+        private void View_TemplateB2(object sender, EventArgs e)
+        {
+            var s = Settings.Setting.Find(x => x.ID.Contains("Template2"));
             SetText(s.Catalog, s.Extension);
         }
 

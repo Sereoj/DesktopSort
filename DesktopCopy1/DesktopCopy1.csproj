@@ -133,6 +133,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Animation.cs" />
     <Compile Include="Models\BusinessLogic.cs" />
     <Compile Include="Common\ApplicationController.cs" />
     <Compile Include="Common\BasePresener.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Common\IContainer.cs" />
     <Compile Include="Common\IPresenter.cs" />
     <Compile Include="Common\IView.cs" />
+    <Compile Include="Models\CustomControl.cs" />
     <Compile Include="Models\Updater.cs" />
     <Compile Include="Models\Version.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -195,6 +197,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="gui_icon.ico" />
+    <None Include="Resources\cut.new.png" />
+    <None Include="Resources\folder_open.png" />
+    <None Include="Resources\folder_close.png" />
+    <None Include="Resources\cut.png" />
+    <None Include="Resources\cut out.png" />
+    <None Include="Resources\settings2_clear.png" />
+    <None Include="Resources\setting_clear.png" />
+    <None Include="Resources\info1_clear.png" />
+    <None Include="Resources\info_clear.png" />
+    <None Include="Resources\Image1.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

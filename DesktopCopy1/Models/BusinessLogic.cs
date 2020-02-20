@@ -63,7 +63,7 @@ namespace DesktopCopy1.Models
 
         public void Search(string type, string pattern, bool moveMethod)
         {
-            foreach (var tPath in Directory.GetFiles(DEFAULT_PATH + "\\", "*.*".ToLower(), SearchOption.TopDirectoryOnly))
+            foreach (var tPath in Directory.GetFiles(DEFAULT_PATH, "*.*".ToLower(), SearchOption.TopDirectoryOnly))
                 try
                 {
                     var ext = Path.GetExtension(tPath);

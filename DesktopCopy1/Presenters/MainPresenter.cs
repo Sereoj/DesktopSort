@@ -32,12 +32,22 @@ namespace DesktopCopy1.Presenters
             _form2.LoadFromFile("data.xml");
         }
 
+        private void ControllerMessage(string message, string type, string icon = "")
+        {
+            if (type != null)
+            {
+
+            }
+        }
+
+
         private void ControllerButtons(bool isMove)
         {
             try
             {
-                _logic.DEFAULT_PATH = View.Editor1 + @"\";
-                _logic.DIR_OUTPUT = View.Editor2 + @"\";
+                _logic.DEFAULT_PATH = string.Concat(View.Editor1, "\\");
+                _logic.DIR_OUTPUT = string.Concat(View.Editor2, "\\");
+                new MessageService().Message( _logic.DIR_OUTPUT);
                 _form2.LoadFromFile("data.xml");
                 for (var x = 0; x < _form2.GetSettings().Setting.Count; x++)
                     if (_form2.GetSettings().Setting[x].IsChecked)
