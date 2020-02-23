@@ -30,9 +30,6 @@ namespace DesktopCopy1.Views
 
     public partial class MainForm : Form, IMainForm
     {
-        private const string НАВЕДЕНИЕ = "#494954"; // 000C1C
-        private const string ВНЕ = "#444446"; // 2D3276
-
         private readonly ApplicationContext _context;
 
 
@@ -70,7 +67,7 @@ namespace DesktopCopy1.Views
             var file = Application.StartupPath + @"\Readme";
             if (!File.Exists(file))
             {
-                File.AppendAllText(file, "Для того, чтобы здесь был текст - придумайте его.");
+                File.AppendAllText(file, "Прочитайте информацию на https://github.com/Sereoj/DesktopCopy1");
                 File.SetAttributes(file, FileAttributes.ReadOnly);
             }
         }
@@ -104,19 +101,8 @@ namespace DesktopCopy1.Views
             }
         }
 
-        #region Panels
 
-        private void PanelClose_Click(object sender, EventArgs e)
-        {
-            //panel1.Visible = false;
-        }
 
-        public void Message(string text, string icon)
-        {
-            
-        }
-
-        #endregion
 
         #region Links
 

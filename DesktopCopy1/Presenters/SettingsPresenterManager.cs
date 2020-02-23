@@ -1,42 +1,32 @@
-﻿using System;
-using DesktopCopy1.Common;
-using DesktopCopy1.Models;
+﻿using DesktopCopy1.Common;
 using DesktopCopy1.Views;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DesktopCopy1.Models;
 
 namespace DesktopCopy1.Presenters
 {
-    public interface ISettingsPresenter
+    public class SettingsPresenterManager
     {
-        void Save();
-    }
+        public Settings Settings { get; set; }
 
-    //public class ChangeUsernamePresenter : BasePresener<IChangeUsernameview, User>
-    internal class SettingsPresenter : BasePresener<IForm2, Settings>
-    {
-        /// <summary>
-        ///     Создание переменной.
-        /// </summary>
-        public Settings Settings;
         public string tmpCatalog { get; private set; }
         public string tmpFormat { get; private set; }
 
-        /// <summary>
-        ///     Конструктор, принимающий параметры интерфейса
-        /// </summary>
-        /// <param name="controller">Интерфейс контроллера</param>
-        /// <param name="view">Интерфейс формы2</param>
-        public SettingsPresenter(IApplicationController controller, IForm2 view) : base(controller, view)
+        private ISettingsBasic _view;
+        public SettingsPresenterManager(ISettingsBasic view)
         {
-            //Загрузка с файла
+            _view = view;
 
             view.LoadFromFile("data.xml");
 
             // Запись в переменную
             if (view.GetSettings() != null) Settings = view.GetSettings();
 
-            //Присвоение функции к событию.
             view.ButtonSave += viewOnButtonSave;
-            view.ButtonUpdate += view_ButtonUpdate;
             view.ButtonDefault += view_ButtonDefault;
             view.ButtonChanger += View_ButtonChanger;
 
@@ -59,18 +49,16 @@ namespace DesktopCopy1.Presenters
             view.TemplateB7 += View_TemplateB7;
         }
 
-
-
-        private void View_ButtonChanger(object sender, EventArgs e)
+             private void View_ButtonChanger(object sender, EventArgs e)
         {
             var s = Settings.Setting.Find(x => x != null && x.Catalog == tmpCatalog);
             if (s != null)
             {
-                s.Catalog = View.TextDirectory1;
-                s.Extension = View.TextFormats1;
+                s.Catalog = _view.TextDirectory1;
+                s.Extension = _view.TextFormats1;
             }
 
-            View.SaveToFile("data.xml");
+            _view.SaveToFile("data.xml");
         }
 
         /// <summary>
@@ -81,8 +69,8 @@ namespace DesktopCopy1.Presenters
         private void view_ButtonDefault(object sender, EventArgs e)
         {
             Settings.Default();
-            View.LoadFromFile("data.xml");
-            View.LoadCheckPoint();
+            _view.LoadFromFile("data.xml");
+            _view.LoadCheckPoint();
         }
 
         private void view_CheckBWord(object sender, EventArgs e)
@@ -181,14 +169,9 @@ namespace DesktopCopy1.Presenters
             SetText(s.Catalog, s.Extension);
         }
 
-        private void view_ButtonUpdate(object sender, EventArgs e)
-        {
-            new MessageService().Message(View.GetSettings().Setting.Count.ToString());
-        }
-
         private void viewOnButtonSave(object sender, EventArgs e)
         {
-            View.SaveToFile("data.xml");
+            _view.SaveToFile("data.xml");
         }
 
         /// <summary>
@@ -198,20 +181,19 @@ namespace DesktopCopy1.Presenters
         /// <param name="text2">TextFormat</param>
         public void SetText(string text, string text2)
         {
-            View.TextDirectory1 = text;
-            View.TextFormats1 = text2;
+            _view.TextDirectory1 = text;
+            _view.TextFormats1 = text2;
 
             tmpCatalog = text;
             tmpFormat = text2;
         }
 
-        /// <summary>
-        ///     Показать форму2.
-        /// </summary>
-        /// <param name="argument"></param>
-        public override void Run(Settings argument)
+        public void Init()
         {
-            View.Show();
+            _view.Show();
+            
         }
+
+
     }
 }

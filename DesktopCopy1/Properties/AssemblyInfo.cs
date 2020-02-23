@@ -4,13 +4,13 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Быстрая сортировка документов")]
-[assembly: AssemblyDescription("Быстрая сортировка документов")]
+[assembly: AssemblyTitle("DesktopSort - Cортировка файлов")]
+[assembly: AssemblyDescription("DesktopSort сортирует по определенным папкам")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("IS-1-18")]
-[assembly: AssemblyProduct("DesktopCopy")]
-[assembly: AssemblyCopyright("2World ©  2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("2World")]
+[assembly: AssemblyProduct("DesktopSort")]
+[assembly: AssemblyCopyright("Copyright © 2020, 2World")]
+[assembly: AssemblyTrademark("A product of Sereoj")]
 [assembly: AssemblyCulture("")]
 
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
