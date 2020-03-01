@@ -1,13 +1,13 @@
-# DesktopCopy[v.0.0.3] | Design Edition
+# Desktop Sort [v.0.0.6] | Design Edition
 
-**DesktopCopy** - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то **DesktopCopy** программа именно для вас!
+**Desktop Sort** - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то **Desktop Sort** программа именно для вас!
 
 
 ------------
 
 ### Красивый дизайн
-![DesktopCopy - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Main.png?raw=true)
-![DesktopCopy - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Settings.png?raw=true)
+![Desktop Sort - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Main.png?raw=true)
+![Desktop Sort - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Settings.png?raw=true)
 
 
 ### Не засоряет компьютер
