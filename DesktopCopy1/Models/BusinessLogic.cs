@@ -35,16 +35,13 @@ namespace DesktopCopy1.Models
         /// <param name="pattern">Расширения файлов</param>
         /// <param name="moveMethod">Перенос файлов - true, копирование - false</param>
         void Search(string type, string pattern, bool moveMethod);
-
     }
 
     public class BusinessLogic : IBusinessLogic
     {
-
         public void ExDir(string path)
         {
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            
         }
 
         public void DirCreate(List<string> nameDirs)

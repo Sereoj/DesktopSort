@@ -117,7 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="gunaLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="gunaLabel3.Text" xml:space="preserve">
+    <value>Desktop Sort - Это мгновенная сортировка файлов по папкам. Если придя за свое рабочее место вы обнаружите, что весь рабочий стол забит разными файлами, а ваш внутренний перфекционизм желает от этого всего избавиться, то Desktop Sort программа именно для вас!
+</value>
+  </data>
 </root>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
@@ -46,21 +44,9 @@ namespace DesktopCopy1.Views
     }
 
 
-    public partial  class SettingsBasic : UserControl, ISettingsBasic
+    public partial class SettingsBasic : UserControl, ISettingsBasic
     {
         private static SettingsBasic _instance;
-
-        public Settings Settings { get; set; }
-        public static SettingsBasic Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new SettingsBasic();
-                return _instance;
-  
-            }
-        }
 
         public SettingsBasic()
         {
@@ -69,7 +55,19 @@ namespace DesktopCopy1.Views
             presenter.Init();
         }
 
-       public string TextDirectory1
+        public Settings Settings { get; set; }
+
+        public static SettingsBasic Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new SettingsBasic();
+                return _instance;
+            }
+        }
+
+        public string TextDirectory1
         {
             get => TextDirectory.Text;
             set => TextDirectory.Text = value;
@@ -88,8 +86,9 @@ namespace DesktopCopy1.Views
 
         private void Saver_Click(object sender, EventArgs e)
         {
-            ButtonChanger?.Invoke(this,EventArgs.Empty);
+            ButtonChanger?.Invoke(this, EventArgs.Empty);
             ButtonSave?.Invoke(this, EventArgs.Empty);
+            ((Form) TopLevelControl)?.Close();
         }
 
 
@@ -97,8 +96,6 @@ namespace DesktopCopy1.Views
         {
             ButtonDefault?.Invoke(this, EventArgs.Empty);
         }
-
-
 
         #endregion
 
@@ -109,7 +106,6 @@ namespace DesktopCopy1.Views
         /// </summary>
         public event EventHandler ButtonSave;
 
-        public event EventHandler ButtonUpdate;
         public event EventHandler ButtonDefault;
         public event EventHandler ButtonChanger;
 
@@ -130,6 +126,7 @@ namespace DesktopCopy1.Views
         public event EventHandler TemplateB5;
         public event EventHandler TemplateB6;
         public event EventHandler TemplateB7;
+
         #endregion
 
         #region Functions
@@ -165,10 +162,10 @@ namespace DesktopCopy1.Views
         public void LoadCheckPoint()
         {
             foreach (Control control in Controls)
-                if (control as Guna.UI.WinForms.GunaCheckBox != null)
+                if (control as GunaCheckBox != null)
                     for (var i = 0; i < Settings.Setting.Count; i++)
                         if (control.Name == Settings.Setting[i].ID)
-                            (control as Guna.UI.WinForms.GunaCheckBox).Checked = Settings.Setting[i].IsChecked;
+                            (control as GunaCheckBox).Checked = Settings.Setting[i].IsChecked;
         }
 
         /// <summary>
@@ -178,10 +175,10 @@ namespace DesktopCopy1.Views
         {
             // UpdateList();
             foreach (Control control in Controls)
-                if (control as Guna.UI.WinForms.GunaCheckBox != null)
+                if (control as GunaCheckBox != null)
                 {
                     // ReSharper disable once PossibleNullReferenceException
-                    if ((control as Guna.UI.WinForms.GunaCheckBox).Checked)
+                    if ((control as GunaCheckBox).Checked)
                     {
                         var setting = Settings.Setting.Find(X => X.ID == control.Name);
                         if (setting != null) setting.IsChecked = true;
@@ -194,98 +191,221 @@ namespace DesktopCopy1.Views
                 }
         }
 
-
-
         #endregion
 
         #region CheckBoxS
 
         private void CheckWord_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBWord?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBWord?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckMedia_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBMedia?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBMedia?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckPDF_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBPDF?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBPDF?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckArchive_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBArchive?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBArchive?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckTextDoc_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBTextDoc?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBTextDoc?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckImage_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBImages?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBImages?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckProject_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBProject?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBProject?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckAccess_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBAccess?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBAccess?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void CheckExcel_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBExcel?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                CheckBExcel?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template4_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB4?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB4?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template2_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB2?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB2?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template3_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB3?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB3?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template1_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB1?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB1?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template5_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB5?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB5?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template6_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB6?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB6?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         private void Template7_CheckedChanged(object sender, EventArgs e)
         {
-            TemplateB7?.Invoke(this, EventArgs.Empty);
+            if (((GunaCheckBox) sender).Checked)
+            {
+                TemplateB7?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                TextDirectory1 = "";
+                TextFormats1 = "";
+            }
         }
 
         public void Close()
         {
         }
-
-
-
 
         #endregion
     }

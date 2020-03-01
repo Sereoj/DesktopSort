@@ -13,6 +13,18 @@ namespace DesktopCopy1.Models
 
     public class MessageService : IMessageService
     {
+        public const string FILE_NOT_FOUND = "Файл не найден";
+        public const string UPDATE_TEXT = "Доступно обновление";
+        public const string UPDATE_TEXT1 = "Обновлений не обнаружено";
+        public const string ERROR_TEXT = "Неизвестная ошибка";
+        public const string WELLCOME_TEXT = "Добро пожаловать";
+        public const string SUCCESS = "Успешно";
+        public const string PARAMS_FALSE = "Не заданы параметры";
+
+
+        public string Context { get; set; }
+
+
         /// <summary>
         ///     Обычное сообщение
         /// </summary>
@@ -31,19 +43,5 @@ namespace DesktopCopy1.Models
         {
             MessageBox.Show(text, text1);
         }
-
-        /// <summary>
-        ///     Сообщение об обновлении
-        /// </summary>
-        /// <param name="text">Тестовое сообщение</param>
-        /// <param name="isUpdate">Параметр обновления</param>
-        public string Message(string text, bool isUpdate)
-        {
-            return text;
-        }
-
-
-
-
     }
 }

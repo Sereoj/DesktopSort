@@ -51,15 +51,14 @@ namespace DesktopCopy1.Models
         /// </summary>
         public bool Logger { get; set; }
 
+        public bool Background { get; set; }
+
         public static void Default()
         {
             var Settings = new Settings
             {
-                FileName = "data.xml",
                 Setting = new List<Setting>(),
-                Alternative = new List<Alternative>(),
-                Logger = false,
-                Update = false
+                Alternative = new List<Alternative>()
             };
 
             Settings.Setting.Add(new Setting
@@ -79,25 +78,35 @@ namespace DesktopCopy1.Models
             Settings.Setting.Add(new Setting
                 {ID = "CheckTextDoc", IsChecked = true, Catalog = "Text", Extension = "*.txt,*.log"});
             Settings.Setting.Add(new Setting
-                {ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = ""});
+                {ID = "CheckProject", IsChecked = false, Catalog = "Project", Extension = "*.mpp"});
             Settings.Setting.Add(new Setting
-                {ID = "CheckArchive", IsChecked = false, Catalog = "Archive", Extension = ""});
-            Settings.Setting.Add(new Setting {ID = "CheckPDF", IsChecked = false, Catalog = "PDF", Extension = ""});
-            Settings.Setting.Add(new Setting {ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = ""});
+                {ID = "CheckArchive", IsChecked = false, Catalog = "Archive", Extension = "*.rar,*.zip,*.7z"});
             Settings.Setting.Add(new Setting
-                {ID = "Template1", IsChecked = false, Catalog = "Other", Extension = ""});
+            {
+                ID = "CheckPDF", IsChecked = false, Catalog = "eBook", Extension = "*.fb2,*.epub,*.mobi,*.pdf,*.djvu"
+            });
             Settings.Setting.Add(new Setting
-                {ID = "Template2", IsChecked = false, Catalog = "Other", Extension = ""});
+            {
+                ID = "CheckMedia", IsChecked = false, Catalog = "Media", Extension = "*.avi,*.mp4,*.mpeg,*.wmv,*.mp3"
+            });
             Settings.Setting.Add(new Setting
-                {ID = "Template3", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template1", IsChecked = false, Catalog = "Other\\Template1", Extension = ""});
             Settings.Setting.Add(new Setting
-                {ID = "Template4", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template2", IsChecked = false, Catalog = "Other\\Template2", Extension = ""});
             Settings.Setting.Add(new Setting
-                {ID = "Template5", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template3", IsChecked = false, Catalog = "Other\\Template3", Extension = ""});
             Settings.Setting.Add(new Setting
-                {ID = "Template6", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template4", IsChecked = false, Catalog = "Other\\Template4", Extension = ""});
             Settings.Setting.Add(new Setting
-                {ID = "Template7", IsChecked = false, Catalog = "Other", Extension = ""});
+                {ID = "Template5", IsChecked = false, Catalog = "Other\\Template5", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template6", IsChecked = false, Catalog = "Other\\Template6", Extension = ""});
+            Settings.Setting.Add(new Setting
+                {ID = "Template7", IsChecked = false, Catalog = "Other\\Template7", Extension = ""});
+            Settings.Logger = true;
+            Settings.Background = false;
+            Settings.Update = false;
+
             Save(Settings, "data.xml");
         }
 

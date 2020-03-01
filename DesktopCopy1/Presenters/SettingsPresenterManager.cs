@@ -1,22 +1,13 @@
-﻿using DesktopCopy1.Common;
-using DesktopCopy1.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using DesktopCopy1.Models;
+using DesktopCopy1.Views;
 
 namespace DesktopCopy1.Presenters
 {
     public class SettingsPresenterManager
     {
-        public Settings Settings { get; set; }
+        private readonly ISettingsBasic _view;
 
-        public string tmpCatalog { get; private set; }
-        public string tmpFormat { get; private set; }
-
-        private ISettingsBasic _view;
         public SettingsPresenterManager(ISettingsBasic view)
         {
             _view = view;
@@ -49,7 +40,12 @@ namespace DesktopCopy1.Presenters
             view.TemplateB7 += View_TemplateB7;
         }
 
-             private void View_ButtonChanger(object sender, EventArgs e)
+        public Settings Settings { get; set; }
+
+        public string tmpCatalog { get; private set; }
+        public string tmpFormat { get; private set; }
+
+        private void View_ButtonChanger(object sender, EventArgs e)
         {
             var s = Settings.Setting.Find(x => x != null && x.Catalog == tmpCatalog);
             if (s != null)
@@ -191,9 +187,6 @@ namespace DesktopCopy1.Presenters
         public void Init()
         {
             _view.Show();
-            
         }
-
-
     }
 }

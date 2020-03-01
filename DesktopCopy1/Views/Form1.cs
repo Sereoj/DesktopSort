@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
-using Version = DesktopCopy1.Models.Version;
+using DesktopCopy1.Properties;
 
 namespace DesktopCopy1.Views
 {
@@ -13,7 +13,7 @@ namespace DesktopCopy1.Views
         string Editor1 { get; }
         string Editor2 { get; }
 
-        string Label { get; set; }
+        void OnNotification(string text);
 
         /*
         Это интерфейс, Возможность Отправлять/Получать События и т.д              
@@ -24,7 +24,6 @@ namespace DesktopCopy1.Views
         event EventHandler ImageDialogClick;
         event EventHandler ImageDialogClick1;
         event EventHandler LinkSiteClick;
-
         event EventHandler ImageSettingsClick;
     }
 
@@ -39,27 +38,40 @@ namespace DesktopCopy1.Views
             InitializeComponent();
             Starter();
 
-            Text = $"Desktop Sort";
             NotificationPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
             Header.BackColor = Color.FromArgb(24, 0, 0, 0);
-            
-            //DublicateNameForm.Text = Text;
+            OnNotification($"{MessageService.WELLCOME_TEXT}! ");
+            new Updater();
         }
 
         protected override CreateParams CreateParams
         {
             get
             {
-                CreateParams param = base.CreateParams;
+                var param = base.CreateParams;
                 param.ClassStyle |= 0x00020000;
                 return param;
             }
         }
 
+
         public new void Show()
         {
             _context.MainForm = this;
             Application.Run(_context);
+        }
+
+        public void OnNotification(string text)
+        {
+            NotificationLabel.Text = text;
+            Util.Animate(NotificationPanel, Util.Effect.Slide, 150, 180);
+            timer1.Enabled = true;
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
         }
 
         public void ReadmeText()
@@ -75,12 +87,18 @@ namespace DesktopCopy1.Views
         public void Starter()
         {
             var commands = Environment.GetCommandLineArgs();
-
+            timer1.Enabled = true;
 
             if (commands.Length > 1)
             {
                 var args1 = commands[1].Substring(1);
                 var args2 = commands[2].Substring(1);
+                if (args1 == "dev")
+                {
+                    args1 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    args2 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                }
+
                 if (Directory.Exists(args1) && Directory.Exists(args2))
                 {
                     Edit1.Text = args1;
@@ -88,32 +106,44 @@ namespace DesktopCopy1.Views
                 }
                 else
                 {
-                    Label = "Неверные пути";
                     Edit1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 }
             }
             else
             {
-                ReadmeText();
+                //ReadmeText();
                 Edit1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
         }
-
-
 
 
         #region Links
 
         private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show($"Ой..\nКажется сайт -  временно недоступен!\nПопробуйте повторить позже.",
+            MessageBox.Show("Ой..\nКажется сайт -  временно недоступен!\nПопробуйте повторить позже.",
                 "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
         }
 
         #endregion
+
+        private void CheckOutputFiles_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckOutputFiles.Checked)
+                PanelHide.Visible = false;
+            else
+                PanelHide.Visible = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            NotificationLabel.Text = "";
+            Util.Animate(NotificationPanel, Util.Effect.Slide, 150, 180);
+            timer1.Enabled = false;
+        }
 
 
         #region Editors && events
@@ -123,12 +153,6 @@ namespace DesktopCopy1.Views
         public string Editor1 => Edit1.Text;
 
         public string Editor2 => Edit2.Text;
-
-        public string Label
-        {
-            get => label3.Text;
-            set => label3.Text = value;
-        }
 
         #endregion
 
@@ -198,43 +222,44 @@ namespace DesktopCopy1.Views
 
         private void ImageDialog1_MouseEnter(object sender, EventArgs e)
         {
-            ImageDialog1.Image = Properties.Resources.folder_close;
+            ImageDialog1.Image = Resources.folder_close;
         }
 
         private void ImageDialog1_MouseLeave(object sender, EventArgs e)
         {
-            ImageDialog1.Image = Properties.Resources.folder_open;
+            ImageDialog1.Image = Resources.folder_open;
         }
 
         private void ImageDialog2_MouseEnter(object sender, EventArgs e)
         {
-            ImageDialog2.Image = Properties.Resources.folder_close;
+            ImageDialog2.Image = Resources.folder_close;
         }
 
         private void ImageDialog2_MouseLeave(object sender, EventArgs e)
         {
-            ImageDialog2.Image = Properties.Resources.folder_open;
+            ImageDialog2.Image = Resources.folder_open;
         }
 
         private void ImageSettings_MouseLeave(object sender, EventArgs e)
         {
-            ImageSettings.Image = Properties.Resources.settings;
+            ImageSettings.Image = Resources.settings;
         }
 
         private void ImageSettings_MouseEnter(object sender, EventArgs e)
         {
-            ImageSettings.Image = Properties.Resources.settings1;
+            ImageSettings.Image = Resources.settings1;
         }
 
         private void LinkSite_MouseEnter(object sender, EventArgs e)
         {
-            LinkSite.Image = Properties.Resources.info_clear;
+            LinkSite.Image = Resources.info_clear;
         }
 
         private void LinkSite_MouseLeave(object sender, EventArgs e)
         {
-            LinkSite.Image = Properties.Resources.info1_clear;
+            LinkSite.Image = Resources.info1_clear;
         }
+
         #endregion
 
         #region Custom ToolStrip
@@ -248,6 +273,7 @@ namespace DesktopCopy1.Views
 
         private void AboutToolStrip_Click(object sender, EventArgs e)
         {
+            ImageHelperClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void CloseToolStrip_Click(object sender, EventArgs e)
@@ -269,15 +295,6 @@ namespace DesktopCopy1.Views
             }
         }
 
-
-
-
-
-
-
-
         #endregion
-
-
     }
 }

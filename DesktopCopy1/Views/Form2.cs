@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
-using Guna.UI.WinForms;
 
 namespace DesktopCopy1.Views
 {
@@ -13,21 +11,18 @@ namespace DesktopCopy1.Views
     /// </summary>
     public interface IForm2 : IView
     {
-     void Add(Control control);
-
+        void Add(Control control);
     }
 
     public partial class Form2 : Form, IForm2
     {
-
         public Form2(ApplicationContext context)
         {
             Context = context;
             InitializeComponent();
+
             Header.BackColor = Color.FromArgb(24, 0, 0, 0);
-
         }
-
 
 
         protected override CreateParams CreateParams
@@ -44,7 +39,8 @@ namespace DesktopCopy1.Views
         ///     Свойства, только получает
         /// </summary>
         public ApplicationContext Context { get; }
-        public Switcher Switcher { get;set; } = new Switcher();
+
+        public Switcher Switcher { get; set; } = new Switcher();
 
         /// <summary>
         ///     Отвественен за появление формы
@@ -56,22 +52,17 @@ namespace DesktopCopy1.Views
 
         public void Add(Control control)
         {
-            if(!Pages.Controls.Contains(control))
+            if (!Pages.Controls.Contains(control))
             {
                 Pages.Controls.Add(control);
                 control.Dock = DockStyle.Fill;
                 control.BringToFront();
-
-            }else{
+            }
+            else
+            {
                 control.BringToFront();
-
             }
         }
-
-
-
-
-
 
 
         private void gunaButton1_Click(object sender, EventArgs e)
@@ -81,6 +72,12 @@ namespace DesktopCopy1.Views
         }
 
         private void gunaButton2_Click(object sender, EventArgs e)
+        {
+            Switcher.Control = SettingsInfo.Instance;
+            Add(Switcher.Control);
+        }
+
+        private void gunaButton3_Click(object sender, EventArgs e)
         {
             Switcher.Control = SettingsAdvanced.Instance;
             Add(Switcher.Control);

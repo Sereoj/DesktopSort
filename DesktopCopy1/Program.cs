@@ -9,7 +9,6 @@ namespace DesktopCopy1
 {
     internal static class Program
     {
-
         [STAThread]
         private static void Main()
         {

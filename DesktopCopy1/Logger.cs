@@ -4,20 +4,21 @@ namespace DesktopCopy1
 {
     public interface ILogger
     {
-       void Print(string text);
-       bool IsLogger { get; set; }
+        bool IsLogger { get; set; }
+        void Print(string text);
     }
 
     internal class Logger : ILogger
     {
         protected string DefaultPath = "logger.txt";
-        public bool IsLogger { get; set; }
 
         public Logger(string message)
         {
             Print(message);
-            
         }
+
+        public bool IsLogger { get; set; }
+
         public void Print(string text)
         {
             if (!IsLogger) return;
@@ -25,8 +26,5 @@ namespace DesktopCopy1
             file.WriteLine(text);
             file.Close();
         }
-
-
-
     }
 }

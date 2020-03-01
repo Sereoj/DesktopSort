@@ -12,9 +12,14 @@ namespace DesktopCopy1.Presenters
         ///     Переменная глобальная
         /// </summary>
         private readonly ISettingsBasic _form2;
+
         private readonly IBusinessLogic _logic;
         private readonly IForm2 _sForm2;
-        public MainPresenter(IApplicationController controller, IBusinessLogic service, IMainForm view, ISettingsBasic form2, IForm2 sForm2) : base(controller, view)
+
+        private readonly Settings settings;
+
+        public MainPresenter(IApplicationController controller, IBusinessLogic service, IMainForm view,
+            ISettingsBasic form2, IForm2 sForm2) : base(controller, view)
         {
             _form2 = form2;
             _logic = service;
@@ -28,20 +33,13 @@ namespace DesktopCopy1.Presenters
             View.ImageSettingsClick += Add_ImageSettingsClick;
             View.ImageHelperClick += View_ImageHelperClick;
 
+            settings = _form2.GetSettings();
         }
 
         private void View_ImageHelperClick(object sender, EventArgs e)
         {
-            _sForm2.Add(SettingsAdvanced.Instance);
+            _sForm2.Add(SettingsInfo.Instance);
             _sForm2.Show();
-        }
-
-        private void ControllerMessage(string message, string type, string icon = "")
-        {
-            if (type != null)
-            {
-
-            }
         }
 
 
@@ -62,7 +60,6 @@ namespace DesktopCopy1.Presenters
             }
             catch (Exception exception)
             {
-                new MessageService().Message(exception.Message, "Error");
                 new Logger(exception.Message);
             }
         }
@@ -82,22 +79,18 @@ namespace DesktopCopy1.Presenters
 
         public void Add_ImageDialogClick(object sender, EventArgs e)
         {
-            View.Label = "Поле1 успешно заполнено";
         }
 
         public void Add_ImageDialogClick1(object sender, EventArgs e)
         {
-            View.Label = "Поле2 успешно заполнено";
         }
 
         public void Add_LinkSiteClick(object sender, EventArgs e)
         {
-            View.Label = "Здесь какое-то сообщение";
         }
 
         public void Add_ImageSettingsClick(object sender, EventArgs e)
         {
-            var settings = _form2.GetSettings();
             Controller.Run<SwitcherSettingsPresenter, Settings>(settings);
         }
     }

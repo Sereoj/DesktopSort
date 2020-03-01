@@ -1,18 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopCopy1.Common;
+using DesktopCopy1.Models;
+using DesktopCopy1.Presenters;
 
 namespace DesktopCopy1.Views
 {
-    public partial class SettingsAdvanced : UserControl
+    public interface ISettingsAdvanced : IView
+    {
+        Settings Settings { get; set; }
+        event EventHandler Logger;
+        event EventHandler RunAsUpdate;
+        event EventHandler Background;
+    }
+
+
+    public partial class SettingsAdvanced : UserControl, ISettingsAdvanced
     {
         private static SettingsAdvanced _instance;
+
+        public SettingsAdvanced()
+        {
+            InitializeComponent();
+            var presenter = new SettingsPresenterManager2(this);
+            presenter.Init();
+        }
 
         public static SettingsAdvanced Instance
         {
@@ -21,13 +33,22 @@ namespace DesktopCopy1.Views
                 if (_instance == null)
                     _instance = new SettingsAdvanced();
                 return _instance;
-  
             }
         }
 
-        public SettingsAdvanced()
+        public event EventHandler Logger;
+        public event EventHandler RunAsUpdate;
+        public event EventHandler Background;
+
+        public Settings Settings { get; set; }
+
+        public void Close()
         {
-            InitializeComponent();
+            throw new NotImplementedException();
+        }
+
+        private void ImageBackground(bool image)
+        {
         }
     }
 }

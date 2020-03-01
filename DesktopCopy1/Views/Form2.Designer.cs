@@ -34,7 +34,7 @@ namespace DesktopCopy1.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.Header = new Guna.UI.WinForms.GunaPanel();
-            this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
+            this.Logo = new Guna.UI.WinForms.GunaPictureBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.FormElipseControl = new Guna.UI.WinForms.GunaElipse(this.components);
@@ -44,14 +44,15 @@ namespace DesktopCopy1.Views
             this.Pages = new Guna.UI.WinForms.GunaPanel();
             this.gunaButton2 = new Guna.UI.WinForms.GunaButton();
             this.gunaButton3 = new Guna.UI.WinForms.GunaButton();
+            this.DControlLogo = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.Header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
             // 
             this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
-            this.Header.Controls.Add(this.gunaPictureBox1);
+            this.Header.Controls.Add(this.Logo);
             this.Header.Controls.Add(this.gunaControlBox2);
             this.Header.Controls.Add(this.gunaControlBox1);
             this.Header.Location = new System.Drawing.Point(0, 0);
@@ -59,17 +60,17 @@ namespace DesktopCopy1.Views
             this.Header.Size = new System.Drawing.Size(764, 28);
             this.Header.TabIndex = 29;
             // 
-            // gunaPictureBox1
+            // Logo
             // 
-            this.gunaPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaPictureBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("gunaPictureBox1.Image")));
-            this.gunaPictureBox1.Location = new System.Drawing.Point(15, 7);
-            this.gunaPictureBox1.Name = "gunaPictureBox1";
-            this.gunaPictureBox1.Size = new System.Drawing.Size(112, 18);
-            this.gunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.gunaPictureBox1.TabIndex = 29;
-            this.gunaPictureBox1.TabStop = false;
+            this.Logo.BackColor = System.Drawing.Color.Transparent;
+            this.Logo.BaseColor = System.Drawing.Color.White;
+            this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
+            this.Logo.Location = new System.Drawing.Point(15, 7);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(112, 18);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Logo.TabIndex = 29;
+            this.Logo.TabStop = false;
             // 
             // gunaControlBox2
             // 
@@ -161,15 +162,15 @@ namespace DesktopCopy1.Views
             this.gunaButton2.FocusedColor = System.Drawing.Color.Empty;
             this.gunaButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaButton2.ForeColor = System.Drawing.Color.White;
-            this.gunaButton2.Image = global::DesktopCopy1.Properties.Resources.settings;
+            this.gunaButton2.Image = global::DesktopCopy1.Properties.Resources.info1_clear;
             this.gunaButton2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaButton2.ImageSize = new System.Drawing.Size(30, 30);
-            this.gunaButton2.Location = new System.Drawing.Point(51, 259);
+            this.gunaButton2.Location = new System.Drawing.Point(51, 305);
             this.gunaButton2.Name = "gunaButton2";
             this.gunaButton2.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.gunaButton2.OnHoverBorderColor = System.Drawing.Color.Transparent;
             this.gunaButton2.OnHoverForeColor = System.Drawing.Color.Transparent;
-            this.gunaButton2.OnHoverImage = global::DesktopCopy1.Properties.Resources.settings1;
+            this.gunaButton2.OnHoverImage = global::DesktopCopy1.Properties.Resources.info1_clear;
             this.gunaButton2.OnPressedColor = System.Drawing.Color.Transparent;
             this.gunaButton2.Size = new System.Drawing.Size(58, 40);
             this.gunaButton2.TabIndex = 30;
@@ -183,14 +184,13 @@ namespace DesktopCopy1.Views
             this.gunaButton3.BaseColor = System.Drawing.Color.Transparent;
             this.gunaButton3.BorderColor = System.Drawing.Color.Black;
             this.gunaButton3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaButton3.Enabled = false;
             this.gunaButton3.FocusedColor = System.Drawing.Color.Empty;
             this.gunaButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaButton3.ForeColor = System.Drawing.Color.White;
             this.gunaButton3.Image = global::DesktopCopy1.Properties.Resources.settings;
             this.gunaButton3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaButton3.ImageSize = new System.Drawing.Size(30, 30);
-            this.gunaButton3.Location = new System.Drawing.Point(51, 305);
+            this.gunaButton3.Location = new System.Drawing.Point(51, 259);
             this.gunaButton3.Name = "gunaButton3";
             this.gunaButton3.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.gunaButton3.OnHoverBorderColor = System.Drawing.Color.Transparent;
@@ -199,12 +199,17 @@ namespace DesktopCopy1.Views
             this.gunaButton3.OnPressedColor = System.Drawing.Color.Transparent;
             this.gunaButton3.Size = new System.Drawing.Size(58, 40);
             this.gunaButton3.TabIndex = 30;
-            this.gunaButton3.Click += new System.EventHandler(this.gunaButton1_Click);
+            this.gunaButton3.Click += new System.EventHandler(this.gunaButton3_Click);
+            // 
+            // DControlLogo
+            // 
+            this.DControlLogo.TargetControl = this.Logo;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(70)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -220,20 +225,21 @@ namespace DesktopCopy1.Views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form2";
             this.RightToLeftLayout = true;
-            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Настройки программы";
             this.Header.ResumeLayout(false);
             this.Header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Guna.UI.WinForms.GunaPanel Header;
-        private Guna.UI.WinForms.GunaPictureBox gunaPictureBox1;
+        private Guna.UI.WinForms.GunaPictureBox Logo;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Guna.UI.WinForms.GunaElipse FormElipseControl;
@@ -243,5 +249,6 @@ namespace DesktopCopy1.Views
         private Guna.UI.WinForms.GunaPanel Pages;
         private Guna.UI.WinForms.GunaButton gunaButton3;
         private Guna.UI.WinForms.GunaButton gunaButton2;
+        private Guna.UI.WinForms.GunaDragControl DControlLogo;
     }
 }

@@ -1,14 +1,30 @@
-﻿namespace DesktopCopy1.Models
+﻿using System.Threading;
+using System.Windows.Forms;
+using AutoUpdaterDotNET;
+
+namespace DesktopCopy1.Models
 {
     public class Updater
     {
-
-        private bool _request;
-
-        public Updater(bool request)
+        public Updater()
         {
-            _request = request;
-            
+            AutoUpdater.AppTitle = "Desktop Sort Updater";
+            AutoUpdater.RunUpdateAsAdmin = false;
+            AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+            AutoUpdater.CheckForUpdateEvent += AutoUpdaterOnCheckForUpdateEvent;
+
+            AutoUpdater.Start("https://getfile.dokpub.com/yandex/get/https://yadi.sk/d/PBkFm38Nbc-WTw");
+        }
+
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            Thread.Sleep(5000);
+            Application.Exit();
+        }
+
+        private void AutoUpdaterOnCheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            new MessageService().Context = args.CurrentVersion.ToString();
         }
     }
 }

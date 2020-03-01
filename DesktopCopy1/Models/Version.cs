@@ -7,8 +7,6 @@ namespace DesktopCopy1.Models
     /// </summary>
     public class Version
     {
-
-
         public enum StageVersion
         {
             PreAlpha,
@@ -25,12 +23,12 @@ namespace DesktopCopy1.Models
         /// <returns></returns>
         public string GetVersion(bool isGetState)
         {
-            return (isGetState == false? Application.ProductVersion : Application.ProductVersion + State);
+            return isGetState == false ? Application.ProductVersion : Application.ProductVersion + State;
         }
 
-        public string Name(string name , bool isVersion, bool isGetState)
+        public string Name(string name, bool isVersion, bool isGetState)
         {
-            return (isVersion != false ? name : name + " " + GetVersion(isGetState));
+            return isVersion ? name : name + " " + GetVersion(isGetState);
         }
     }
 }
