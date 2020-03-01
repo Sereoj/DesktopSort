@@ -15,7 +15,7 @@ namespace DesktopCopy1.Models
             Edition
         }
 
-        public StageVersion State = StageVersion.Alpha;
+        public StageVersion State = StageVersion.Beta;
 
         /// <summary>
         ///     Версия продукта.

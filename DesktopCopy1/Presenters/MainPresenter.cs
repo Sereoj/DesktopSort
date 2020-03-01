@@ -27,9 +27,6 @@ namespace DesktopCopy1.Presenters
             form2.LoadFromFile("data.xml");
             View.ButtonClick += Add_ButtonCopyClick;
             View.ButtonCutClick += Add_ButtonCutClick;
-            View.ImageDialogClick += Add_ImageDialogClick;
-            View.ImageDialogClick1 += Add_ImageDialogClick1;
-            View.LinkSiteClick += Add_LinkSiteClick;
             View.ImageSettingsClick += Add_ImageSettingsClick;
             View.ImageHelperClick += View_ImageHelperClick;
 
@@ -57,9 +54,11 @@ namespace DesktopCopy1.Presenters
                         _logic.Search(Path.Combine(View.Editor2 + "\\", _form2.GetSettings().Setting[x].Catalog),
                             _form2.GetSettings().Setting[x].Extension, isMove);
                     }
+                View.OnNotification(MessageService.SUCCESS);    
             }
             catch (Exception exception)
             {
+                View.OnNotification(MessageService.ERROR_TEXT);  
                 new Logger(exception.Message);
             }
         }
@@ -74,19 +73,6 @@ namespace DesktopCopy1.Presenters
         public void Add_ButtonCutClick(object sender, EventArgs e)
         {
             ControllerButtons(true);
-        }
-
-
-        public void Add_ImageDialogClick(object sender, EventArgs e)
-        {
-        }
-
-        public void Add_ImageDialogClick1(object sender, EventArgs e)
-        {
-        }
-
-        public void Add_LinkSiteClick(object sender, EventArgs e)
-        {
         }
 
         public void Add_ImageSettingsClick(object sender, EventArgs e)

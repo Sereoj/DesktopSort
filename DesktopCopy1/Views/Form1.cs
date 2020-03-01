@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DesktopCopy1.Common;
 using DesktopCopy1.Models;
 using DesktopCopy1.Properties;
+using Version = DesktopCopy1.Models.Version;
 
 namespace DesktopCopy1.Views
 {
@@ -21,27 +22,21 @@ namespace DesktopCopy1.Views
         event EventHandler ButtonClick;
         event EventHandler ButtonCutClick;
         event EventHandler ImageHelperClick;
-        event EventHandler ImageDialogClick;
-        event EventHandler ImageDialogClick1;
-        event EventHandler LinkSiteClick;
         event EventHandler ImageSettingsClick;
     }
 
     public partial class MainForm : Form, IMainForm
     {
-        private readonly ApplicationContext _context;
 
 
-        public MainForm(ApplicationContext context)
+        public MainForm()
         {
-            _context = context;
             InitializeComponent();
             Starter();
 
             NotificationPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
             Header.BackColor = Color.FromArgb(24, 0, 0, 0);
-            OnNotification($"{MessageService.WELLCOME_TEXT}! ");
-            new Updater();
+            OnNotification($"{MessageService.WELLCOME_TEXT}! Версия программы {new Version().GetVersion(true)}");
         }
 
         protected override CreateParams CreateParams
@@ -57,8 +52,7 @@ namespace DesktopCopy1.Views
 
         public new void Show()
         {
-            _context.MainForm = this;
-            Application.Run(_context);
+            Application.Run(this);
         }
 
         public void OnNotification(string text)
@@ -74,16 +68,6 @@ namespace DesktopCopy1.Views
             ActiveControl = null;
         }
 
-        public void ReadmeText()
-        {
-            var file = Application.StartupPath + @"\Readme";
-            if (!File.Exists(file))
-            {
-                File.AppendAllText(file, "Прочитайте информацию на https://github.com/Sereoj/DesktopCopy1");
-                File.SetAttributes(file, FileAttributes.ReadOnly);
-            }
-        }
-
         public void Starter()
         {
             var commands = Environment.GetCommandLineArgs();
@@ -93,11 +77,6 @@ namespace DesktopCopy1.Views
             {
                 var args1 = commands[1].Substring(1);
                 var args2 = commands[2].Substring(1);
-                if (args1 == "dev")
-                {
-                    args1 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    args2 = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                }
 
                 if (Directory.Exists(args1) && Directory.Exists(args2))
                 {
@@ -112,23 +91,13 @@ namespace DesktopCopy1.Views
             }
             else
             {
-                //ReadmeText();
                 Edit1.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 Edit2.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
         }
 
 
-        #region Links
 
-        private void LinkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("Ой..\nКажется сайт -  временно недоступен!\nПопробуйте повторить позже.",
-                "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (LinkSiteClick != null) LinkSiteClick(this, EventArgs.Empty);
-        }
-
-        #endregion
 
         private void CheckOutputFiles_CheckedChanged(object sender, EventArgs e)
         {
@@ -161,10 +130,6 @@ namespace DesktopCopy1.Views
         public event EventHandler ButtonClick;
         public event EventHandler ButtonCutClick;
         public event EventHandler ImageHelperClick;
-        public event EventHandler ImageDialogClick;
-        public event EventHandler ImageDialogClick1;
-
-        public event EventHandler LinkSiteClick;
         public event EventHandler ImageSettingsClick;
 
         #endregion
@@ -193,7 +158,6 @@ namespace DesktopCopy1.Views
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit1.Text = FolderDialog1.SelectedPath;
-                ImageDialogClick?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -202,7 +166,6 @@ namespace DesktopCopy1.Views
             if (FolderDialog1.ShowDialog() == DialogResult.OK)
             {
                 Edit2.Text = FolderDialog1.SelectedPath;
-                ImageDialogClick1?.Invoke(this, EventArgs.Empty);
             }
         }
 

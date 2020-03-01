@@ -436,15 +436,15 @@ namespace DesktopCopy1.Views
             // 
             // NotificationLabel
             // 
-            this.NotificationLabel.AutoSize = true;
             this.NotificationLabel.BackColor = System.Drawing.Color.Transparent;
             this.NotificationLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NotificationLabel.ForeColor = System.Drawing.SystemColors.Window;
-            this.NotificationLabel.Location = new System.Drawing.Point(62, 5);
+            this.NotificationLabel.Location = new System.Drawing.Point(8, 4);
             this.NotificationLabel.Name = "NotificationLabel";
-            this.NotificationLabel.Size = new System.Drawing.Size(140, 17);
+            this.NotificationLabel.Size = new System.Drawing.Size(646, 18);
             this.NotificationLabel.TabIndex = 0;
             this.NotificationLabel.Text = "Тестовое сообщение!";
+            this.NotificationLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.NotificationLabel.TextRenderingHint = Guna.UI.WinForms.DrawingTextRenderingHint.ClearTypeGridFit;
             // 
             // timer1
@@ -493,7 +493,6 @@ namespace DesktopCopy1.Views
             this.PanelHide.ResumeLayout(false);
             this.PanelHide.PerformLayout();
             this.NotificationPanel.ResumeLayout(false);
-            this.NotificationPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

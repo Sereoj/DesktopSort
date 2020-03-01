@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using DesktopCopy1.Common;
+using DesktopCopy1.Presenters;
+using DesktopCopy1.Views;
 
 namespace DesktopCopy1.Models
 {

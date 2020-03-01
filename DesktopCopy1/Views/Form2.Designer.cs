@@ -165,7 +165,7 @@ namespace DesktopCopy1.Views
             this.gunaButton2.Image = global::DesktopCopy1.Properties.Resources.info1_clear;
             this.gunaButton2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaButton2.ImageSize = new System.Drawing.Size(30, 30);
-            this.gunaButton2.Location = new System.Drawing.Point(51, 305);
+            this.gunaButton2.Location = new System.Drawing.Point(51, 259);
             this.gunaButton2.Name = "gunaButton2";
             this.gunaButton2.OnHoverBaseColor = System.Drawing.Color.Transparent;
             this.gunaButton2.OnHoverBorderColor = System.Drawing.Color.Transparent;
@@ -199,6 +199,7 @@ namespace DesktopCopy1.Views
             this.gunaButton3.OnPressedColor = System.Drawing.Color.Transparent;
             this.gunaButton3.Size = new System.Drawing.Size(58, 40);
             this.gunaButton3.TabIndex = 30;
+            this.gunaButton3.Visible = false;
             this.gunaButton3.Click += new System.EventHandler(this.gunaButton3_Click);
             // 
             // DControlLogo
