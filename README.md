@@ -5,21 +5,19 @@
 
 ------------
 
-
-
 ### Красивый дизайн
-![DesktopCopy - 28.01.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Main.png?raw=true)
-![DesktopCopy - 28.01.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Settings.png?raw=true)
+![DesktopCopy - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Main.png?raw=true)
+![DesktopCopy - 01.03.2020](https://github.com/Sereoj/DesktopCopy1/blob/Design/src/img/Settings.png?raw=true)
 
 
 ### Не засоряет компьютер
 
-- Размер программы - 106 Кб
+- Размер программы: 1,07 МБ
 
 ### Шустро работает
 
 - Благодаря оптимизированному коду, программа стабильно выполняет заданные алгоритмы
-
+- Не требуется подключение к интернету.
 
 ### Поддержка форматов
 
@@ -27,16 +25,14 @@
 - Microsoft Excel
 - Microsoft Access
 - Microsoft Project
+- eBooks
 - Image Files		
 - Text Documents
+- Media Files
+- Achives
+- 7 Пользовательских шаблонов
+Редактирование дирикторий и расширение файлов.
 
-## Мы стремимся к совершенствованию
+### Использование командной строки
 
-> Будущая поддержка форматов
-- Архивы
-- Microsoft PDF		(Пользователь выбирает сортировать их или нет)
-- MP3, MP4 файлы 	(Пользователь выбирает сортировать их или нет)
-- Отдельные папки 	(Пользователь выбирает сортировать их или нет)
-
-> Будущие функции
-- Выбор расширений, которые нужно сортировать
+Приложение.exe -"путь1" -"путь2"
