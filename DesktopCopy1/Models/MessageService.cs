@@ -31,6 +31,7 @@ namespace DesktopCopy1.Models
         /// <param name="text"></param>
         public void Message(string text)
         {
+            Message1("1", "2");
             MessageBox.Show(text);
         }
 
@@ -39,7 +40,7 @@ namespace DesktopCopy1.Models
         /// </summary>
         /// <param name="text">Тестовое сообщение</param>
         /// <param name="text1">Название окна</param>
-        public void Message(string text, string text1)
+        private void Message1(string text, string text1)
         {
             MessageBox.Show(text, text1);
         }

@@ -70,10 +70,7 @@ namespace DesktopCopy1.Models
                     if (ext != null && pattern.Contains(ext.ToLower()) && ext.Length > 0)
                     {
                         var s = new FileInfo(tPath);
-                        if (File.Exists(Path.Combine(type, s.Name)))
-                        {
-                        }
-                        else
+                        if (!File.Exists(Path.Combine(type, s.Name)))
                         {
                             if (moveMethod) s.MoveTo(Path.Combine(type, s.Name));
                             else s.CopyTo(Path.Combine(type, s.Name), true);
